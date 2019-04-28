@@ -1,0 +1,10 @@
+[user]
+	name = Joaquim
+	email = devjoaquim@gmail.com
+[core]
+	editor = nano
+[alias]
+	s = status -sb
+	c = commit
+	a = add
+	l = log --graph --oneline --branches --decorate
