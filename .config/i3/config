@@ -103,6 +103,8 @@ set $workspace5 "5: media"
 set $workspace6 "6: chat"
 set $workspace7 "7: downloads"
 
+workspace $workspace5 output HDMI-1
+
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
