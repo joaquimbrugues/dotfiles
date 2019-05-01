@@ -1,5 +1,8 @@
 #!/bin/sh
-MYVAR=`echo "Whoopsie\\nYes, I want to exit i3" | dmenu -l 2 | cut -d, -f1`
-if [ $MYVAR = "Yes" ]; then
+MYVAR=`echo "Whoopsie\\ni3-quit\\nlinux-quit" | dmenu -l 3 | cut -d- -f1`
+if [ $MYVAR = "i3" ]; then
 	i3-msg exit
+fi
+if [ $MYVAR = "linux" ]; then
+	poweroff
 fi
