@@ -221,7 +221,7 @@ mode "launch" {
 	# Launch Firefox
 	bindsym f exec firefox; mode "default"
 	bindsym t exec thunderbird; mode "default"
-	bindsym n exec i3-sensible-terminal -hold -e nano; mode "default"
+	bindsym n exec i3-sensible-terminal -hold -e newsboat; mode "default"
 	bindsym g exec geany; mode "default"
 	bindsym Shift+t exec telegram; mode "default"
 	bindsym h exec thunar /home/joaquim; mode "default"
