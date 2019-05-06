@@ -244,6 +244,7 @@ bindsym $mod+l mode "launch"
 bindsym $mod+Control+1 exec xrandr --output LVDS-1 --mode 1366x768 --output HDMI-1 --off; exec .scripts/wallpaper.sh
 bindsym $mod+Control+2 exec xrandr --output LVDS-1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0; exec .scripts/wallpaper.sh
 bindsym $mod+Control+3 exec xrandr --output LVDS-1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0; exec .scripts/wallpaper.sh
+bindsym $mod+Shift+m exec ~/.scripts/screen-layout.sh
 
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
 # Pulse Audio controls
