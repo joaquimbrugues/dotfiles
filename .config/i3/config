@@ -223,7 +223,7 @@ mode "launch" {
 	bindsym t exec thunderbird; mode "default"
 	bindsym n exec i3-sensible-terminal -hold -e newsboat; mode "default"
 	bindsym g exec geany; mode "default"
-	bindsym Shift+t exec telegram; mode "default"
+	bindsym Shift+t exec telegram-desktop; mode "default"
 	bindsym h exec thunar /home/joaquim; mode "default"
 	bindsym c exec clementine; mode "default"
 	bindsym v exec vlc; mode "default"
