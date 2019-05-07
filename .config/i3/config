@@ -227,7 +227,6 @@ mode "launch" {
 	bindsym h exec thunar /home/joaquim; mode "default"
 	bindsym c exec clementine; mode "default"
 	bindsym v exec vlc; mode "default"
-	bindsym s exec subl; mode "default"
 	bindsym l exec i3-sensible-terminal -hold -e lynx; mode "default"
 	bindsym r exec transmission-gtk; mode "default"
 	bindsym Shift+c exec chromium; mode "default"
