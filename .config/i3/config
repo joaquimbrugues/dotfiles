@@ -278,3 +278,6 @@ exec owncloud
 
 # Autostart compton
 exec compton -f
+
+# Autostart transmission
+exec transmission-gtk -m
