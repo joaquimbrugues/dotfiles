@@ -5,7 +5,7 @@ bind-key UP prev
 
 color listnormal cyan default
 color listfocus green default bold
-color listnormal_unread blue default
+color listnormal_unread magenta default
 color listfocus_unread green default bold
 color info red black bold
 color article cyan default
