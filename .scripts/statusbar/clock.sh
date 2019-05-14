@@ -6,4 +6,4 @@ case $BLOCK_BUTTON in
 	3) notify-send "Date and time module" "\- Click to show current month's calendar";;
 esac
 
-date '+📅%d %b %Y - 🕓%H:%M:%S'
+date '+📅%d %b %Y   🕓%H:%M:%S'
