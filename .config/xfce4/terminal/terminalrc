@@ -25,7 +25,9 @@ MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 FontName=Noto Mono for Powerline 11
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-BackgroundDarkness=0.750000
+BackgroundDarkness=0.800000
 ColorBackground=#131219182625
 ColorCursor=#72729f9fcfcf
+MiscShowRelaunchDialog=TRUE
+MiscNewTabAdjacent=FALSE
 
