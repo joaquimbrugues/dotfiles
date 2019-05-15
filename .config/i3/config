@@ -147,7 +147,7 @@ assign [class="Chromium"] $workspace6
 assign [class="Transmission-gtk"] $workspace7
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -220,6 +220,8 @@ bindsym $mod+Shift+h exec i3-sensible-terminal -hold -e htop
 bindsym $mod+Shift+d exec thunar /home/joaquim/Downloads
 # Show a manpage in PDF format
 bindsym $mod+m exec ~/.scripts/man-this.sh
+# Show a help cheatsheet from selection
+bindsym $mod+Shift+c exec ~/.scripts/cheatsheets.sh
 
 # Launch mode
 mode "launch" {
