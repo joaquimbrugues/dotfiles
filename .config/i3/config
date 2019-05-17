@@ -14,7 +14,7 @@
 set $mod Mod4
 
 # Default window style
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
