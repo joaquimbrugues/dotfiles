@@ -124,3 +124,5 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 fi
 
 neofetch
+
+export BIB="$HOME/Documents/LaTeX/references.bib"
