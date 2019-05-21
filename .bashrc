@@ -125,4 +125,4 @@ fi
 
 neofetch
 
-export BIB="$HOME/Documents/LaTeX/references.bib"
+source $HOME/.profile
