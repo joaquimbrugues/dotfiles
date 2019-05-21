@@ -288,3 +288,17 @@ exec compton -f
 
 # Autostart transmission
 exec transmission-gtk -m
+
+# LaTeX mode:
+# Use shortcuts to manage the bibliography and compile a document
+mode "LaTeX" {
+	# Manage the bibliography
+	bindsym $mod+b exec $HOME/.scripts/latex/copytoclipboard.sh
+	bindsym $mod+a exec $HOME/.scripts/latex/addtobib.sh
+
+	# Back to default mode
+	bindsym $mod+q mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+t mode "LaTeX"
