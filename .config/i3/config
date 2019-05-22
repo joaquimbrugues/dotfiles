@@ -296,6 +296,24 @@ mode "LaTeX" {
 	bindsym $mod+b exec $HOME/.scripts/latex/copytoclipboard.sh
 	bindsym $mod+a exec $HOME/.scripts/latex/addtobib.sh
 
+	# Edit file
+	bindsym $mod+e exec $HOME/.scripts/latex/compile.sh -E
+	# Edit new file
+	bindsym $mod+Shift+e exec $HOME/.scripts/latex/removefile.sh; exec $HOME/.scripts/latex/compile.sh -E
+
+	# Compile file
+	bindsym $mod+c exec $HOME/.scripts/latex/compile.sh
+	# Compile new file
+	bindsym $mod+Shift+c exec $HOME/.scripts/latex/removefile.sh; exec $HOME/.scripts/latex/compile.sh
+
+	# Compile file to PDF
+	bindsym $mod+p exec $HOME/.scripts/latex/compile.sh -p
+	# Compile new file to PDF
+	bindsym $mod+Shift+p exec $HOME/.scripts/latex/removefile.sh; exec $HOME/.scripts/latex/compile.sh -p
+
+	# Compile bibliography of the file
+	bindsym $mod+Shift+b exec $HOME/.scripts/latex/compile.sh -b
+
 	# Back to default mode
 	bindsym $mod+q mode "default"
 	bindsym Escape mode "default"
