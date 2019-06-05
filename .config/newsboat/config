@@ -1,5 +1,6 @@
 #auto-reload yes
 
+max-items	100
 bind-key DOWN next
 bind-key UP prev
 
