@@ -9,12 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-#export TERMINAL="xfce4-terminal"
-
 set $mod Mod4
-
-# Default window style
-for_window [class="^.*"] border pixel 3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -41,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -l 10
+bindsym $mod+d exec dmenu_run -b
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -108,8 +103,6 @@ set $workspace5 "5: media"
 set $workspace6 "6: chat"
 set $workspace7 "7: downloads"
 
-workspace $workspace5 output HDMI-1
-
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -139,19 +132,18 @@ assign [class="Firefox-esr"] $workspace2
 assign [class="Thunderbird"] $workspace3
 assign [class="libreoffice-writer"] $workspace4
 assign [class="Evince"] $workspace4
-assign [class="Zathura"] $workspace4
-assign [class="vlc"] $workspace5
+assign [class="vlc"] $workspace4
 assign [class="Clementine"] $workspace5
 assign [class="TelegramDesktop"] $workspace6
 assign [class="Chromium"] $workspace6
 assign [class="Transmission-gtk"] $workspace7
 
 # reload the configuration file
-#bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec quiti3
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -179,7 +171,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $bg-color            #2f548f
+set $bg-color            #2f344f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -218,22 +210,19 @@ bindsym $mod+c exec i3-sensible-terminal -hold -e nano /home/joaquim/.config/i3/
 bindsym $mod+Shift+h exec i3-sensible-terminal -hold -e htop
 # Open the Downloads folder
 bindsym $mod+Shift+d exec thunar /home/joaquim/Downloads
-# Show a manpage in PDF format
-bindsym $mod+m exec man-this
-# Show a help cheatsheet from selection
-bindsym $mod+Shift+c exec cheatsheets
 
 # Launch mode
 mode "launch" {
 	# Launch Firefox
 	bindsym f exec firefox; mode "default"
 	bindsym t exec thunderbird; mode "default"
-	bindsym n exec i3-sensible-terminal -hold -e newsboat; mode "default"
+	bindsym n exec i3-sensible-terminal -hold -e nano; mode "default"
 	bindsym g exec geany; mode "default"
-	bindsym Shift+t exec telegram-desktop; mode "default"
+	bindsym Shift+t exec telegram; mode "default"
 	bindsym h exec thunar /home/joaquim; mode "default"
 	bindsym c exec clementine; mode "default"
 	bindsym v exec vlc; mode "default"
+	bindsym s exec subl; mode "default"
 	bindsym l exec i3-sensible-terminal -hold -e lynx; mode "default"
 	bindsym r exec transmission-gtk; mode "default"
 	bindsym Shift+c exec chromium; mode "default"
@@ -246,21 +235,15 @@ mode "launch" {
 
 bindsym $mod+l mode "launch"
 
-# Shortcuts to switch display configurations
-bindsym $mod+Control+1 exec xrandr --output LVDS-1 --mode 1366x768 --output HDMI-1 --off; exec wallpaper
-bindsym $mod+Control+2 exec xrandr --output LVDS-1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0; exec wallpaper
-bindsym $mod+Control+3 exec xrandr --output LVDS-1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0; exec wallpaper
-bindsym $mod+Shift+m exec screen-layout
-
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%; exec pkill -RTMIN+10 i3blocks #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%; exec pkill -RTMIN+10 i3blocks #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec pkill -RTMIN+10 i3blocks # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -272,7 +255,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Set wallpaper
-exec_always wallpaper
+exec_always feh --bg-scale /home/joaquim/Pictures/toc_and_tool.jpg
 
 # Set the keyboard layout
 exec_always ibus restart
@@ -285,38 +268,3 @@ exec owncloud
 
 # Autostart compton
 exec compton -f
-
-# Autostart transmission
-exec transmission-gtk -m
-
-# LaTeX mode:
-# Use shortcuts to manage the bibliography and compile a document
-mode "LaTeX" {
-	# Manage the bibliography
-	bindsym $mod+b exec $HOME/.local/bin/latex/copytoclipboard.sh
-	bindsym $mod+a exec $HOME/.local/bin/latex/addtobib.sh
-
-	# Edit file
-	bindsym $mod+e exec $HOME/.local/bin/latex/compile.sh -E
-	# Edit new file
-	bindsym $mod+Shift+e exec $HOME/.local/bin/latex/removefile.sh; exec $HOME/.local/bin/latex/compile.sh -E
-
-	# Compile file
-	bindsym $mod+c exec $HOME/.local/bin/latex/compile.sh
-	# Compile new file
-	bindsym $mod+Shift+c exec $HOME/.local/bin/latex/removefile.sh; exec $HOME/.local/bin/latex/compile.sh
-
-	# Compile file to PDF
-	bindsym $mod+p exec $HOME/.local/bin/latex/compile.sh -p
-	# Compile new file to PDF
-	bindsym $mod+Shift+p exec $HOME/.local/bin/latex/removefile.sh; exec $HOME/.local/bin/latex/compile.sh -p
-
-	# Compile bibliography of the file
-	bindsym $mod+Shift+b exec $HOME/.local/bin/latex/compile.sh -b
-
-	# Back to default mode
-	bindsym $mod+q mode "default"
-	bindsym Escape mode "default"
-}
-
-bindsym $mod+t mode "LaTeX"
