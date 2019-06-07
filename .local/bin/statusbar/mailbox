@@ -1,0 +1,13 @@
+#!/bin/sh
+# Show the number of unread messages, and click to update the mail
+
+case $BLOCK_BUTTON in
+	1) mbsync -a ;;
+	2) i3-sensible-terminal -e neomutt ;;
+	3) notify-send "Mailbox module" "\- Shows number of unread mails.
+- Click to update the mailbox.
+- Middle-click to open neomutt." ;;
+esac
+
+# Main action
+echo "$(ls $HOME/.local/share/mail/*/[Ii][Nn][Bb][Oo][Xx]/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)"
