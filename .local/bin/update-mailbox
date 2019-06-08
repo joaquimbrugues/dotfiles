@@ -1,0 +1,4 @@
+#!/bin/sh
+# Script to make the mailbox updating easier
+
+mbsync -a && pkill -RTMIN+11 i3blocks

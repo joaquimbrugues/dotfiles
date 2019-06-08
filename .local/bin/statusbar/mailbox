@@ -2,7 +2,7 @@
 # Show the number of unread messages, and click to update the mail
 
 case $BLOCK_BUTTON in
-	1) mbsync -a ;;
+	1) update-mailbox ;;
 	2) i3-sensible-terminal -e neomutt ;;
 	3) notify-send "📬 Mailbox module" "\- Shows number of unread mails.
 - Click to update the mailbox.

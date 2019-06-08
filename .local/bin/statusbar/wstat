@@ -1,0 +1,16 @@
+#!/bin/sh
+# Show wireless status
+
+case $BLOCK_BUTTON in
+	1) i3-sensible-terminal -e nmtui ;;
+	3) notify-send "Internet module" "\- Click to edit connections
+❎: No wifi connection
+📶: Wifi connection and quality"
+;;
+esac
+
+case $(cat /sys/class/net/w*/operstate) in
+	down) echo "❎" ;;
+	up) echo "📶$(grep '^\s*w' /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')" ;;
+	*) ;;
+esac
