@@ -10,4 +10,4 @@ case $BLOCK_BUTTON in
 esac
 
 # Main action
-echo "📬$(ls $HOME/.local/share/mail/*/[Ii][Nn][Bb][Oo][Xx]/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)"
+echo "📬$(ls $HOME/.local/share/mail/*/INBOX/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)"
