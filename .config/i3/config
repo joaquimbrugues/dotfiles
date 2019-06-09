@@ -213,11 +213,11 @@ bar {
 bindsym $mod+Control+l exec i3lock -ef -c "$inactive-bg-color"
 
 # Edit this configuration file
-bindsym $mod+c exec i3-sensible-terminal -hold -e nano /home/joaquim/.config/i3/config
+bindsym $mod+c exec i3-sensible-terminal -hold -e nano $HOME/.config/i3/config
 # Execute htop
 bindsym $mod+Shift+h exec i3-sensible-terminal -hold -e htop
 # Open the Downloads folder
-bindsym $mod+Shift+d exec thunar /home/joaquim/Downloads
+bindsym $mod+Shift+d exec thunar $HOME/Downloads
 # Show a manpage in PDF format
 bindsym $mod+m exec man-this
 # Show a help cheatsheet from selection
@@ -231,7 +231,7 @@ mode "launch" {
 	bindsym n exec i3-sensible-terminal -hold -e newsboat; mode "default"
 	bindsym g exec geany; mode "default"
 	bindsym Shift+t exec telegram-desktop; mode "default"
-	bindsym h exec thunar /home/joaquim; mode "default"
+	bindsym h exec thunar $HOME; mode "default"
 	bindsym c exec clementine; mode "default"
 	bindsym v exec vlc; mode "default"
 	bindsym l exec i3-sensible-terminal -hold -e lynx; mode "default"
