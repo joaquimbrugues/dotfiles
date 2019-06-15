@@ -8,4 +8,4 @@ case $BLOCK_BUTTON in
 - % is of single core." ;;
 esac
 
-echo 💻$(/usr/share/i3blocks/cpu_usage) $(sensors | awk '/Core 0/ {print $3}')
+echo $(/usr/share/i3blocks/cpu_usage) $(sensors | awk '/Core 0/ {print $3}')
