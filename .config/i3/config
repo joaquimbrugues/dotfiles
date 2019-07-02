@@ -300,26 +300,26 @@ exec transmission-gtk -m
 # Use shortcuts to manage the bibliography and compile a document
 mode "LaTeX" {
 	# Manage the bibliography
-	bindsym $mod+b exec $HOME/.local/bin/latex/copytoclipboard.sh
-	bindsym $mod+a exec $HOME/.local/bin/latex/addtobib.sh
+	bindsym $mod+b exec $HOME/.local/bin/latex/copytoclipboard
+	bindsym $mod+a exec $HOME/.local/bin/latex/addtobib
 
 	# Edit file
-	bindsym $mod+e exec $HOME/.local/bin/latex/compile.sh -E
+	bindsym $mod+e exec $HOME/.local/bin/latex/compile -E
 	# Edit new file
-	bindsym $mod+Shift+e exec $HOME/.local/bin/latex/removefile.sh; exec $HOME/.local/bin/latex/compile.sh -E
+	bindsym $mod+Shift+e exec $HOME/.local/bin/latex/removefile; exec $HOME/.local/bin/latex/compile -E
 
 	# Compile file
-	bindsym $mod+c exec $HOME/.local/bin/latex/compile.sh
+	bindsym $mod+c exec $HOME/.local/bin/latex/compile
 	# Compile new file
-	bindsym $mod+Shift+c exec $HOME/.local/bin/latex/removefile.sh; exec $HOME/.local/bin/latex/compile.sh
+	bindsym $mod+Shift+c exec $HOME/.local/bin/latex/removefile; exec $HOME/.local/bin/latex/compile
 
 	# Compile file to PDF
-	bindsym $mod+p exec $HOME/.local/bin/latex/compile.sh -p
+	bindsym $mod+p exec $HOME/.local/bin/latex/compile -p
 	# Compile new file to PDF
-	bindsym $mod+Shift+p exec $HOME/.local/bin/latex/removefile.sh; exec $HOME/.local/bin/latex/compile.sh -p
+	bindsym $mod+Shift+p exec $HOME/.local/bin/latex/removefile; exec $HOME/.local/bin/latex/compile -p
 
 	# Compile bibliography of the file
-	bindsym $mod+Shift+b exec $HOME/.local/bin/latex/compile.sh -b
+	bindsym $mod+Shift+b exec $HOME/.local/bin/latex/compile -b
 
 	# Back to default mode
 	bindsym $mod+q mode "default"

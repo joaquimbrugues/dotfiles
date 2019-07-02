@@ -1,12 +1,12 @@
 #!/bin/sh
 # Multi-use script. Invoke getcurrentfile and do some action with it
-FILE=$($HOME/.scripts/latex/getcurrentfile.sh)
+FILE=$($HOME/.local/bin/latex/getcurrentfile)
 [ -z "$FILE" ] && notify-send "ERROR: Null working file" && exit
 DIR=$(dirname $FILE)
 TERMINAL="xfce4-terminal"
 
 case "$1" in
-	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) ;;
+	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) && notify-send "Compilation successful" ;;
 	-b|--bibliography) if [ -r $BIB ]
 		then
 			[ ! -e $(echo "$DIR/references.bib") ] && ln -s $BIB $DIR/references.bib
@@ -21,5 +21,5 @@ case "$1" in
 			$TERMINAL -e "nano $PICK"
 		fi
 		;;
-	*) cd $DIR && latex $(basename $FILE) ;;
+	*) cd $DIR && latex $(basename $FILE) && notify-send "Compilation successful" ;;
 esac
