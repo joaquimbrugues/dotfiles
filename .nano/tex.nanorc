@@ -3,6 +3,7 @@
 syntax "TeX" "\.tex$" "bib" "\.bib$" "cls" "\.cls$"
 color yellow "\$(\\\$|[^$])*[^\\]\$"
 color yellow "\$\$(\\\$|[^$])*[^\\]\$\$"
+color yellow "\\\[(\\\$|[^$])*[^\\]\\\]"
 icolor green "\\.|\\[A-Z]*"
 color magenta "[{}]"
 color blue "%.*"
