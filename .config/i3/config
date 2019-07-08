@@ -321,6 +321,10 @@ mode "LaTeX" {
 	# Compile bibliography of the file
 	bindsym $mod+Shift+b exec $HOME/.local/bin/latex/compile -b
 
+	#Navigate between workspaces
+	bindsym $mod+Tab workspace next
+	bindsym $mod+Shift+Tab workspace prev
+
 	# Back to default mode
 	bindsym $mod+q mode "default"
 	bindsym Escape mode "default"
