@@ -83,4 +83,8 @@ include "~/.nano/yaml.nanorc"
 include "~/.nano/yum.nanorc"
 include "~/.nano/zsh.nanorc"
 
+unbind ^S main
+unbind ^F main
+bind ^S cutwordleft main
+bind ^F cutwordright main
 set linenumbers
