@@ -232,6 +232,7 @@ bindsym $mod+Shift+c exec cheatsheets
 mode "launch" {
 	# Launch Firefox
 	bindsym f exec firefox; mode "default"
+	bindsym Shift+f exec firefox --private-window; mode "default"
 	bindsym t exec thunderbird; mode "default"
 	bindsym n exec i3-sensible-terminal -hold -e newsboat; mode "default"
 	bindsym g exec geany; mode "default"
