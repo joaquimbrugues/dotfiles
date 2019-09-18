@@ -22,7 +22,7 @@ case "$1" in
 		fi
 		;;
 	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu -p "Pick a file to view with Zathura" -l 10)
-		if [-z $PICK ]
+		if [ -z $PICK ]
 		then
 			notify-send "No file selected"
 		else
