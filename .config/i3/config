@@ -321,6 +321,9 @@ mode "LaTeX" {
 	# Compile new file to PDF
 	bindsym $mod+Shift+p exec $HOME/.local/bin/latex/removefile; exec $HOME/.local/bin/latex/compile -p
 
+	# View the PDF of the current working file
+	bindsym $mod+v exec $HOME/.local/bin/latex/compile -V
+
 	# Compile bibliography of the file
 	bindsym $mod+Shift+b exec $HOME/.local/bin/latex/compile -b
 
