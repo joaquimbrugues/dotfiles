@@ -21,5 +21,13 @@ case "$1" in
 			$TERMINAL -e "nano $PICK"
 		fi
 		;;
+	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu -p "Pick a file to view with Zathura" -l 10)
+		if [-z $PICK ]
+		then
+			notify-send "No file selected"
+		else
+			zathura $PICK
+		fi
+		;;
 	*) cd $DIR && latex $(basename $FILE) && notify-send "Compilation successful" ;;
 esac
