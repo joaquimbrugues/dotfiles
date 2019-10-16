@@ -246,6 +246,7 @@ mode "launch" {
 	bindsym r exec transmission-gtk; mode "default"
 	bindsym Shift+c exec chromium; mode "default"
 	bindsym Shift+r exec i3-sensible-terminal -hold -e curseradio; mode "default"
+	bindsym m exec i3-sensible-terminal -hold -e neomutt; mode "default"
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
