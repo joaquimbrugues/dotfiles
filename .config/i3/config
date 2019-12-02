@@ -306,6 +306,9 @@ exec compton -f
 # Autostart transmission
 exec transmission-gtk -m
 
+# Automount mat-owncloud folder from the server
+exec mount $HOME/mat-owncloud
+
 # LaTeX mode:
 # Use shortcuts to manage the bibliography and compile a document
 mode "LaTeX" {
