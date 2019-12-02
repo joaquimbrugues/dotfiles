@@ -2,6 +2,7 @@
 # Check the devices connected to the computer, and mount one of them
 # This only works with drives that already have a label!
 DEVICE=$(lsblk -o name,label | tail -n +2 | grep -v sda | awk '{print $2}' | grep  -v -e '^$' | dmenu -p "Select a device to mount/unmount" -l 50)
+[ -z $DEVICE ] && exit 0
 LOC=/dev/$(lsblk -o name,label | tail -n +2 | grep $DEVICE | awk '{print $1}' | tr -cd '[:alnum:]')
 DIR=/media/$(whoami)/$DEVICE
 #mkdir -p $DIR
