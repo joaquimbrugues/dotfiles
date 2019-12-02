@@ -229,6 +229,8 @@ bindsym $mod+Shift+u exec mailsync -a
 bindsym $mod+m exec man-this
 # Show a help cheatsheet from selection
 bindsym $mod+Shift+c exec cheatsheets
+# Mount/unmount device from selection
+bindsym $mod+Mod1+m exec dmenu-usb
 
 # Launch mode
 mode "launch" {
