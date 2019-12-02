@@ -9,8 +9,10 @@ mountpoint $DIR >> /dev/null
 if [ $? -eq 0 ]
 then
 	#The device is already mounted, unmount it
+	[ -L $HOME/$DEVICE ] && rm $HOME/$DEVICE
 	udisksctl unmount -b $LOC && notify-send "$DEVICE unmounted"
 else
 	#The device was no mounted, mount it
 	udisksctl mount -b $LOC && notify-send "$DEVICE successfully mounted on $DIR"
+	[ ! -L $HOME/$DEVICE ] && ln -s $DIR $HOME/$DEVICE
 fi
