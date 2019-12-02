@@ -7,10 +7,14 @@ if [ -z "$ID" ]
 then
 	notify-send "Malformed input"
 else
-	# If the bibliography exists, add a newline
-	[ -w $BIB ] && printf "\n" >> $BIB
-	# If the bibliography file does not exist, create it
-	[ ! -w $BIB ] && touch $BIB
+	if [ -w $BIB ]
+	then
+		# If the bibliography exists, add a newline
+		printf "\n" >> $BIB
+	else
+		# If the bibliography file does not exist, create it
+		touch $BIB
+	fi
 	# Format the bibliography item and output it to the file
 	echo "$(echo $ITEM | sed -e 's/, /,\n\t/g' -e 's/} /}\n/')" >> $BIB
 	notify-send "$ID added to the bibliography"
