@@ -1,8 +1,16 @@
 #!/bin/sh
 # Check the devices connected to the computer, and mount one of them
 # This only works with drives that already have a label!
-DEVICE=$(lsblk -o name,label | tail -n +2 | grep -v sda | awk '{print $2}' | grep  -v -e '^$' | dmenu -p "Select a device" -l 50)
+DEVICE=$(lsblk -o name,label | tail -n +2 | grep -v sda | awk '{print $2}' | grep  -v -e '^$' | dmenu -p "Select a device to mount/unmount" -l 50)
 LOC=/dev/$(lsblk -o name,label | tail -n +2 | grep $DEVICE | awk '{print $1}')
 DIR=/media/$(whoami)/$DEVICE
-mkdir $DIR
-mount $LOC $DIR && notify-send '$DEVICE successfully mounted on $DIR'
+#mkdir -p $DIR
+mountpoint $DIR >> /dev/null
+if [ $? -eq 0 ]
+then
+	#The device is already mounted, unmount it
+	udisksctl unmount -b $LOC && notify-send "$DEVICE unmounted"
+else
+	#The device was no mounted, mount it
+	udisksctl mount -b $LOC && notify-send "$DEVICE successfully mounted on $DIR"
+fi
