@@ -1,9 +1,9 @@
 #!/bin/sh
 # Quit from i3/power off the machine/reboot selecting the option from a dmenu
-OPTIONS="Whoopsie\\ni3-quit\\nlinux-quit\\nreboot"
-case $(echo $OPTIONS | dmenu -p "Do you want to quit?" -l 20 | cut -d- -f1) in
-	i3) i3-msg exit;;
-	linux) systemctl poweroff;;
-	reboot) systemctl reboot;;
+OPTIONS="Cabòries!\\nTanca i3\\nApaga\\nReinicia"
+case $(echo $OPTIONS | dmenu -p "Què vols fer?" -l 20) in
+	Tanca\ i3) i3-msg exit;;
+	Apaga) systemctl poweroff;;
+	Reinicia) systemctl reboot;;
 	*) ;;
 esac
