@@ -94,15 +94,19 @@ bindsym $mod+space focus mode_toggle
 # bindsym $mod+d focus child
 
 # Set names for workspaces
-set $workspace1 "1: admin"
-set $workspace2 "2: www"
-set $workspace3 "3: mail"
-set $workspace4 "4: docs"
-set $workspace5 "5: media"
-set $workspace6 "6: chat"
-set $workspace7 "7: downloads"
+set $workspace1 "1: admin  "
+set $workspace2 "2: www "
+set $workspace3 "3: mail 🖂"
+set $workspace4 "4: docs "
+set $workspace5 "5: media "
+set $workspace6 "6: chat "
+set $workspace7 "7: downloads "
 
-workspace $workspace5 output HDMI-1
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# Associate a workspace to video output HDMI-2
+workspace $workspace5 output HDMI-2
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -116,9 +120,6 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
@@ -131,16 +132,16 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# Assign windows to workspaces
-assign [class="Firefox-esr"] $workspace2
-assign [class="thunderbird"] $workspace3
+# Assign windows to worspaces
+assign [class="Firefox"] $workspace2
+assign [class="Thunderbird"] $workspace3
+assign [class="Chromium-browser"] $workspace2
 assign [class="libreoffice-writer"] $workspace4
 assign [class="Evince"] $workspace4
 assign [class="Zathura"] $workspace4
 assign [class="vlc"] $workspace5
 assign [class="Clementine"] $workspace5
 assign [class="TelegramDesktop"] $workspace6
-assign [class="Chromium"] $workspace6
 assign [class="Transmission-gtk"] $workspace7
 
 # reload the configuration file
@@ -241,16 +242,17 @@ bindsym $mod+Mod1+r exec transmission-gtk; mode "default"
 bindsym $mod+Mod1+Shift+c exec chromium; mode "default"
 bindsym $mod+Mod1+Shift+r exec i3-sensible-terminal -e curseradio; mode "default"
 bindsym $mod+Mod1+m exec i3-sensible-terminal -e neomutt; mode "default"
+bindsym $mod+Mod1+Shift+v exec virtualbox
+
+# Use xrandr to switch between display configurations
+bindsym $mod+Control+1 exec xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --off; exec ~/.scripts/wallpaper.sh
+bindsym $mod+Control+2 exec xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --primary --output HDMI-2 --mode 1920x1080 --pos 1920x0; exec ~/.scripts/wallpaper.sh
+bindsym $mod+Control+3 exec xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --primary --output HDMI-2 --mode 1920x1080 --pos 0x0; exec ~/.scripts/wallpaper.sh
+bindsym $mod+Shift+m exec screen-layout
 
 # Screenshooter
 bindsym $mod+s exec xfce4-screenshooter -w # Take a screenshoot of the active window
 bindsym $mod+Shift+s exec xfce4-screenshooter -f # Take a screenshoot of the whole screen
-
-# Shortcuts to switch display configurations
-bindsym $mod+Control+1 exec xrandr --output LVDS-1 --mode 1366x768 --output HDMI-1 --off; exec wallpaper
-bindsym $mod+Control+2 exec xrandr --output LVDS-1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0; exec wallpaper
-bindsym $mod+Control+3 exec xrandr --output LVDS-1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0; exec wallpaper
-bindsym $mod+Shift+m exec screen-layout
 
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
 # Pulse Audio controls
@@ -276,9 +278,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # Set wallpaper
 exec_always wallpaper
 
-# Set the keyboard layout
-exec_always ibus restart
-
 # Autostart dropbox
 exec dropbox start
 
@@ -286,11 +285,10 @@ exec dropbox start
 exec owncloud
 
 # Autostart compton
-exec compton -f
+exec compton -f -D 5
 
 # Autostart transmission
 exec transmission-gtk -m
-
 # Automount mat-owncloud from the server
 exec mount $HOME/mat-owncloud
 
