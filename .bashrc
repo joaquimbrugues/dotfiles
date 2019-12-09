@@ -114,25 +114,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-GPG_TTY=$(tty)
-export GPG_TTY
-
-#Code to use the powerline-shell
-function _update_ps1() {
-	PS1=$(powerline-shell $?)
-}
-
-function _update_ps1_tty() {
-	BAT=$(acpi -b | cut -d "," -f 2)
-	PS1='[\u@\h$BAT \w]\$ '
-}
-
-if [[ $(tty) == *tty* && ! $PROMPT_COMMAND =~ _update_ps1_tty ]]; then
-	PROMPT_COMMAND="_update_ps1_tty; $PROMPT_COMMAND"
-elif [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
-neofetch
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[01;32m\]]\[\033[00m\] \[\033[01;34m\]\$\[\033[00m\] '
 
 source $HOME/.profile

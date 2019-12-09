@@ -3,7 +3,7 @@
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
 [ -z "$FILE" ] && notify-send "ERROR: Null working file" && exit
 DIR=$(dirname $FILE)
-TERMINAL="xfce4-terminal"
+TERMINAL="gnome-terminal"
 
 case "$1" in
 	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) && notify-send "Compilation successful" ;;
