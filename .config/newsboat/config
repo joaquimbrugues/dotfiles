@@ -17,4 +17,7 @@ macro y set browser "lynx %u"; open-in-browser
 macro f set browser "firefox %u"; open-in-browser ; set broswer "lynx %u"
 macro v set browser "vlc -f %u"; open-in-browser ; set browser "lynx %u"
 macro c set browser "echo %u | sed -e 's/^$//' | xclip -i -selection clipboard"; open-in-browser ; set browser "lynx %u"
-macro d set browser "youtube-dl %u --output '~/Downloads/%%(title)s.%%(ext)s'"; open-in-browser ; set browser "lynx %u"
+macro d set browser "youtube-dl --write-auto-sub --embed-subs %u --output '~/Downloads/%%(title)s.%%(ext)s'"; open-in-browser ; set browser "lynx %u"
+
+#Podboat configuration
+download-path "~/Podcast"
