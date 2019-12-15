@@ -114,6 +114,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
 #Code to use the powerline-shell
 function _update_ps1() {
 	PS1=$(powerline-shell $?)
