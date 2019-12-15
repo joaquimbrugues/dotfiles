@@ -122,7 +122,14 @@ function _update_ps1() {
 	PS1=$(powerline-shell $?)
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+function _update_ps1_tty() {
+	BAT=$(acpi -b | cut -d "," -f 2)
+	PS1='[\u@\h$BAT \w]\$ '
+}
+
+if [[ $(tty) == *tty* && ! $PROMPT_COMMAND =~ _update_ps1_tty ]]; then
+	PROMPT_COMMAND="_update_ps1_tty; $PROMPT_COMMAND"
+elif [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
