@@ -216,9 +216,11 @@ bindsym $mod+Shift+h exec i3-sensible-terminal -hold -e htop
 # Open the Downloads folder
 bindsym $mod+Shift+d exec thunar $HOME/Downloads
 # Open a terminal with the APT updater
-bindsym $mod+u exec i3-sensible-terminal -hold -e 'bash -c "sudo apt update && apt list --upgradable && bash"'
+bindsym $mod+F1 exec i3-sensible-terminal -hold -e 'bash -c "sudo apt update && apt list --upgradable && bash"'
 # Update the mailboxes
-bindsym $mod+Shift+u exec mailsync -a
+bindsym $mod+F2 exec mailsync -a
+# Update newsboat feeds
+bindsym $mod+F3 exec update-news
 # Show a manpage in PDF format
 bindsym $mod+m exec man-this
 # Show a help cheatsheet from selection
