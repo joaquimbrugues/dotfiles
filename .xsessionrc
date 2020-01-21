@@ -1,2 +1,5 @@
 # Source ~/.profile
 . $HOME/.profile
+
+# Load Xresources on startup
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources

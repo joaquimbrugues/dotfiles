@@ -1,0 +1,2 @@
+!Include urxvt configuration
+#include ".urxvt/config/urxvtrc"
