@@ -215,8 +215,6 @@ bindsym $mod+c exec i3-sensible-terminal -e nano $HOME/.config/i3/config
 bindsym $mod+Shift+h exec i3-sensible-terminal -e htop
 # Open the Downloads folder
 bindsym $mod+Shift+d exec thunar $HOME/Downloads
-# Open a terminal with the APT updater
-bindsym $mod+F1 exec i3-sensible-terminal -hold -e 'bash -c "sudo apt update && apt list --upgradable && bash"'
 # Update the mailboxes
 bindsym $mod+F2 exec mailsync -a
 # Update newsboat feeds
@@ -226,32 +224,23 @@ bindsym $mod+m exec man-this
 # Show a help cheatsheet from selection
 bindsym $mod+Shift+c exec cheatsheets
 # Mount/unmount device from selection
-bindsym $mod+Mod1+m exec dmenu-usb
+bindsym $mod+F1 exec dmenu-usb
 
-# Launch mode
-mode "launch" {
-	# Launch Firefox
-	bindsym f exec firefox; mode "default"
-	bindsym Shift+f exec firefox --private-window; mode "default"
-	bindsym t exec thunderbird; mode "default"
-	bindsym n exec i3-sensible-terminal -hold -e newsboat; mode "default"
-	bindsym g exec geany; mode "default"
-	bindsym Shift+t exec telegram-desktop; mode "default"
-	bindsym h exec thunar $HOME; mode "default"
-	bindsym c exec clementine; mode "default"
-	bindsym v exec vlc; mode "default"
-	bindsym l exec i3-sensible-terminal -hold -e lynx; mode "default"
-	bindsym r exec transmission-gtk; mode "default"
-	bindsym Shift+c exec chromium; mode "default"
-	bindsym Shift+r exec i3-sensible-terminal -hold -e curseradio; mode "default"
-	bindsym m exec i3-sensible-terminal -hold -e neomutt; mode "default"
-
-	# back to normal: Enter or Escape
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-
-bindsym $mod+l mode "launch"
+# Program launchers
+bindsym $mod+Mod1+f exec firefox; mode "default"
+bindsym $mod+Mod1+Shift+f exec firefox --private-window; mode "default"
+bindsym $mod+Mod1+t exec thunderbird; mode "default"
+bindsym $mod+Mod1+n exec i3-sensible-terminal -e newsboat; mode "default"
+bindsym $mod+Mod1+g exec geany; mode "default"
+bindsym $mod+Mod1+Shift+t exec telegram-desktop; mode "default"
+bindsym $mod+Mod1+h exec thunar $HOME; mode "default"
+bindsym $mod+Mod1+c exec clementine; mode "default"
+bindsym $mod+Mod1+v exec vlc; mode "default"
+bindsym $mod+Mod1+l exec i3-sensible-terminal -e lynx; mode "default"
+bindsym $mod+Mod1+r exec transmission-gtk; mode "default"
+bindsym $mod+Mod1+Shift+c exec chromium; mode "default"
+bindsym $mod+Mod1+Shift+r exec i3-sensible-terminal -e curseradio; mode "default"
+bindsym $mod+Mod1+m exec i3-sensible-terminal -e neomutt; mode "default"
 
 # Screenshooter
 bindsym $mod+s exec xfce4-screenshooter -w # Take a screenshoot of the active window
