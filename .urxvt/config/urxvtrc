@@ -1,5 +1,5 @@
 !urxvt configuration
-urxvt*font: xft:Noto Mono for Powerline:size=11
+urxvt*font: xft:Monospace:style=Regular:size=12
 urxvt*termName: rxvt
 urxvt*scrollBar: false
 urxvt*scrollstyle: plain
