@@ -1,0 +1,15 @@
+#!/bin/sh
+# This script launches the lemonbar with all the required modules.
+# Default modules are:
+#	CPU usage
+#	RAM usage
+#	e-mail (mutt) inbox
+#	wi-fi connection
+#	Volume information
+#	Battery
+#	Date & time
+
+BGCOL="#2f343f"
+FONT="Noto Mono"
+
+echo "blablabla" | lemonbar -g 'x25' -f $FONT -B $BGCOL -p
