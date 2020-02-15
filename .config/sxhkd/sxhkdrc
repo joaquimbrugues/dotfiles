@@ -1,0 +1,48 @@
+# SXHKD is a daemon to set all your keyboard shortcuts
+# The organization is as follows:
+#	- sxhkdrc (this file) contains all the shortcuts that are independent of the WM
+#	- sxhkdrc-* contains all the shortcuts specific to a particular WM
+# The proper way to use this should be to add the line 'sxhkd -c PATH_TO_CONFIG/sxhkdrc PATH_TO_CONFIG/sxhkdrc-*
+
+super + Return
+	$TERMINAL
+super + d
+	dmenu_run -l 10
+super + shift + q
+	dmenu-quit
+super + {_,shift} + c
+	{configure,cheatsheets}
+super + shift + h
+	$TERMINAL -e htop
+super + shift + d
+	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
+super + m
+	man-this
+super + F1
+	dmenu-usb
+super + F2
+	mailsync -a
+super + F3
+	newsboat -x reload
+# Usual program launchers
+super + alt + {_,shift} + f
+	firefox {,--private-window}
+super + alt + t
+	thunderbird
+super + alt + n
+	$TERMINAL -e newsboat
+super + alt + shift + t
+	telegram-desktop
+super + alt + c
+	clementine
+super + alt + l
+	$TERMINAL -e lynx
+super + alt + r
+	transmission-gtk
+super + alt + a
+	$TERMINAL -e curseradio
+super + alt + m
+	$TERMINAL -e neomutt
+super + alt + o
+	chromium
+# End of usual program launchers
