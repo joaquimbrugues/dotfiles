@@ -21,7 +21,7 @@ Workspaces(){
 
 # Print CPU usage and core temperature
 Cpu(){
-	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+,*\d*)(?=%* *id)" | awk '{print 100 - $1}')
+	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+[,\.]*\d*)(?=%* *id)" | awk '{print 100 - $1}')
 	temp=$(sensors | awk '/Core 0/ {print $3}')
 	printf "%%{U#f14d00}%%{+u}CPU: $cpu_usage%%%% $temp%%{-u}"
 }
@@ -40,13 +40,13 @@ Mail(){
 
 # Print a message if we are currently connected to the internet
 Internet(){
-	ping -qc 1 1.1.1.1 > /dev/null && printf " %%{U#00aaaa}%%{+u}Internet%%{-u} "
+	[ $(cat /sys/class/net/w*/operstate) = "up" ] && printf " %%{U#00aaaa}%%{+u}Internet%%{-u} "
 }
 
 # Print the current volume and if it is muted
 Volume(){
 	vol_status="$(amixer get Master)"
-	vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Po "[0-9]+%")
+	vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Pom 1 "[0-9]+%")
 	echo "$vol_status" | grep "\[off\]" >/dev/null && printf "%%{U#000044}%%{+u}MUTE ($vol%)%%{-u}" && exit
 	printf "%%{U#000044}%%{+u}VOL $vol% %%{-u}"
 }
@@ -62,4 +62,4 @@ Date(){
 }
 
 # Main loop
-while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 1s; done | lemonbar -g 'x25' -B $BGCOL
+while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL
