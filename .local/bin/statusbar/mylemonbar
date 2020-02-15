@@ -35,7 +35,7 @@ Memory(){
 # Check if there are new mails in the local folder
 Mail(){
 	mails=$(ls $HOME/.local/share/mail/*/INBOX/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)
-	[ $mails -gt 0 ] && printf " %%{U#0000aa}%%{A:mail1:}%%{+u}Correus: $mails%%{-u}%%{A} "
+	[ $mails -gt 0 ] && printf "%%{U#0000aa}%%{A:mail1:}%%{+u}Correus: $mails%%{-u}%%{A} "
 }
 
 # Print a message if we are currently connected to the internet
@@ -45,7 +45,7 @@ Internet(){
 		down) wstatus="Sense connexió" ;;
 		up) wstatus="Connectat" ;;
 	esac
-	printf " %%{A:int1:}%%{U#00aaaa}%%{+u}$wstatus%%{-u}%%{A} "
+	printf "%%{A:int1:}%%{U#00aaaa}%%{+u}$wstatus%%{-u}%%{A}"
 }
 
 # Print the current volume and if it is muted
@@ -70,7 +70,7 @@ Date(){
 	printf "%%{U#aa00aa}%%{A:date1:}%%{+u}$(date '+%d %b %Y | %H:%M:%S')%%{-u}%%{A}"
 }
 
-while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL | while read line; do
+while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Mail)$(Internet) $(Volume) $(Battery) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL | while read line; do
 	case $line in
 		cpu1) notify-send "Processos CPU-intensius" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
 		cpu3) notify-send "Mòdul de CPU" "\- Mostra l'ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador." ;;
@@ -90,10 +90,3 @@ while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(V
 		*) ;;
 	esac
 done
-
-# Main loop
-#case $(while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 1s; done | lemonbar -g 'x25' -B $BGCOL) in
-#	"cpu1") notify-send "CPU intensive processes" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
-#	"cpu3") notify-send "CPU module" "\- Shows CPU usage and temperature.\n\- Click to show CPU intensive processes.\.\- % is of single core." ;;
-#	*) ;;
-#esac
