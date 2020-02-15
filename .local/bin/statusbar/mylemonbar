@@ -40,7 +40,7 @@ Mail(){
 
 # Print a message if we are currently connected to the internet
 Internet(){
-	ping -qc 1 1.1.1.1 > /dev/null && printf " %%{U#00aaaa}%%{+u}Internet%%{-u} "
+	[ $(cat /sys/class/net/w*/operstate) = "up" ] && printf " %%{U#00aaaa}%%{+u}Internet%%{-u} "
 }
 
 # Print the current volume and if it is muted
