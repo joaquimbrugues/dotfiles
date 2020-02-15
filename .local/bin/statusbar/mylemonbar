@@ -62,4 +62,4 @@ Date(){
 }
 
 # Main loop
-while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 1s; done | lemonbar -g 'x25' -B $BGCOL
+while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL
