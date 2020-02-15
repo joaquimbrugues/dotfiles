@@ -10,6 +10,56 @@
 #	Date & time
 
 BGCOL="#2f343f"
+#TODO: Implement font and font size
 FONT="Noto Mono"
 
-echo "blablabla" | lemonbar -g 'x25' -f $FONT -B $BGCOL -p
+#TODO
+#Right now this is just a token. We will implement the right solution once we implement bspwm
+Workspaces(){
+	printf "%%{+u}%%{U#aa0000}1%%{-u} %%{U#9999ff}2 %%{+u}3%%{-u} %%{+u}4%%{-u} 5"
+}
+
+# Print CPU usage and core temperature
+Cpu(){
+	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+,*\d*)(?=%* *id)" | awk '{print 100 - $1}')
+	temp=$(sensors | awk '/Core 0/ {print $3}')
+	printf "%%{U#f14d00}%%{+u}CPU: $cpu_usage%%%% $temp%%{-u}"
+}
+
+# Print memory usage
+Memory(){
+	mem=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
+	printf "%%{U#99f199}%%{+u}RAM: $mem%%{-u}"
+}
+
+# Check if there are new mails in the local folder
+Mail(){
+	mails=$(ls $HOME/.local/share/mail/*/INBOX/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)
+	[ $mails -gt 0 ] && printf " %%{U#0000aa}%%{+u}Correus: $mails%%{-u} "
+}
+
+# Print a message if we are currently connected to the internet
+Internet(){
+	ping -qc 1 1.1.1.1 > /dev/null && printf " %%{U#00aaaa}%%{+u}Internet%%{-u} "
+}
+
+# Print the current volume and if it is muted
+Volume(){
+	vol_status="$(amixer get Master)"
+	vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Po "[0-9]+%")
+	echo "$vol_status" | grep "\[off\]" >/dev/null && printf "%%{U#000044}%%{+u}MUTE ($vol%)%%{-u}" && exit
+	printf "%%{U#000044}%%{+u}VOL $vol% %%{-u}"
+}
+
+# Print the current battery percentage
+Battery(){
+	printf "%%{U#e3e300}%%{+u}Bat:$(acpi -b | grep -Po '[0-9]+%')%%%%%{-u}"
+}
+
+# Print the current date and time
+Date(){
+	printf "%%{U#aa00aa}%%{+u}$(date '+%d %b %Y | %H:%M:%S')%%{-u}"
+}
+
+# Main loop
+while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory)$(Mail)$(Internet)$(Volume) $(Battery) $(Date) "; sleep 1s; done | lemonbar -g 'x25' -B $BGCOL
