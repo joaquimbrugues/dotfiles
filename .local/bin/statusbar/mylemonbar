@@ -46,7 +46,7 @@ Internet(){
 # Print the current volume and if it is muted
 Volume(){
 	vol_status="$(amixer get Master)"
-	vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Po "[0-9]+%")
+	vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Pom 1 "[0-9]+%")
 	echo "$vol_status" | grep "\[off\]" >/dev/null && printf "%%{U#000044}%%{+u}MUTE ($vol%)%%{-u}" && exit
 	printf "%%{U#000044}%%{+u}VOL $vol% %%{-u}"
 }
