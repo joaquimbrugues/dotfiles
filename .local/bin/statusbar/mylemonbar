@@ -21,7 +21,7 @@ Workspaces(){
 
 # Print CPU usage and core temperature
 Cpu(){
-	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+,*\d*)(?=%* *id)" | awk '{print 100 - $1}')
+	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+[,\.]*\d*)(?=%* *id)" | awk '{print 100 - $1}')
 	temp=$(sensors | awk '/Core 0/ {print $3}')
 	printf "%%{U#f14d00}%%{+u}CPU: $cpu_usage%%%% $temp%%{-u}"
 }
