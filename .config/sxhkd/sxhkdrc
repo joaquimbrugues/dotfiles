@@ -73,7 +73,7 @@ XF86AudioMute
 
 # Monitors layouts
 super + ctrl + {0,1,2,3}
-	screen-layout { ,single,dual-right,dual-left}
+	screen-layout { ,únic,dual-dreta,dual-esquerra}
 
 # LaTeX commands
 super + l : super + {a,b,v}
