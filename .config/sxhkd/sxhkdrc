@@ -10,6 +10,8 @@ super + d
 	dmenu_run -l 10
 super + shift + q
 	dmenu-quit
+super + x
+	pkill -USR1 sxhkd
 super + ctrl + l
 	slock
 
@@ -31,7 +33,7 @@ super + F3
 
 # Usual program launchers
 super + alt + {_,shift} + f
-	firefox {,--private-window}
+	firefox { ,--private-window}
 super + alt + t
 	thunderbird
 super + alt + n
@@ -54,9 +56,10 @@ super + alt + o
 
 # Take a screenshot of currently selected window/whole screen
 super + {_,shift} + s
-	scrot {-u,}
+	scrot {-u, }
 
 # Volume controls
+# From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
 {XF86AudioRaiseVolume, super + plus}
 	pactl set-sink-volume 0 +5%
 {XF86AudioLowerVolume, super + minus}
@@ -70,16 +73,16 @@ XF86AudioMute
 
 # Monitors layouts
 super + ctrl + {0,1,2,3}
-	screen-layout {,single,dual-right,dual-left}
+	screen-layout { ,single,dual-right,dual-left}
 
 # LaTeX commands
 super + l : super + {a,b,v}
 	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
 super + l : super + {_,shift} + e
-	{,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
+	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
 super + l : super + {_,shift} + c
-	{,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
+	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
 super + l : super + {_,shift} + p
-	{,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
+	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
 super + l : super + shift + b
 	$HOME/.local/bin/latex/compile -b
