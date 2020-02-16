@@ -10,6 +10,9 @@ super + d
 	dmenu_run -l 10
 super + shift + q
 	dmenu-quit
+super + ctrl + l
+	slock
+
 super + {_,shift} + c
 	{configure,cheatsheets}
 super + shift + h
@@ -18,12 +21,14 @@ super + shift + d
 	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
 super + m
 	man-this
+
 super + F1
 	dmenu-usb
 super + F2
 	mailsync -a
 super + F3
 	newsboat -x reload
+
 # Usual program launchers
 super + alt + {_,shift} + f
 	firefox {,--private-window}
@@ -46,3 +51,35 @@ super + alt + m
 super + alt + o
 	chromium
 # End of usual program launchers
+
+# Take a screenshot of currently selected window/whole screen
+super + {_,shift} + s
+	scrot {-u,}
+
+# Volume controls
+{XF86AudioRaiseVolume, super + plus}
+	pactl set-sink-volume 0 +5%
+{XF86AudioLowerVolume, super + minus}
+	pactl set-sink-volume 0 -5%
+XF86AudioMute
+	pactl set-sink-mute 0 toggle
+
+# Brightness controls
+{XF86MonBrightnessUp,XF86MonBrightnessDown}
+	xbacklight {-inc,-dec} 10
+
+# Monitors layouts
+super + ctrl + {0,1,2,3}
+	screen-layout {,single,dual-right,dual-left}
+
+# LaTeX commands
+super + l : super + {a,b,v}
+	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
+super + l : super + {_,shift} + e
+	{,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
+super + l : super + {_,shift} + c
+	{,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
+super + l : super + {_,shift} + p
+	{,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
+super + l : super + shift + b
+	$HOME/.local/bin/latex/compile -b

@@ -1,0 +1,29 @@
+# Key bindings specific to i3
+
+super + q
+	i3-msg kill
+super + shift + r
+	i3-msg restart
+
+super + {Left,Down,Up,Right}
+	i3-msg focus {left,down,up,right}
+super + shift + {Left,Down,Up,Right}
+	i3-msg move {left,down,up,right}
+
+super + {h,v}
+	i3-msg split {h,v}
+super + f
+	i3-msg fullscreen toggle
+super + {w,e}
+	i3-msg layout {tabbed,toggle split}
+super + space
+	i3-msg floating toggle
+
+super + {_,shift} + Tab
+	i3-msg workspace {next,prev}
+
+# Resize
+super + r : {Down,Right}
+	i3-msg resize grow {height,width} 2px or 2 ppt
+super + r : {Up,Left}
+	i3-msg resize shrink {height,width} 2px or 2 ppt
