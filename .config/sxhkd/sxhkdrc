@@ -52,6 +52,8 @@ super + alt + m
 	$TERMINAL -e neomutt
 super + alt + o
 	chromium
+super + alt + h
+	thunar $HOME
 super + alt + v
 	virtualbox
 # End of usual program launchers
