@@ -1,3 +1,3 @@
 #!/bin/sh
-# Put the wallpaper in the background
+# Set the specified wallpaper
 feh --bg-scale /home/joaquim/Pictures/moonspawn-wallpaper.jpg

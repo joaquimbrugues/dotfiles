@@ -2,4 +2,4 @@
 # Small program to update newsboat feeds without opening newsboat.
 # Dows nothing if newsboat is already running
 ping -q -c 1 1.1.1.1 > /dev/null || exit
-pgrep -x newsboat >/dev/null || /usr/bin/newsboat -x reload && notify-send "Newsboat feeds updated"
+pgrep -x newsboat >/dev/null || /usr/bin/newsboat -x reload && notify-send "Canals de newsboat actualitzats"
