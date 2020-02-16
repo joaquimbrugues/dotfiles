@@ -247,9 +247,9 @@ bindsym $mod+s exec xfce4-screenshooter -w # Take a screenshoot of the active wi
 bindsym $mod+Shift+s exec xfce4-screenshooter -f # Take a screenshoot of the whole screen
 
 # Shortcuts to switch display configurations
-bindsym $mod+Control+1 exec xrandr --output LVDS-1 --mode 1366x768 --output HDMI-1 --off; exec wallpaper
-bindsym $mod+Control+2 exec xrandr --output LVDS-1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0; exec wallpaper
-bindsym $mod+Control+3 exec xrandr --output LVDS-1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0; exec wallpaper
+bindsym $mod+Control+1 exec screen-layout single
+bindsym $mod+Control+2 exec screen-layout dual-right
+bindsym $mod+Control+3 exec screen-layout dual-left
 bindsym $mod+Shift+m exec screen-layout
 
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759

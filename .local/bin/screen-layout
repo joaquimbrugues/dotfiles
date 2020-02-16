@@ -1,8 +1,10 @@
 #!/bin/sh
 # Use a dmenu to switch between diferent screen layouts with xrandr
 CHOICES="single\\ndual-right\\ndual-left\\nother"
+PICK=$1
+[ -z $PICK ] && PICK=$(echo $CHOICES | dmenu -p "Monitor configuration:" -l 10)
 
-case $(echo $CHOICES | dmenu -p "Monitor configuration:" -l 10) in
+case $PICK in
 	single) xrandr --output LVDS-1 --mode 1366x768 --output HDMI-1 --off && wallpaper;;
 	dual-right) xrandr --output LVDS-1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0 && wallpaper;;
 	dual-left) xrandr --output LVDS-1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0 && wallpaper;;
