@@ -52,6 +52,8 @@ super + alt + m
 	$TERMINAL -e neomutt
 super + alt + o
 	chromium
+super + alt + h
+	thunar $HOME
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
