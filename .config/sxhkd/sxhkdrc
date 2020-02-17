@@ -63,9 +63,9 @@ super + {_,shift} + s
 # Volume controls
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
 {XF86AudioRaiseVolume, super + plus}
-	pactl set-sink-volume 0 +5%
+	pactl set-sink-volume 0 +2%
 {XF86AudioLowerVolume, super + minus}
-	pactl set-sink-volume 0 -5%
+	pactl set-sink-volume 0 -2%
 XF86AudioMute
 	pactl set-sink-mute 0 toggle
 
