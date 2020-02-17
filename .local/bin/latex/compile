@@ -1,19 +1,19 @@
 #!/bin/sh
 # Multi-use script. Invoke getcurrentfile and do some action with it
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
-[ -z "$FILE" ] && notify-send "ERROR: Null working file" && exit
+[ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit
 DIR=$(dirname $FILE)
-TERMINAL="gnome-terminal"
+TERMINAL="urxvt"
 
 case "$1" in
-	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) && notify-send "Compilation successful" ;;
+	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) && notify-send "Compilat!" ;;
 	-b|--bibliography) if [ -r $BIB ]
 		then
 			[ ! -e $(echo "$DIR/references.bib") ] && ln -s $BIB $DIR/references.bib
 			cd $DIR && bibtex $(basename $FILE | sed -e 's/\.tex/\.aux/')
 		fi
 		;;
-	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu -p "Pick a file to edit (default=$(basename $FILE))" -l 10)
+	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
 			$TERMINAL -e "nano $FILE"
@@ -21,13 +21,13 @@ case "$1" in
 			$TERMINAL -e "nano $PICK"
 		fi
 		;;
-	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu -p "Pick a file to view with Zathura" -l 10)
+	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu -p "Tria un pdf a visualitzar" -l 10)
 		if [ -z $PICK ]
 		then
-			notify-send "No file selected"
+			notify-send "No s'ha seleccionat cap pdf"
 		else
 			zathura $PICK
 		fi
 		;;
-	*) cd $DIR && latex $(basename $FILE) && notify-send "Compilation successful" ;;
+	*) cd $DIR && latex $(basename $FILE) && notify-send "Compilat!" ;;
 esac
