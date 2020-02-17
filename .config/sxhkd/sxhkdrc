@@ -21,7 +21,7 @@ super + shift + h
 	$TERMINAL -e htop
 super + shift + d
 	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
-super + m
+super + shift + m
 	man-this
 
 super + F1
