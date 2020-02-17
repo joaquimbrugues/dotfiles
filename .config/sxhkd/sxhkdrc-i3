@@ -21,8 +21,6 @@ super + {_,shift} + Tab
 	i3-msg workspace {next,prev}
 
 # Resize
-super + r :
-	notify-send "Mode redimensionar"
 super + r : {Down,Right}
 	i3-msg resize grow {height,width} 2px or 2 ppt
 super + r : {Up,Left}
