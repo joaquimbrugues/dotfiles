@@ -39,7 +39,7 @@ super + alt + n
 super + alt + l
 	$TERMINAL -e lynx
 super + alt + o
-	chromium
+	chromium-browser
 super + alt + h
 	nemo $HOME
 # End of usual program launchers

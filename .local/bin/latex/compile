@@ -3,7 +3,6 @@
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
 [ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit
 DIR=$(dirname $FILE)
-TERMINAL="urxvt"
 
 case "$1" in
 	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) && notify-send "Compilat!" ;;
@@ -16,9 +15,9 @@ case "$1" in
 	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
-			$TERMINAL -e "nano $FILE"
+			$TERMINAL -e nano $FILE
 		else
-			$TERMINAL -e "nano $PICK"
+			$TERMINAL -e nano $PICK
 		fi
 		;;
 	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu -p "Tria un pdf a visualitzar" -l 10)
