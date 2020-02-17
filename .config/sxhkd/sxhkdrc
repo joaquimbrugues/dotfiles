@@ -78,6 +78,8 @@ super + ctrl + {0,1,2,3}
 	screen-layout { ,únic,dual-dreta,dual-esquerra}
 
 # LaTeX commands
+super + l :
+	notify-send "Mode LaTeX"
 super + l : super + {a,b,v}
 	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
 super + l : super + {_,shift} + e
