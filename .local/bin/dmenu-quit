@@ -2,7 +2,9 @@
 # Quit from i3/power off the machine/reboot selecting the option from a dmenu
 OPTIONS="Cabòries!\\nTanca la sessió\\nApaga\\nReinicia"
 case $(echo $OPTIONS | dmenu -p "Què vols fer?" -l 20) in
-	Tanca\ la\ sessió) i3-msg exit;;
+	Tanca\ la\ sessió)
+		ps cax | grep i3$ >/dev/null && i3-msg exit
+		ps cax | grep bspwm >/dev/null && bspc quit;;
 	Apaga) systemctl poweroff;;
 	Reinicia) systemctl reboot;;
 	*) ;;
