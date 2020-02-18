@@ -70,7 +70,7 @@ Date(){
 	printf "%%{U#aa00aa}%%{A:date1:}%%{+u}$(date '+%d %b %Y | %H:%M:%S')%%{-u}%%{A}"
 }
 
-while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Mail)$(Internet) $(Volume) $(Battery) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL | while read line; do
+while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Mail) $(Volume) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL | while read line; do
 	case $line in
 		cpu1) notify-send "Processos CPU-intensius" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
 		cpu3) notify-send "Mòdul de CPU" "\- Mostra l'ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador." ;;
@@ -78,7 +78,7 @@ while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Mail)$(Internet) $
 		mem3) notify-send "Mòdul de memòria" "\- Mostra memòria usada/total.\n\- Clica per veure els processos que consumeixen més memòria." ;;
 		mail1) $TERMINAL -e neomutt;;
 		#mail3) notify-send "Mòdul de correu" "\- Mostra missatges sense llegir.\n\- Clica per obrir neomutt." ;;
-		int1) $TERMINAL -e nmtui ;;
+		#int1) $TERMINAL -e nmtui ;;
 		#int3) notify-send "Mòdul d'internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió." ;;
 		vol1) pactl set-sink-mute 0 toggle ;;
 		vol3) notify-send "Mòdul de volum" "\- Mostra el volum i si està silenciat.\n\- Clica per silenciar.\n\- Fes servir la roda del ratolí per pujar o baixar el volum." ;;
