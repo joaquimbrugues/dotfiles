@@ -73,7 +73,7 @@ XF86AudioMute
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
 	xbacklight {-inc,-dec} 10
 
-# Monitors layouts
+# Monitor layouts
 super + ctrl + {0,1,2,3}
 	screen-layout { ,únic,dual-dreta,dual-esquerra}
 
