@@ -1,7 +1,7 @@
 # Key bindings specific to bspwm
 
 # Restart bspwm
-super + r
+super + shift + r
 	bspc wm -r
 
 # Close focused node
@@ -9,27 +9,31 @@ super + q
 	bspc node -c	
 
 # Swap the focused node with the biggest one or give focus to it
-super + {_,shift + }Left + Right
+super + {_,shift} + Left + Right
 	bspc node -{f,s} biggest
 
-# Change focus/move
-super + {_,shift + }{Left,Up,Down,Right}
-	bspc node -{f,s} {west,north,south,east}
+# Change focus
+super + {Left,Up,Down,Right}
+	bspc node -f {west,north,south,east}
+
+# Swap windows
+super + shift + {Left,Up,Down,Right}
+	bspc node -s {west,north,south,east}
 
 # Set the window state
 super + {t,f,shift + f}
 	bspc node -t {tiled,fullscreen,floating}
 
 # Focus the previous/next desktop in the current monitor
-super + {_,shift +}Tab
+super + {_,shift} + Tab
 	bspc desktop -f {next,prev}.local
 
 # Focus or send to the given desktop
-super + {_,shift + }{1-9,0}
+super + {_,shift} + {1-9,0}
 	bspc {desktop -f,node -d} focused:'^{1-9,10}'
 
 # Focus the previous/next monitor
-super + ctrl + {_,shift +} Tab
+super + ctrl + {_,shift} + Tab
 	bspc monitor -f {east,west}
 
 # Expand a window by moving one of its side outward
@@ -41,5 +45,5 @@ super + r : shift + {Left,Down,Up,Right}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # Move a floating window
-super + m : {Left,Down,Up,Down}
+super + m : {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
