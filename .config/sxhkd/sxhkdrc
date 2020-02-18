@@ -29,7 +29,7 @@ super + F1
 super + F2
 	mailsync -a
 super + F3
-	newsboat -x reload
+	update-news
 
 # Usual program launchers
 super + alt + {_,shift} + f
