@@ -5,10 +5,8 @@ super + q
 super + shift + r
 	i3-msg restart
 
-super + {Left,Down,Up,Right}
-	i3-msg focus {left,down,up,right}
-super + shift + {Left,Down,Up,Right}
-	i3-msg move {left,down,up,right}
+super + {_,shift +} {Left,Down,Up,Right}
+	i3-msg {focus,move} {left,down,up,right}
 
 super + {h,v}
 	i3-msg split {h,v}
@@ -19,6 +17,9 @@ super + {w,e}
 
 super + {_,shift} + Tab
 	i3-msg workspace {next,prev}
+
+super + space
+	i3-msg focus mode_toggle
 
 # Resize
 super + r : {Down,Right}
