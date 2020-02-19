@@ -5,6 +5,6 @@ TMPFILE=$($HOME/.local/bin/latex/tmpfileinfo)
 if [ ! -s $TMPFILE ]
 then
 	touch $TMPFILE
-	find "$HOME" | grep ".*\.tex$" | dmenu -p "Pick a working tex file" -l 10 > $TMPFILE
+	find "$HOME" | grep ".*\.tex$" | dmenu -p "Tria un tex per treballar-hi" -l 10 > $TMPFILE
 fi
 cat $TMPFILE

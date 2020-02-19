@@ -80,10 +80,10 @@ while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Mail)$(Internet) $
 		#mail3) notify-send "Mòdul de correu" "\- Mostra missatges sense llegir.\n\- Clica per obrir neomutt." ;;
 		int1) $TERMINAL -e nmtui ;;
 		#int3) notify-send "Mòdul d'internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió." ;;
-		vol1) amixer -q sset Master toggle ;;
+		vol1) pactl set-sink-mute 0 toggle ;;
 		vol3) notify-send "Mòdul de volum" "\- Mostra el volum i si està silenciat.\n\- Clica per silenciar.\n\- Fes servir la roda del ratolí per pujar o baixar el volum." ;;
-		vol4) amixer -q sset Master 2%+ ;;
-		vol5) amixer -q sset Master 2%- ;;
+		vol4) pactl set-sink-volume 0 +2% ;;
+		vol5) pactl set-sink-volume 0 -2% ;;
 		#bat3) notify-send "Mòdul de bateria" "\- Mostra la càrrega actual." ;;
 		date1) notify-send "$(ncal -M -bh)" ;;
 		#date3) notify-send "Data i hora" "\- Mostra la data i hora actual.\n\- Clica per mostrar el calendari del mes actual." ;;

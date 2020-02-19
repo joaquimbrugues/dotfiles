@@ -1,11 +1,37 @@
 
 #!/bin/sh
 # Use a dmenu to switch between diferent screen layouts with xrandr
-CHOICES="single\\ndual-right\\ndual-left\\nother"
+CHOICES="únic\\ndual-dreta\\ndual-esquerra\\naltre"
+PICK=$1
+[ -z $PICK ] && PICK=$(echo $CHOICES | dmenu -p "Distribució de monitors" -l 10)
 
+<<<<<<< HEAD
 case $(echo $CHOICES | dmenu -p "Monitor configuration:" -l 10) in	single) xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --off && $HOME/.scripts/wallpaper.sh;;
 	dual-right) xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --primary --output HDMI-2 --mode 1920x1080 --pos 1920x0 && $HOME/.scripts/wallpaper.sh;;
 	dual-left) xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --primary --output HDMI-2 --mode 1920x1080 --pos 0x0 && $HOME/.scripts/wallpaper.sh;;
 	other) arandr && $HOME/.scripts/wallpaper.sh;;
+=======
+case $PICK in
+	únic)
+		xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --off
+		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+		wallpaper
+	;;
+	dual-dreta)
+		xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --primary --output HDMI-2 --mode 1920x1080 --pos 1920x0
+		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
+		wallpaper
+	;;
+	dual-esquerra)
+		xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --primary --output HDMI-2 --mode 1920x1080 --pos 0x0
+		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
+		wallpaper
+	;;
+	altre)
+		arandr
+		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
+		wallpaper
+	;;
+>>>>>>> master
 	*) ;;
 esac
