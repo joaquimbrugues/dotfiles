@@ -20,7 +20,7 @@ super + {_,shift} + c
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
-	[ -d $HOME/Downloads ] && nemo $HOME/Downloads
+	[ -d $HOME/Downloads ] && nautilus $HOME/Descargas
 super + shift + m
 	man-this
 
@@ -41,7 +41,7 @@ super + alt + l
 super + alt + o
 	chromium-browser
 super + alt + h
-	nemo $HOME
+	nautilus $HOME
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
