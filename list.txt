@@ -1,0 +1,63 @@
+==========GIT PROJECTS==========
+mutt-wizard	https://github.com/LukeSmithxyz/mutt-wizard.git
+powerline-fonts	https://github.com/powerline/fonts.git
+terminal-mines	https://github.com/joelekstrom/terminal-mines.git
+urxvt-font-size	https://github.com/majutsushi/urxvt-font-size
+nano (colors)	https://github.com/scopatz/nanorc.git
+
+==========PACKAGES==========
+0ad
+bastet
+base-devel
+bspwm
+clementine
+cmatrix
+compton
+curseradio
+dmenu
+dwarf-fortress
+fdisk
+feh
+firefox
+fonts-noto
+freeciv
+geany
+git
+gparted
+groff
+grub
+hugo
+i3
+lemonbar
+libreoffice
+lightdm
+lynx
+lxappearance
+nano
+neofetch
+neomutt
+newsboat
+octave
+owncloud-client
+pavucontrol
+powerline
+pulseaudio
+rxvt-unicode
+scrot
+skypeforlinux
+steam
+sxhkd
+telegram-desktop
+texlive-full
+thunar
+thunderbird
+transmission
+vim
+virtualbox
+vlc
+wine
+xclip
+xdotool
+xterm
+youtube-dl
+zathura
