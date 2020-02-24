@@ -23,6 +23,8 @@ super + shift + d
 	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
 super + shift + m
 	man-this
+super + o
+	todo
 
 super + F1
 	dmenu-usb
@@ -42,7 +44,7 @@ super + alt + shift + t
 	telegram-desktop
 super + alt + c
 	clementine
-super + alt + l
+super + alt + y
 	$TERMINAL -e lynx
 super + alt + r
 	transmission-gtk
