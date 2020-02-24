@@ -70,7 +70,7 @@ Date(){
 	printf "%%{U#aa00aa}%%{A:date1:}%%{+u}$(date '+%d %b %Y | %H:%M:%S')%%{-u}%%{A}"
 }
 
-while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Mail) $(Volume) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL | while read line; do
+while true; do echo "%{l}$(Workspaces) %{r}$(Cpu) $(Memory) $(Volume) $(Date) "; sleep 0.8; done | lemonbar -g 'x25' -B $BGCOL | while read line; do
 	case $line in
 		cpu1) notify-send "Processos CPU-intensius" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
 		cpu3) notify-send "Mòdul de CPU" "\- Mostra l'ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador." ;;
