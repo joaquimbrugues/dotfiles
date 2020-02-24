@@ -23,6 +23,8 @@ super + shift + d
 	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
 super + shift + m
 	man-this
+super + o
+	todo
 
 super + F1
 	dmenu-usb
