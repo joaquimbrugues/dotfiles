@@ -23,6 +23,8 @@ super + shift + d
 	[ -d $HOME/Descargas ] && nautilus $HOME/Descargas
 super + shift + m
 	man-this
+super + o
+	todo
 
 super + F1
 	dmenu-usb
