@@ -14,6 +14,7 @@ clementine
 cmatrix
 compton
 curseradio
+davfs2
 dmenu
 dwarf-fortress
 fdisk
