@@ -6,12 +6,12 @@ These are the dotfiles for my various GNU/Linux machines both at home and at wor
 
 The configurations are set for the programs that I use often:
 
-	- [i3](https://i3wm.org/) (window manager)
+	- i3 (window manager)
 	- nano (text editor)
 	- urxvt (terminal emulator)
 	- Xfce terminal (terminal emulator)
 	- bash
-	- [sxhkd](https://github.com/baskerville/sxhkd) (hotkey daemon)
+	- sxhkd (hotkey daemon)
 
 There are also scripts (in `~/.local/bin/`) with some useful tools, usually using dmenu, to interact with the system, to work with LaTeX, and for my i3 status bar.
 
