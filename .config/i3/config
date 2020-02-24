@@ -90,6 +90,9 @@ bar {
 	}
 }
 
+# Set the monitors in the appropriate layout
+exec screen-layout dual-esquerra
+
 # Set wallpaper
 exec_always wallpaper
 
