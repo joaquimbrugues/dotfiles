@@ -20,7 +20,7 @@ super + {_,shift} + c
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
-	[ -d $HOME/Downloads ] && nautilus $HOME/Descargas
+	[ -d $HOME/Descargas ] && nautilus $HOME/Descargas
 super + shift + m
 	man-this
 
