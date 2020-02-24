@@ -44,7 +44,7 @@ super + alt + shift + t
 	telegram-desktop
 super + alt + c
 	clementine
-super + alt + l
+super + alt + y
 	$TERMINAL -e lynx
 super + alt + r
 	transmission-gtk
