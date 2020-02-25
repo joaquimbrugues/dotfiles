@@ -38,7 +38,7 @@ super + alt + t
 	thunderbird
 super + alt + n
 	$TERMINAL -e newsboat
-super + alt + l
+super + alt + y
 	$TERMINAL -e lynx
 super + alt + o
 	chromium-browser

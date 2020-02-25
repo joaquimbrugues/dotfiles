@@ -2,6 +2,6 @@
 # Show the contents of the dotfiles repository into dmenu and open the selected file in the editor.
 
 FILE=""
-[ -d $HOME/.dotfiles ] && FILE=$(git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-files | dmenu -p "Tria un fitxer per editar" -l 20)
+[ -d $HOME/.dotfiles ] && FILE=$(git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-files | dmenu -i -p "Tria un fitxer per editar" -l 20)
 [ -z $FILE ] && exit 0
 $TERMINAL -e $EDITOR $FILE

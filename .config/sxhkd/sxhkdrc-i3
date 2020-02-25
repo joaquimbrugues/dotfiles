@@ -18,6 +18,9 @@ super + {w,e}
 super + {_,shift} + Tab
 	i3-msg workspace {next,prev}
 
+super + ctrl + {Left,Right}
+	i3-msg move workspace to output {left,right} >/dev/null
+
 super + space
 	i3-msg focus mode_toggle
 
