@@ -8,17 +8,13 @@ super + shift + r
 super + q
 	bspc node -c	
 
-# Swap the focused node with the biggest one or give focus to it
-super + {_,shift} + Left + Right
-	bspc node -{f,s} biggest
+# TODO: Investigate this issue and report it, if convenient, to the sxhkd dev
+#super + {_,shift} + Left + Right
+#	bspc node -{f,s} biggest
 
-# Change focus
-super + {Left,Up,Down,Right}
-	bspc node -f {west,north,south,east}
-
-# Swap windows
-super + shift + {Left,Up,Down,Right}
-	bspc node -s {west,north,south,east}
+# Change or change focus
+super + {_,shift} + {Left,Up,Down,Right}
+	bspc node -{f,s} {west,north,south,east}
 
 # Set the window state
 super + {t,f,shift + f}
