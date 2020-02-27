@@ -12,7 +12,7 @@ super + q
 #super + {_,shift} + Left + Right
 #	bspc node -{f,s} biggest
 
-# Change or change focus
+# Change focus or swap nodes
 super + {_,shift} + {Left,Up,Down,Right}
 	bspc node -{f,s} {west,north,south,east}
 
