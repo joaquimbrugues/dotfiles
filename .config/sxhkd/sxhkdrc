@@ -20,7 +20,7 @@ super + {_,shift} + c
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
-	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
+	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
 super + shift + m
 	man-this
 super + o
@@ -61,7 +61,7 @@ super + alt + v
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
-super + {_,shift} + s
+{_,shift} + Print
 	scrot {-u, }
 
 # Volume controls

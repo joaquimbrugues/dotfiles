@@ -1,0 +1,11 @@
+#!/bin/sh
+# BSPWM
+# This script toggles floating mode for the focused node.
+
+if [ -z "$(bspc query -N -n focused.floating -d focused)" ]; then
+	# Switch the node to floating
+	bspc node focused.tiled -t floating
+else
+	# Switch the node to tiling
+	bspc node focused.floating -t tiled
+fi

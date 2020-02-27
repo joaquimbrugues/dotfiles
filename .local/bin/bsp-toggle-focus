@@ -1,0 +1,19 @@
+#!/bin/sh
+# BSPWM
+# Script to toggle the focus between floating and tiling windows in a workspace
+
+# Do something only if there is a floating window in the current workspace
+[ -z "$(bspc query -N -n .floating -d focused)" ] && exit
+
+NEW_NODE=""
+if [ -z "$(bspc query -N -n focused.floating -d focused)" ]; then
+	# Select the newest floating node
+	NEW_NODE=$(bspc query -N -n newest.floating | head -n 1)
+else
+	# Select the newest tiled node
+	NEW_NODE=$(bspc query -N -n newest.tiled | head -n 1)
+fi
+
+[ -z "$NEW_NODE" ] && exit
+# Change the focus
+bspc node -f $NEW_NODE

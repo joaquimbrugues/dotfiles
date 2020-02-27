@@ -8,22 +8,22 @@ PICK=$1
 case $PICK in
 	únic)
 		xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --off
-		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
 		wallpaper
 	;;
 	dual-dreta)
 		xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --primary --output HDMI-2 --mode 1920x1080 --pos 1920x0
-		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
+		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
 		wallpaper
 	;;
 	dual-esquerra)
 		xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --primary --output HDMI-2 --mode 1920x1080 --pos 0x0
-		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
+		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
 		wallpaper
 	;;
 	altre)
 		arandr
-		pgrep bspc >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
+		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 && bspc monitor HDMI-2 -d 6 7 8 9 0
 		wallpaper
 	;;
 	*) ;;
