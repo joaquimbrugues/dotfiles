@@ -36,6 +36,10 @@ super + shift + {1-9,0}
 super + ctrl + {_,shift} + Tab
 	bspc monitor -f {east,west}
 
+# Move focused workspace to left/right monitor
+super + ctrl + {Left,Right}
+	bspc desktop -m {west,east} --follow
+
 # Expand a window by moving one of its side outward
 super + r : {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
