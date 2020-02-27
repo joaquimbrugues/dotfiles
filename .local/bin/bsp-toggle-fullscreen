@@ -1,0 +1,24 @@
+#!/bin/sh
+# BSPWM
+# This script toggles fullscreen for the focused node.
+# Also, it hides all the other nodes in the current workspace
+
+if [ -z "$(bspc query -N -n .focused.fullscreen -d focused)" ]; then
+	# Switch the node to fullscreen
+	bspc node focused.tiled -t fullscreen
+
+	# Hide all the other nodes
+	NODES=$(bspc query -N -n .tiled -d focused)
+	for node in $NODES; do
+		bspc node $node -g hidden=on
+	done
+else
+	# Switch the node to tiled
+	bspc node focused.fullscreen -t tiled
+
+	# Unhide all the other nodes
+	NODES=$(bspc query -N -n .hidden -d focused)
+	for node in $NODES; do
+		bspc node $node -g hidden=off
+	done
+fi
