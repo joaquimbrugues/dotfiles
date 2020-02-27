@@ -51,3 +51,7 @@ super + r : shift + {Left,Down,Up,Right}
 # Move a floating window
 super + m : {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Open a calculator that follows you around
+super + a
+	bspc rule -a URxvt -o state=floating rectangle=400x250+0+500 sticky=on && $TERMINAL -e bc -q $HOME/.config/bc/init
