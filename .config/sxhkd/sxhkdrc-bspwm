@@ -8,33 +8,45 @@ super + shift + r
 super + q
 	bspc node -c	
 
-# Swap the focused node with the biggest one or give focus to it
-super + {_,shift} + Left + Right
-	bspc node -{f,s} biggest
+# TODO: Investigate this issue and report it, if convenient, to the sxhkd dev
+#super + {_,shift} + Left + Right
+#	bspc node -{f,s} biggest
 
-# Change focus
-super + {Left,Up,Down,Right}
-	bspc node -f {west,north,south,east}
+# Change focus or swap nodes
+super + {_,shift} + {Left,Up,Down,Right}
+	bspc node -{f,s} {west,north,south,east}
 
-# Swap windows
-super + shift + {Left,Up,Down,Right}
-	bspc node -s {west,north,south,east}
+# Toggle the window mode
+super + {_,shift} + f
+	bsp-toggle-{fullscreen,floating}
 
-# Set the window state
-super + {t,f,shift + f}
-	bspc node -t {tiled,fullscreen,floating}
+# Custom script: swap the node tree in the focused desktop
+super + {dead_grave,dead_acute}
+	bsp-flip -{v,h}
+
+# Switch focus between floating and tiled windows
+super + space
+	bsp-toggle-focus
 
 # Focus the previous/next desktop in the current monitor
 super + {_,shift} + Tab
-	bspc desktop -f {next,prev}.local
+	bspc desktop -f {next,prev}.occupied.local
 
-# Focus or send to the given desktop
-super + {_,shift} + {1-9,0}
-	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+# Focus the given desktop
+super + {1-9,0}
+	bspc desktop -f focused:'^{1-9,10}'
+
+# Send to the given desktop and change focus to it
+super + shift + {1-9,0}
+	bspc node -d focused:'^{1-9,10}' --follow
 
 # Focus the previous/next monitor
 super + ctrl + {_,shift} + Tab
 	bspc monitor -f {east,west}
+
+# Move focused workspace to left/right monitor
+super + ctrl + {Left,Right}
+	bspc desktop -m {west,east} --follow
 
 # Expand a window by moving one of its side outward
 super + r : {Left,Down,Up,Right}
@@ -47,3 +59,7 @@ super + r : shift + {Left,Down,Up,Right}
 # Move a floating window
 super + m : {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Open a calculator that follows you around
+super + a
+	bspc rule -a URxvt -o state=floating rectangle=400x250+0+500 sticky=on && $TERMINAL -e bc -q $HOME/.config/bc/init

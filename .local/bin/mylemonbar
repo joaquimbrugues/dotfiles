@@ -15,8 +15,22 @@ FONT="Noto Mono"
 
 #TODO
 #Right now this is just a token. We will implement the right solution once we implement bspwm
+# See https://github.com/baskerville/bspwm/tree/master/examples/panel
 Workspaces(){
-	printf "%%{+u}%%{U#aa0000}1%%{-u} %%{U#9999ff}2 %%{+u}3%%{-u} %%{+u}4%%{-u} 5"
+	WORKSPACES=$(bspc query -D -d .occupied -m focused --names)
+	FREE_FOCUSED_WORKSPACE=$(bspc query -D -d .focused.!occupied -m focused --names)
+	TEXT=""
+	[ ! -z "$FREE_FOCUSED_WORKSPACE" ] && TEXT="$TEXT %%{U#f14d00}%%{+u}$FREE_FOCUSED_WORKSPACE%%{-u}"
+	TEXT="$TEXT%%{U#000044}"
+	for workspace in $WORKSPACES; do
+		# Check if it is the active workspace
+		if [ -z "$(bspc query -D -d $workspace.focused)" ]; then
+			TEXT="$TEXT %%{U#f14d00}%%{+u}$workspace%%{-u}%%{U#000044}"
+		else
+			TEXT="$TEXT %%{+u}$workspace%%{-u}"
+		fi
+	done
+	printf "$TEXT"
 }
 
 # Print CPU usage and core temperature

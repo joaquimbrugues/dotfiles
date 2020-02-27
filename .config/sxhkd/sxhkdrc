@@ -20,7 +20,7 @@ super + {_,shift} + c
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
-	[ -d $HOME/Descargas ] && nautilus $HOME/Descargas
+	[ -d $HOME/Descargas ] && cd $HOME/Descargas && $TERMINAL
 super + shift + m
 	man-this
 super + o
@@ -47,7 +47,7 @@ super + alt + h
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
-super + {_,shift} + s
+{_,shift} + Print
 	scrot {-u, }
 
 # Volume controls
