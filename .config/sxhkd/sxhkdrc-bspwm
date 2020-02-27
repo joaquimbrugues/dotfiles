@@ -20,6 +20,10 @@ super + {_,shift} + {Left,Up,Down,Right}
 super + {t,f,shift + f}
 	bspc node -t {tiled,fullscreen,floating}
 
+# Custom script: swap the node tree in the focused desktop
+super + {dead_grave,dead_acute}
+	bsp-flip -{v,h}
+
 # Focus the previous/next desktop in the current monitor
 super + {_,shift} + Tab
 	bspc desktop -f {next,prev}.local
