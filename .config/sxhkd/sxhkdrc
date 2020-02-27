@@ -20,7 +20,7 @@ super + {_,shift} + c
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
-	[ -d $HOME/Downloads ] && thunar $HOME/Downloads
+	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
 super + shift + m
 	man-this
 super + o
