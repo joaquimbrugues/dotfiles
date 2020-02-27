@@ -30,7 +30,7 @@ super + space
 
 # Focus the previous/next desktop in the current monitor
 super + {_,shift} + Tab
-	bspc desktop -f {next,prev}.local
+	bspc desktop -f {next,prev}.occupied.local
 
 # Focus the given desktop
 super + {1-9,0}
