@@ -59,7 +59,7 @@ super + alt + h
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
-super + {_,shift} + s
+{_,shift} + Print
 	scrot {-u, }
 
 # Volume controls
