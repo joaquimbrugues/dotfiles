@@ -14,10 +14,10 @@ mylemonbar &
 transmission-gtk -m
 dropbox start &
 ownclod &
-mount $HOME/mat-owncloud
+mount $HOME/mat-owncloud &
 
 # Execute screen-layout to set the workpaces
-screen-layout únic
+screen-layout únic &
 
 # Window borders and gaps
 bspc config border_width 3
