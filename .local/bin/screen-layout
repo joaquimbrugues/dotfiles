@@ -6,7 +6,6 @@ PICK=$1
 
 case $PICK in
 	únic)
-<<<<<<< HEAD
 		xrandr --output DP-1 --mode 1280x1024 --output HDMI-1 --off
 		pgrep bspwm >/dev/null && bspc monitor DP-1 -d 1 2 3 4 5 6 7 8 9 0
 		wallpaper
