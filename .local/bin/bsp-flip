@@ -2,7 +2,7 @@
 # Flip the bspwm tree in the current desktop
 # By default, flip it in the vertical axis
 
-DESKTOP=$(bspc query -D -n focused --names)
+DESKTOP=$(bspc query -D -n focused -m focused --names)
 
 [ $# -eq 0 ] && bspc node @${DESKTOP}:/ -F vertical
 
