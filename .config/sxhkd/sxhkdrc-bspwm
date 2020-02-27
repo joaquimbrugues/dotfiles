@@ -24,6 +24,10 @@ super + {_,shift} + f
 super + {dead_grave,dead_acute}
 	bsp-flip -{v,h}
 
+# Switch focus between floating and tiled windows
+super + space
+	bsp-toggle-focus
+
 # Focus the previous/next desktop in the current monitor
 super + {_,shift} + Tab
 	bspc desktop -f {next,prev}.local
