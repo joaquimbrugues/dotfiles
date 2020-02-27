@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 # Flip the bspwm tree in the current desktop
 # By default, flip it in the vertical axis
 
