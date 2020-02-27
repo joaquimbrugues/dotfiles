@@ -38,7 +38,7 @@ super + {1-9,0}
 
 # Send to the given desktop and change focus to it
 super + shift + {1-9,0}
-	bspc node -d focused:'^{1-9,10}' --follow
+	bspc node -d {1-9,10} --follow
 
 # Focus the previous/next monitor
 super + ctrl + {_,shift} + Tab
