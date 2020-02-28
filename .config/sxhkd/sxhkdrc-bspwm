@@ -1,8 +1,8 @@
 # Key bindings specific to bspwm
 
-# Restart bspwm
-super + shift + r
-	bspc wm -r
+# Restart the lemonbar
+super + shift + x
+	pkill llimabar && pkill lemonbar && llimabar &
 
 # Close focused node
 super + q

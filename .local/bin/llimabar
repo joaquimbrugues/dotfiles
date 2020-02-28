@@ -2,7 +2,7 @@
 # Turn on the lemonbar
 # TODO: Adapt for multiple monitors (run several instances of lemonbar)
 # TODO: Automatically set the width of the lemonbar (too lazy to do it now, it is passed as an argument now)
-BAR_WIDTH=1340
+BAR_WIDTH=1342
 
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
