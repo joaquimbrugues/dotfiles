@@ -1,0 +1,9 @@
+#!/bin/sh
+#Memory module. Print RAM usage
+INTERVAL=10
+
+while true; do
+	mem=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
+	echo "R$mem"
+	sleep $INTERVAL
+done

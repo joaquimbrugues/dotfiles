@@ -1,0 +1,8 @@
+COLOR_BG="#2f343f"
+COLOR_U="#2f548f"
+COLOR_FG="#8dbcdf"
+COLOR_FOCUSED_BG="#4c5568"
+COLOR_FOCUSED_U="#8000ff"
+COLOR_FOCUSED_FG="#65879f"
+HEIGHT=25
+FONT="-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*"
