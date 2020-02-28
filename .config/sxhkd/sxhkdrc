@@ -30,7 +30,7 @@ super + F1
 	dmenu-usb
 # Add a pipe to the lemonbar to notify the change
 super + F2
-	mailsync -a && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	mailsync -a && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
 super + F3
 	update-news
 
