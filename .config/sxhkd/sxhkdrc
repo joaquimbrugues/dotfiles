@@ -28,8 +28,9 @@ super + o
 
 super + F1
 	dmenu-usb
+# Add a pipe to the lemonbar to notify the change
 super + F2
-	mailsync -a
+	mailsync -a && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 super + F3
 	update-news
 
@@ -64,12 +65,13 @@ super + alt + h
 
 # Volume controls
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
+# Add a pipe to the lemonbar to notify the change
 {XF86AudioRaiseVolume, super + plus}
-	pactl set-sink-volume 0 +2%
+	pactl set-sink-volume 0 +2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 {XF86AudioLowerVolume, super + minus}
-	pactl set-sink-volume 0 -2%
+	pactl set-sink-volume 0 -2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 XF86AudioMute
-	pactl set-sink-mute 0 toggle
+	pactl set-sink-mute 0 toggle && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 
 # Brightness controls
 {XF86MonBrightnessUp,XF86MonBrightnessDown}

@@ -1,0 +1,4 @@
+#!/bin/sh
+# Helper script: it prints the most RAM-intensive processes
+# We need to put this into a separate script despite being a one-liner because lemonbar does not admit the character ':' within its clickable areas, and does not offer a way to escape it...
+ps axch -o cmd:15,%mem --sort=-%mem | head

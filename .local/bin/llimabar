@@ -1,0 +1,29 @@
+#!/bin/sh
+# Turn on the lemonbar
+# TODO: Adapt for multiple monitors (run several instances of lemonbar)
+# TODO: Automatically set the width of the lemonbar (too lazy to do it now, it is passed as an argument now)
+BAR_WIDTH=1900
+
+# Refresh the pipe
+[ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
+mkfifo "$LLIMA_FIFO"
+exec 3<> "$LLIMA_FIFO"
+
+# Turn the modules on
+bspc subscribe report > "$LLIMA_FIFO" &
+DIR="$HOME/.local/bin/modules"
+$DIR/battery > "$LLIMA_FIFO" &
+$DIR/cpu > "$LLIMA_FIFO" &
+$DIR/date > "$LLIMA_FIFO" &
+$DIR/memory > "$LLIMA_FIFO" &
+$DIR/wstat > "$LLIMA_FIFO" &
+echo "V\nM" > "$LLIMA_FIFO"
+
+# Import bar configuration
+. $HOME/.local/share/llima-conf
+
+# Actual call
+bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g x$HEIGHT -f "$FONT" -F "$COLOR_FG" -B "$COLOR_BG" -U "$COLOR_U" | sh &
+
+# Wait
+wait
