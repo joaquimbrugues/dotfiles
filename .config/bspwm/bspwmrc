@@ -43,3 +43,5 @@ transmission-gtk -m &
 dropbox start &
 owncloud &
 mount $HOME/mat-owncloud &
+
+[ -e "$LLIMA_FIFO" ] && bspc subscribe report >"$LLIMA_FIFO" &
