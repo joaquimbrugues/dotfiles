@@ -2,7 +2,7 @@
 # Turn on the lemonbar
 # TODO: Adapt for multiple monitors (run several instances of lemonbar)
 # TODO: Automatically set the width of the lemonbar (too lazy to do it now, it is passed as an argument now)
-BAR_WIDTH=1900
+BAR_WIDTH=1340
 
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
@@ -23,7 +23,7 @@ echo "V\nM" > "$LLIMA_FIFO"
 . $HOME/.local/share/llima-conf
 
 # Actual call
-bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g x$HEIGHT -f "$FONT" -F "$COLOR_FG" -B "$COLOR_BG" -U "$COLOR_U" | sh &
+bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g ${BAR_WIDTH}x${HEIGHT}+10+5 -f "$FONT" -F "$COLOR_FG" -B "$COLOR_BG" -U "$COLOR_U" | sh &
 
 # Wait
 wait
