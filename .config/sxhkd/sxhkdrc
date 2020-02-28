@@ -21,7 +21,7 @@ super + shift + h
 	$TERMINAL -e htop
 super + shift + d
 	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
-super + shift + m
+super + m
 	man-this
 super + o
 	todo
