@@ -2,6 +2,6 @@
 # Select one of various cheatsheets (in a local folder, in pdf format) using dmenu, and open it with zathura
 
 CHEATDIR=$HOME/Documents/cheatsheets
-CHEATSHEET="$(ls $CHEATDIR | sed -e 's/\.[^.]*$//g' | dmenu -p 'Selecciona un xuletari' -l 10 | sed -e 's/^$//')"
+CHEATSHEET="$(ls $CHEATDIR | sed -e 's/\.[^.]*$//g' | dmenu_col -p 'Selecciona un xuletari' -l 10 | sed -e 's/^$//')"
 
 [ -n "$CHEATSHEET" ] && zathura "$(echo $CHEATDIR/$CHEATSHEET).pdf"

@@ -7,7 +7,7 @@
 super + Return
 	$TERMINAL
 super + d
-	dmenu_run -l 10
+	dmenu_col_run -l 10
 super + shift + q
 	dmenu-quit
 super + x

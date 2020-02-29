@@ -2,7 +2,7 @@
 # Use a dmenu to switch between diferent screen layouts with xrandr
 CHOICES="únic\\ndual-dreta\\ndual-esquerra\\naltre"
 PICK=$1
-[ -z $PICK ] && PICK=$(echo $CHOICES | dmenu -p "Distribució de monitors" -l 10)
+[ -z $PICK ] && PICK=$(echo $CHOICES | dmenu_col -p "Distribució de monitors" -l 10)
 
 case $PICK in
 	únic)

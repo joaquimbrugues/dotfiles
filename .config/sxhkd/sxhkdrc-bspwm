@@ -6,7 +6,7 @@ super + shift + r
 
 # Change global style and restart bspwm
 super + s
-	change-style
+	dmenu-style
 
 # Restart the lemonbar
 super + shift + x
