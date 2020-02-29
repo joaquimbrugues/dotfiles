@@ -54,7 +54,7 @@ while read -r line ; do
 			;;
 		B*)
 			#battery module output
-			bat=" %{A3:${bat_action3}:}%{+u}Bat: ${line#?}%%{-u}%{A} "
+			bat=" %{A3:${bat_action3}:}%{+u}BAT ${line#?}%%{-u}%{A} "
 			;;
 		D*)
 			#date module output
