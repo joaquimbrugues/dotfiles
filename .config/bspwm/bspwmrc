@@ -3,7 +3,7 @@
 # This script starts automatically when we execute bspwm.
 
 # Load style configurations
-[ ! -h $HOME/.local/share/global-style ] && ln -s -T $HOME/.local/share/global-style-blue $HOME/.local/share/global-style
+[ ! -e $HOME/.local/share/global-style ] && ln -s -T $HOME/.local/share/global-style-blau $HOME/.local/share/global-style
 
 # Remove all existing rules on bspwm reload
 bspc rule -r "*"
