@@ -5,4 +5,4 @@ COLOR_FOCUSED_FG="#98d2fc"
 COLOR_FOCUSED_U="#8000ff"
 COLOR_FOCUSED_BG="#474f61"
 HEIGHT=25
-FONT="-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*"
+FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
