@@ -50,7 +50,7 @@ while read -r line ; do
 				*\[off\]*) message="SIL ($vol%)" ;;
 				*\[on\]*) message="VOL $vol%" ;;
 			esac
-			volume=" %{A:${vol_action1}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A}"
+			volume=" %{A:${vol_action1}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A} "
 			;;
 		B*)
 			#battery module output
