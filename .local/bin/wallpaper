@@ -5,4 +5,4 @@
 [ ! -h $HOME/.local/share/global-style ] && ln -s -T $HOME/.local/share/global-style-blue $HOME/.local/share/global-style
 . $HOME/.local/share/global-style
 
-feh --bg-scale "$WALLPAPER"
+feh --bg-fill "$WALLPAPER"
