@@ -2,7 +2,7 @@
 # This script reads the output of LLIMA_FIFO and updates it into the contents to be parsed by lemonbar
 # The pipe LLIMA_FIFO is previously fed with the output of several modules, see the script llima-bar
 
-. $HOME/.local/share/llima-conf
+. $HOME/.local/share/global-style
 
 #Define click actions
 cpu_action1='notify-send "Processos CPU-intensius" "$(list-cpu-processes)"'
@@ -74,7 +74,7 @@ while read -r line ; do
 						;;
 					[OF]*)
 						#Occupied or free focused desktop
-						wm="${wm} %{F${COLOR_FOCUSED_FG}}%{B${COLOR_FOCUSED_BG}}%{U${COLOR_FOCUSED_U}}%{+u} ${name} %{-u}%{U-}%{B-}%{F-}"
+						wm="${wm} %{F${COLOR_FOREGROUND_SELECTED}}%{B${COLOR_BACKGROUND_SELECTED}}%{U${COLOR_UNDERLINE_SELECTED}}%{+u} ${name} %{-u}%{U-}%{B-}%{F-}"
 						;;
 					[o]*)
 						#Occupied non-focused desktop

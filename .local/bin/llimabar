@@ -20,10 +20,10 @@ $DIR/wstat > "$LLIMA_FIFO" &
 echo "V\nM" > "$LLIMA_FIFO"
 
 # Import bar configuration
-. $HOME/.local/share/llima-conf
+. $HOME/.local/share/global-style
 
 # Actual call
-bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g ${BAR_WIDTH}x${HEIGHT}+10+5 -f "$FONT" -F "$COLOR_FG" -B "$COLOR_BG" -U "$COLOR_U" | sh &
+bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g ${BAR_WIDTH}x${BAR_HEIGHT}+10+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
 
 # Wait
 wait
