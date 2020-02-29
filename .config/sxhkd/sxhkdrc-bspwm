@@ -1,5 +1,9 @@
 # Key bindings specific to bspwm
 
+# Restart bspwm
+super + shift + r
+	sh -c $HOME/.config/bspwm/bspwmrc
+
 # Restart the lemonbar
 super + shift + x
 	pkill llimabar && pkill lemonbar && llimabar &
