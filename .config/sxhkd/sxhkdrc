@@ -52,7 +52,7 @@ super + alt + r
 super + alt + a
 	$TERMINAL -e curseradio
 super + alt + m
-	$TERMINAL -e neomutt
+	$TERMINAL -e neomutt && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
 super + alt + o
 	chromium
 super + alt + h
