@@ -1,0 +1,8 @@
+#!/bin/sh
+# This script invokes a dmenu to switch the colors, fonts, wallpaper and other settings system-wide, and then reloads bspwm
+
+CONFIG_FILE="$HOME/.config/bspwm/bspwmrc"
+LINK="$HOME/.local/share/global-style"
+SELECTION=$(ls $HOME/.local/share/ | grep "global-style-" | cut -d '-' -f 3 | dmenu_col -l 20 -p "Tria un esquema de colors:")
+FILE="$HOME/.local/share/global-style-$SELECTION"
+[ -e $FILE ] && rm -f $LINK && ln -s -T $FILE $LINK && sh -c $CONFIG_FILE

@@ -7,7 +7,7 @@
 super + Return
 	$TERMINAL
 super + d
-	dmenu_run -l 10
+	dmenu_col_run -l 10
 super + shift + q
 	dmenu-quit
 super + x
@@ -21,7 +21,7 @@ super + shift + h
 	$TERMINAL -e htop
 super + shift + d
 	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
-super + shift + m
+super + m
 	man-this
 super + o
 	todo
@@ -30,7 +30,7 @@ super + F1
 	dmenu-usb
 # Add a pipe to the lemonbar to notify the change
 super + F2
-	mailsync -a && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	mailsync -a && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
 super + F3
 	update-news
 
@@ -52,7 +52,7 @@ super + alt + r
 super + alt + a
 	$TERMINAL -e curseradio
 super + alt + m
-	$TERMINAL -e neomutt
+	$TERMINAL -e neomutt && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
 super + alt + o
 	chromium
 super + alt + h
