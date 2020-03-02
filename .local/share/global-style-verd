@@ -20,4 +20,4 @@ COLOR_FOREGROUND_SELECTED="#d9ffcc"
 BAR_HEIGHT=25
 BAR_FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
 
-WALLPAPER="$HOME/wallpaper/iroh-bg.jpg"
+WALLPAPER="$HOME/wallpapers/iroh-bg.jpg"
