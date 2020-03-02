@@ -1,8 +1,6 @@
 #!/bin/sh
 # Turn on the lemonbar
 # TODO: Adapt for multiple monitors (run several instances of lemonbar)
-# TODO: Automatically set the width of the lemonbar (too lazy to do it now, it is passed as an argument now)
-BAR_WIDTH=1342
 
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
@@ -22,8 +20,22 @@ echo "V\nM" > "$LLIMA_FIFO"
 # Import bar configuration
 . $HOME/.local/share/global-style
 
+# Get active monitors with their geometries
+#MONITORS_LIST=$(xrandr | grep -w connected | sed 's/ primary//' | awk -F'[ \+]' '{print $1,$3,$4,$5}')
+monitor=$(xrandr | grep -w connected | grep primary | sed 's/ primary//' | awk -F'[ \+]' '{print $1,$3,$4,$5}')
+
 # Actual call
-bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g ${BAR_WIDTH}x${BAR_HEIGHT}+10+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+#TODO: Multiple monitors (requires setting up multiple FIFOs!)
+#IFS='
+#'
+#for monitor in $MONITORS_LIST; do
+#	monitor_name=$(echo "$monitor" | cut -d ' ' -f 1)
+	monitor_width=$(echo "$monitor" | cut -d ' ' -f 2 | cut -d 'x' -f 1)
+	monitor_offset_x=$(echo "$monitor" | cut -d ' ' -f 3)
+	bar_width=$(echo "$monitor_width" | awk '{print $1 - 20}')
+	bar_offset_x=$(echo "$monitor_offset_x" | awk '{print $1 + 10}')
+	bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g ${bar_width}x${BAR_HEIGHT}+${bar_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+#done
 
 # Wait
 wait
