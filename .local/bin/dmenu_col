@@ -1,0 +1,6 @@
+#!/bin/sh
+# Wrapper for dmenu with the system colors
+
+. $HOME/.local/share/global-style
+
+dmenu -nb "$COLOR_BACKGROUND" -nf "$COLOR_FOREGROUND" -sb "$COLOR_UNDERLINE" -sf "$COLOR_FOREGROUND_SELECTED" -fn "$BAR_FONT" "$@"

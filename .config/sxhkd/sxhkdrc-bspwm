@@ -2,7 +2,15 @@
 
 # Restart bspwm
 super + shift + r
-	bspc wm -r
+	sh -c $HOME/.config/bspwm/bspwmrc
+
+# Change global style and restart bspwm
+super + s
+	dmenu-style
+
+# Restart the lemonbar
+super + shift + x
+	pkill llimabar && pkill lemonbar && llimabar &
 
 # Close focused node
 super + q
@@ -34,7 +42,7 @@ super + {_,shift} + Tab
 
 # Focus the given desktop
 super + {1-9,0}
-	bspc desktop -f focused:'^{1-9,10}'
+	bspc desktop -f {1-9,10}
 
 # Send to the given desktop and change focus to it
 super + shift + {1-9,0}
@@ -57,7 +65,7 @@ super + r : shift + {Left,Down,Up,Right}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # Move a floating window
-super + m : {Left,Down,Up,Right}
+super + alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Open a calculator that follows you around

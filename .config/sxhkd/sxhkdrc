@@ -7,7 +7,7 @@
 super + Return
 	$TERMINAL
 super + d
-	dmenu_run -l 10
+	dmenu_col_run -l 10
 super + shift + q
 	dmenu-quit
 super + x
@@ -20,8 +20,13 @@ super + {_,shift} + c
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
+<<<<<<< HEAD
 	[ -d $HOME/Descargas ] && cd $HOME/Descargas && $TERMINAL
 super + shift + m
+=======
+	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
+super + m
+>>>>>>> master
 	man-this
 super + o
 	todo
@@ -40,6 +45,15 @@ super + alt + n
 	$TERMINAL -e newsboat
 super + alt + y
 	$TERMINAL -e lynx
+<<<<<<< HEAD
+=======
+super + alt + r
+	transmission-gtk
+super + alt + a
+	$TERMINAL -e curseradio
+super + alt + m
+	$TERMINAL -e neomutt && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
+>>>>>>> master
 super + alt + o
 	chromium-browser
 super + alt + h
@@ -52,12 +66,13 @@ super + alt + h
 
 # Volume controls
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
+# Add a pipe to the lemonbar to notify the change
 {XF86AudioRaiseVolume, super + plus}
-	pactl set-sink-volume 0 +2%
+	pactl set-sink-volume 0 +2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 {XF86AudioLowerVolume, super + minus}
-	pactl set-sink-volume 0 -2%
+	pactl set-sink-volume 0 -2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 XF86AudioMute
-	pactl set-sink-mute 0 toggle
+	pactl set-sink-mute 0 toggle && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 
 # Brightness controls
 {XF86MonBrightnessUp,XF86MonBrightnessDown}

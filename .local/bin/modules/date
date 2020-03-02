@@ -1,0 +1,8 @@
+#!/bin/sh
+# Date and time module.
+
+INTERVAL=1
+while true; do
+	echo "D$(date '+%d %b %Y | %H:%M:%S')"
+	sleep $INTERVAL
+done

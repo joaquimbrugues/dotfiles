@@ -1,0 +1,94 @@
+#!/bin/sh
+# This script reads the output of LLIMA_FIFO and updates it into the contents to be parsed by lemonbar
+# The pipe LLIMA_FIFO is previously fed with the output of several modules, see the script llima-bar
+
+. $HOME/.local/share/global-style
+
+#Define click actions
+cpu_action1='notify-send "Processos CPU-intensius" "$(list-cpu-processes)"'
+cpu_action3='notify-send "Mòdul de CPU" "\- Mostra ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador"'
+mem_action1='notify-send "Processos RAM-intensius" "$(list-ram-processes)"'
+mem_action3='notify-send "Mòdul de memòria" "\- Mostra memòria usada/total.\n\- Clica per veure els processos que consumeixen més memòria."'
+mail_action1='$TERMINAL -e neomutt && echo "M" >$LLIMA_FIFO'
+mail_action3='notify-send "Mòdul de correu" "\- Mostra missatges sense llegir.\n\- Clica per obrir neomutt."'
+wstat_action1='$TERMINAL -e nmtui'
+wstat_action3='notify-send "Mòdul internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió."'
+vol_action1='pactl set-sink-mute 0 toggle && echo "V" > $LLIMA_FIFO'
+vol_action3='notify-send "Mòdul de volum" "\- Mostra el volum i si està silenciat.\n\- Clica per silenciar.\n\- Fes servir la roda del ratolí per pujar o baixar el volum."'
+vol_action4='pactl set-sink-volume 0 +2% && echo "V" > $LLIMA_FIFO'
+vol_action5='pactl set-sink-volume 0 -2% && echo "V" > $LLIMA_FIFO'
+bat_action3='notify-send "Mòdul de bateria" "\- Mostra la càrrega actual."'
+date_action1='notify-send "$(ncal -M -bh)"'
+date_action3='notify-send "Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
+wm_action3='notify-send "Escriptoris" "\- Clica sobre un escriptori anar-hi."'
+
+while read -r line ; do
+	case $line in
+		C*)
+			#cpu_usage module output
+			cpu=" %{A:${cpu_action1}:}%{A3:${cpu_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
+			;;
+		R*)
+			#memory module output
+			memory=" %{A:${mem_action1}:}%{A3:${mem_action3}:}%{+u}RAM: ${line#?}%{-u}%{A}%{A} "
+			;;
+		M*)
+			#mail output
+			mail=
+			num_mails="$(ls $HOME/.local/share/mail/*/INBOX/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)"
+			[ $num_mails -gt 0 ] && mail=" %{A:${mail_action1}:}%{A3:${mail_action3}:}%{+u}Correus: $num_mails%{-u}%{A}%{A} "
+			;;
+		I*)
+			#wstat module output
+			wstat=" %{A:${wstat_action1}:}%{A3:${wstat_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
+			;;
+		V*)
+			#volume output
+			vol_status="$(amixer get Master)"
+			vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Pom 1 "[0-9]+%")
+			case $vol_status in
+				*\[off\]*) message="SIL ($vol%)" ;;
+				*\[on\]*) message="VOL $vol%" ;;
+			esac
+			volume=" %{A:${vol_action1}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A} "
+			;;
+		B*)
+			#battery module output
+			bat=" %{A3:${bat_action3}:}%{+u}BAT ${line#?}%%{-u}%{A} "
+			;;
+		D*)
+			#date module output
+			date=" %{A:${date_action1}:}%{A3:${date_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
+			;;
+		W*)
+			#BSPWM state
+			wm=
+			IFS=':'
+			set -- ${line#?}
+			while [ $# -gt 0 ] ; do
+				item=$1
+				name=${item#?}
+				case $item in
+					[mM]*)
+						#TODO
+						;;
+					[OF]*)
+						#Occupied or free focused desktop
+						wm="${wm} %{F${COLOR_FOREGROUND_SELECTED}}%{B${COLOR_BACKGROUND_SELECTED}}%{U${COLOR_UNDERLINE_SELECTED}}%{+u} ${name} %{-u}%{U-}%{B-}%{F-}"
+						;;
+					[o]*)
+						#Occupied non-focused desktop
+						wm="${wm} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
+						;;
+					*)
+						;;
+				esac
+				shift
+			done
+			wm="%{A3:${wm_action3}:}${wm}%{A}"
+			;;
+		*)
+			;;
+	esac
+	printf "%s\n" "%{l}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
+done

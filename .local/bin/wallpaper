@@ -1,3 +1,8 @@
 #!/bin/sh
 # Set the specified wallpaper
-feh --bg-fill ~/Imágenes/wallpaper.jpg
+
+# Load the global configuration
+[ ! -e $HOME/.local/share/global-style ] && ln -s -T $HOME/.local/share/global-style-blau $HOME/.local/share/global-style
+. $HOME/.local/share/global-style
+
+feh --bg-fill "$WALLPAPER"
