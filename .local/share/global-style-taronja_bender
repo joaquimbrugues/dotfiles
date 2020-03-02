@@ -20,4 +20,4 @@ COLOR_FOREGROUND_SELECTED="#ffece6"
 BAR_HEIGHT=25
 BAR_FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
 
-WALLPAPER="$HOME/Pictures/bender-bg.jpg"
+WALLPAPER="$HOME/wallpaper/bender-bg.jpg"

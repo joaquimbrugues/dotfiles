@@ -20,4 +20,4 @@ COLOR_FOREGROUND_SELECTED="#fae6ff"
 BAR_HEIGHT=25
 BAR_FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
 
-WALLPAPER="$HOME/Pictures/elements-bg.jpg"
+WALLPAPER="$HOME/wallpaper/elements-bg.jpg"
