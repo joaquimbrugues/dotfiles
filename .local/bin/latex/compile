@@ -12,7 +12,7 @@ case "$1" in
 			cd $DIR && bibtex $(basename $FILE | sed -e 's/\.tex/\.aux/')
 		fi
 		;;
-	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
+	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
 			$TERMINAL -e nano $FILE
@@ -20,7 +20,7 @@ case "$1" in
 			$TERMINAL -e nano $PICK
 		fi
 		;;
-	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu -p "Tria un pdf a visualitzar" -l 10)
+	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu_col -p "Tria un pdf a visualitzar" -l 10)
 		if [ -z $PICK ]
 		then
 			notify-send "No s'ha seleccionat cap pdf"
