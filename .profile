@@ -8,4 +8,4 @@ export READER="zathura"
 export BIB="$HOME/Documents/LaTeX/references.bib"
 export PATH="$PATH:$HOME/.local/bin"
 
-export LLIMA_FIFO="/tmp/llima-fifo"
+export LLIMA_FIFO="$HOME/tmp/llima-fifo"
