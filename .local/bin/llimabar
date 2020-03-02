@@ -1,6 +1,6 @@
 #!/bin/sh
 # Turn on the lemonbar
-# TODO: Adapt for multiple monitors (run several instances of lemonbar)
+# TODO: Adapt for multiple monitors (requires setting up several FIFOs)
 
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
@@ -25,7 +25,6 @@ echo "V\nM" > "$LLIMA_FIFO"
 monitor=$(xrandr | grep -w connected | grep primary | sed 's/ primary//' | awk -F'[ \+]' '{print $1,$3,$4,$5}')
 
 # Actual call
-#TODO: Multiple monitors (requires setting up multiple FIFOs!)
 #IFS='
 #'
 #for monitor in $MONITORS_LIST; do
