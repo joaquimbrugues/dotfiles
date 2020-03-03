@@ -8,7 +8,7 @@ if [ -z "$(bspc query -N -n .focused.fullscreen -d focused)" ]; then
 	bspc node focused.tiled -t fullscreen
 
 	# Hide the bar (for transparent background windows)
-	xdo hide -ad bar
+	xdo hide -a "$LLIMA_NAME"
 
 	# Hide all the other nodes
 	NODES=$(bspc query -N -n .tiled -d focused)
@@ -20,7 +20,7 @@ else
 	bspc node focused.fullscreen -t tiled
 
 	# Unhide the bar
-	xdo show -a bar
+	xdo show -a "$LLIMA_NAME"
 
 	# Unhide all the other nodes
 	NODES=$(bspc query -N -n .hidden -d focused)

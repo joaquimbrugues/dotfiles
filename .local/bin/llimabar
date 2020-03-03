@@ -30,7 +30,10 @@ monitor_width=$(echo "$monitor" | cut -d ' ' -f 2 | cut -d 'x' -f 1)
 monitor_offset_x=$(echo "$monitor" | cut -d ' ' -f 3)
 bar_width=$(echo "$monitor_width" | awk '{print $1 - 20}')
 bar_offset_x=$(echo "$monitor_offset_x" | awk '{print $1 + 10}')
-bar-updater < "$LLIMA_FIFO" | lemonbar -a 32 -u 2 -g ${bar_width}x${BAR_HEIGHT}+${bar_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+bar-updater < "$LLIMA_FIFO" | lemonbar -n "$LLIMA_NAME" -a 32 -u 2 -g ${bar_width}x${BAR_HEIGHT}+${bar_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+
+wid=$(xdo id -a "$LLIMA_NAME")
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
 
 # Wait
 wait
