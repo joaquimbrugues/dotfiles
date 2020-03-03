@@ -1,0 +1,38 @@
+#!/bin/bash
+# Turn on the lemonbar in various monitors
+# This works well, but it has the inconvenient that it redraws the lemonbar at every iteration thus greatly affecting the performance.
+# The script will be saved for its interest, but I don't plan to use it.
+
+# Refresh the pipe
+[ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
+mkfifo "$LLIMA_FIFO"
+exec 3<> "$LLIMA_FIFO"
+
+# Turn the modules on
+bspc subscribe report > "$LLIMA_FIFO" &
+DIR="$HOME/.local/bin/modules"
+$DIR/cpu > "$LLIMA_FIFO" &
+$DIR/date > "$LLIMA_FIFO" &
+$DIR/memory > "$LLIMA_FIFO" &
+echo "V" > "$LLIMA_FIFO"
+
+# Import bar configuration
+. $HOME/.local/share/global-style
+
+# Function to print multiple bars
+_print_lemonbar(){
+	read -r line
+	#monitor_name="$(echo $line | cut -d ';' -f1)"
+	bar_content="$(echo $line | cut -d ';' -f2)"
+	#monitor=$(xrandr | grep -w "$monitor_name" | sed 's/ primary//' | awk -F'[ \+]' '{print $1,$3,$4,$5}')
+	#bar_width=$(echo "$monitor" | cut -d ' ' -f 2 | cut -d 'x' -f 1 | awk '{print $1 - 20}')
+	#bar_offset_x=$(echo "$monitor" | cut -d ' ' -f 3 | awk '{print $1 + 10}')
+	echo "${bar_content}" | lemonbar -p -a 32 -u 2 -g ${bar_width}x${BAR_HEIGHT}+${bar_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+	echo "${bar_content}" | lemonbar -p -a 32 -u 2 -g x${BAR_HEIGHT}+0+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+}
+
+# Actual call
+bar-updater-multiple < "$LLIMA_FIFO" | while read -r input; do _print_lemonbar "$input"; done &
+
+# Wait
+wait
