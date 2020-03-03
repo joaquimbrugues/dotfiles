@@ -74,11 +74,13 @@ while read -r line ; do
 				case $item in
 					[M]*)
 						let i_wm=$i_wm+1
+						wm[$i_wm]=
 						monitor_focused=2
 						monitors[$i_wm]="${name}"
 						;;
 					[m]*)
 						let i_wm=$i_wm+1
+						wm[$i_wm]=
 						monitor_focused=1
 						monitors[$i_wm]="${name}"
 						;;
