@@ -2,7 +2,7 @@
 # Turn on the lemonbar
 
 # Kill background procresses on exit
-trap "kill 0" EXIT
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
