@@ -3,6 +3,9 @@
 # This works well, but it has the inconvenient that it redraws the lemonbar at every iteration thus greatly affecting the performance.
 # The script will be saved for its interest, but I don't plan to use it.
 
+# Kill background processes on exit
+trap "kill 0" EXIT
+
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
 mkfifo "$LLIMA_FIFO"
