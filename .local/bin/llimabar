@@ -1,6 +1,9 @@
 #!/bin/sh
 # Turn on the lemonbar
 
+# Kill background procresses on exit
+trap "kill 0" EXIT
+
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
 mkfifo "$LLIMA_FIFO"
