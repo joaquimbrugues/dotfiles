@@ -81,23 +81,17 @@ fi
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# Code to use the powerline-shell
-function _update_ps1() {
-	PS1=$(powerline-shell $?)
-}
-
-# Nice colored prompt for the TTY
+# Nice colored prompt for the TTY with battery updating
 function _update_ps1_tty() {
 	BAT=$(acpi -b | cut -d "," -f 2)
-	PS1='\e[0;32m[\e[m\e[1;34m\u\e[m\e[1;32m@\e[m\e[1;34m\h\e[m\e[1;33m$BAT\e[m \e[1;31m\w\e[m\e[0;32m]\e[m\e[0;33m\$\e[m '
+	PS1='\e[0;94m[\u\e[m \e[1;92m$BAT \w\e[m\e[0;94m]\e[m\e[0;32m\$\e[m '
+	sleep 1
 }
 
 if [[ $(tty) == *tty* && ! $PROMPT_COMMAND =~ _update_ps1_tty ]]; then
 	PROMPT_COMMAND="_update_ps1_tty; $PROMPT_COMMAND"
-elif [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+elif [[ $TERM != linux ]]; then
+	PS1='\[\033[01;94m\][\u\[\033[00m\] \[\033[01;92m\]\w\[\033[00m\]\[\033[01;94m\]]\[\033[00m\] \[\033[01;32m\]\$\[\033[00m\] '
 fi
-
-neofetch
 
 source $HOME/.profile
