@@ -13,7 +13,7 @@ bspc rule -r "*"
 # TODO: Maybe move this to .xinitrc and unify it with i3.
 pgrep -x sxhkd >/dev/null || sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
 wallpaper &
-pgrep -x compton >/dev/null || compton -f &
+pgrep -x compton >/dev/null || compton &
 
 # Execute screen-layout to set the workpaces
 screen-layout dual-esquerra
