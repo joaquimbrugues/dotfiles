@@ -36,8 +36,8 @@ echo "V" > "$LLIMA_FIFO"
 # Get the geometries of the monitors
 primary_width=$(xrandr | grep "$primary" | awk -F'[ x]' '{print $4 - 20}')
 primary_offset_x=$(xrandr | grep "$primary" | awk -F'[ +]' '{print $5 + 10}')
-[ -n "$secondary" ] && secondary_width=$(xrandr | grep "$secondary" | awk -F'[ x]' '{print $4 - 20}')
-[ -n "$secondary" ] && secondary_width=$(xrandr | grep "$secondary" | awk -F'[ +]' '{print $5 + 10}')
+[ -n "$secondary" ] && secondary_width=$(xrandr | grep "$secondary" | awk -F'[ x]' '{print $3 - 20}')
+[ -n "$secondary" ] && secondary_offset_x=$(xrandr | grep "$secondary" | awk -F'[ +]' '{print $4 + 10}')
 
 # Actual call
 if [ -n "$secondary" ]; then
