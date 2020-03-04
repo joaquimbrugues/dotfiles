@@ -4,6 +4,8 @@
 
 . $HOME/.local/share/global-style
 
+MONITOR="$1"
+
 #Define click actions
 cpu_action1='notify-send "Processos CPU-intensius" "$(list-cpu-processes)"'
 cpu_action3='notify-send "Mòdul de CPU" "\- Mostra ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador"'
@@ -63,50 +65,37 @@ while read -r line ; do
 		W*)
 			#BSPWM state
 			wm=
-			i_wm=-1
 			IFS=':'
 			set -- ${line#?}
 			monitor_focused=
-			monitors=
 			while [ $# -gt 0 ] ; do
 				item=$1
 				name=${item#?}
 				case $item in
 					[M]*)
-						let i_wm=$i_wm+1
-						wm[$i_wm]=
-						monitor_focused=2
-						monitors[$i_wm]="${name}"
+						[ -z "${MONITOR}" ] || [ "${MONITOR}"="${name}" ] && monitor_focused=2
 						;;
 					[m]*)
-						let i_wm=$i_wm+1
-						wm[$i_wm]=
-						monitor_focused=1
-						monitors[$i_wm]="${name}"
+						[ -z "${MONITOR}" ] || [ "${MONITOR}"="${name}" ] && monitor_focused=1
 						;;
 					[OF]*)
 						#Occupied or free focused desktop
-						[ $monitor_focused -eq 2 ] && wm[$i_wm]="${wm[$i_wm]} %{F${COLOR_FOREGROUND_SELECTED}}%{B${COLOR_BACKGROUND_SELECTED}}%{U${COLOR_UNDERLINE_SELECTED}}%{+u} ${name} %{-u}%{U-}%{B-}%{F-}"
-						[ $monitor_focused -eq 1 ] && wm[$i_wm]="${wm[$i_wm]} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
+						[ $monitor_focused -eq 2 ] && wm="${wm} %{F${COLOR_FOREGROUND_SELECTED}}%{B${COLOR_BACKGROUND_SELECTED}}%{U${COLOR_UNDERLINE_SELECTED}}%{+u} ${name} %{-u}%{U-}%{B-}%{F-}"
+						[ $monitor_focused -eq 1 ] && wm="${wm} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
 						;;
 					[o]*)
 						#Occupied non-focused desktop
-						wm[$i_wm]="${wm[$i_wm]} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
+						[ $monitor_focused -ge 1 ] && wm="${wm} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
 						;;
 					*)
 						;;
 				esac
 				shift
 			done
-			for index in ${!wm[*]}; do
-				wm[$index]="%{A3:${wm_action3}:}${wm[$index]}%{A}"
-			done
+			wm="%{A3:${wm_action3}:}${wm}%{A}"
 			;;
 		*)
 			;;
 	esac
-	for i_mon in ${!wm[*]}; do
-		printf "%s\n" "${monitors[$i_mon]};%{l}${wm[$i_mon]}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date} "
-	done
-	#printf "%s\n" "%{l}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
+	printf "%s\n" "%{l}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
 done
