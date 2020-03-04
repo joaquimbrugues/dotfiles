@@ -9,3 +9,4 @@ export BIB="$HOME/Documents/LaTeX/references.bib"
 export PATH="$PATH:$HOME/.local/bin"
 
 export LLIMA_FIFO="$HOME/tmp/llima-fifo"
+export LLIMA_NAME="llimabar"
