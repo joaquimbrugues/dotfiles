@@ -3,12 +3,17 @@
 # This script toggles fullscreen for the focused node.
 # Also, it hides all the other nodes in the current workspace
 
+monitor="$(bspc query -M -d focused --names)"
 if [ -z "$(bspc query -N -n .focused.fullscreen -d focused)" ]; then
 	# Switch the node to fullscreen
 	bspc node focused.tiled -t fullscreen
 
-	# Hide the bar (for transparent background windows)
-	xdo hide -a "$LLIMA_NAME"
+	# Hide the appropriate bar (for transparent background windows)
+	if [ "$(xrandr | grep -w $monitor | grep -w primary)" ]; then
+		xdo hide -a "$LLIMA_NAME"
+	else
+		xdo hide -a "${LLIMA_NAME}2"
+	fi
 
 	# Hide all the other nodes
 	NODES=$(bspc query -N -n .tiled -d focused)
@@ -19,8 +24,12 @@ else
 	# Switch the node to tiled
 	bspc node focused.fullscreen -t tiled
 
-	# Unhide the bar
-	xdo show -a "$LLIMA_NAME"
+	# Unhide the appropriate bar
+	if [ "$(xrandr | grep -w $monitor | grep -w primary)" ]; then
+		xdo show -a "$LLIMA_NAME"
+	else
+		xdo show -a "${LLIMA_NAME}2"
+	fi
 
 	# Unhide all the other nodes
 	NODES=$(bspc query -N -n .hidden -d focused)
