@@ -91,7 +91,7 @@ function _update_ps1_tty() {
 if [[ $(tty) == *tty* && ! $PROMPT_COMMAND =~ _update_ps1_tty ]]; then
 	PROMPT_COMMAND="_update_ps1_tty; $PROMPT_COMMAND"
 elif [[ $TERM != linux ]]; then
-	PS1='\[\033[01;94m\][\u\[\033[00m\] \[\033[01;92m\]\w\[\033[00m\]\[\033[01;94m\]]\[\033[00m\] \[\033[01;32m\]\$\[\033[00m\] '
+	PS1='\[\033[01;94m\][\u\[\033[00m\] \[\033[01;92m\]\w\[\033[00m\]\[\033[01;94m\]]\[\033[00m\]\[\033[01;32m\]\$\[\033[00m\] '
 fi
 
 source $HOME/.profile
