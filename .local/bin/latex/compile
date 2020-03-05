@@ -9,7 +9,7 @@ case "$1" in
 	-b|--bibliography) if [ -r $BIB ]
 		then
 			[ ! -e $(echo "$DIR/references.bib") ] && ln -s $BIB $DIR/references.bib
-			cd $DIR && bibtex $(basename $FILE | sed -e 's/\.tex/\.aux/')
+			cd $DIR && bibtex $(basename $FILE | sed -e 's/\.tex/\.aux/') && notify-send "Compilat!"
 		fi
 		;;
 	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
