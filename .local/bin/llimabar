@@ -11,13 +11,11 @@ secondary="$(xrandr | grep -w connected | grep -wv primary | head -n 1 | awk '{p
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
 mkfifo "$LLIMA_FIFO"
-exec 3<> "$LLIMA_FIFO"
 
 # If there is a secondary monitor, refresh its pipe
 if [ -n "$secondary" ]; then
 	[ -e "${LLIMA_FIFO}2" ] && rm "${LLIMA_FIFO}2"
 	mkfifo "${LLIMA_FIFO}2"
-	exec 3<> "${LLIMA_FIFO}2"
 else
 	[ -e "${LLIMA_FIFO}2" ] && rm "${LLIMA_FIFO}2"
 fi
@@ -30,6 +28,8 @@ $DIR/cpu > "$LLIMA_FIFO" &
 $DIR/date > "$LLIMA_FIFO" &
 $DIR/memory > "$LLIMA_FIFO" &
 $DIR/wstat > "$LLIMA_FIFO" &
+
+exec 3<> "$LLIMA_FIFO"
 echo "V\nM" > "$LLIMA_FIFO"
 
 # Import bar configuration
