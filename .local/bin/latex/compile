@@ -5,7 +5,7 @@ FILE=$($HOME/.local/bin/latex/getcurrentfile)
 DIR=$(dirname $FILE)
 
 case "$1" in
-	-p|--pdf) cd $DIR && pdflatex $(basename $FILE) && notify-send "Compilat!" ;;
+	-p|--pdf) cd $DIR && pdflatex "$(basename $FILE)" && notify-send "Compilat!" ;;
 	-b|--bibliography) if [ -r $BIB ]
 		then
 			[ ! -e $(echo "$DIR/references.bib") ] && ln -s $BIB $DIR/references.bib
@@ -15,9 +15,9 @@ case "$1" in
 	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
-			$TERMINAL -e nano $FILE
+			$TERMINAL -e nano "$FILE"
 		else
-			$TERMINAL -e nano $PICK
+			$TERMINAL -e nano "$PICK"
 		fi
 		;;
 	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu_col -p "Tria un pdf a visualitzar" -l 10)
