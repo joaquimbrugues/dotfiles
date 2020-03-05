@@ -11,9 +11,11 @@ bspc rule -r "*"
 
 # Program initializations
 # TODO: Maybe move this to .xinitrc and unify it with i3.
-pkill sxhkd && sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
+[ pgrep -x sxhkd ] && pkill sxhkd
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
 wallpaper &
-pkill compton && compton -f &
+[ pgrep -x sxhkd ] && pkill compton
+compton -f &
 
 # Execute screen-layout to set the workpaces
 screen-layout únic
