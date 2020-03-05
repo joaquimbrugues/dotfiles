@@ -1,6 +1,6 @@
 # Dotfiles
 
-![Screenshot of my desktop](https://github.com/joaquimbrugues/dotfiles/tree/master/screenshots/scrot-05-03-2020.png)
+![Screenshot of my desktop](https://github.com/joaquimbrugues/dotfiles/raw/master/screenshots/scrot-05-03-2020.png)
 
 These are the dotfiles for my various GNU/Linux machines both at home and at work. I use this repository for my comodity in order to quickly set up a new sistem in the event of a reinstall/distro hop. Feel free to read and use them to your own convenience!
 
