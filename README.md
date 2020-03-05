@@ -1,17 +1,21 @@
 # Dotfiles
 
+![Screenshot of my desktop](https://github.com/joaquimbrugues/dotfiles/raw/master/screenshots/scrot-05-03-2020.png)
+
 These are the dotfiles for my various GNU/Linux machines both at home and at work. I use this repository for my comodity in order to quickly set up a new sistem in the event of a reinstall/distro hop. Feel free to read and use them to your own convenience!
 
 ## What do I use
 
 The configurations are set for the programs that I use often:
 
-	- i3 (window manager)
+	- bspwm (window manager)
+	- lemonbar (status bar)
 	- nano (text editor)
 	- urxvt (terminal emulator)
-	- Xfce terminal (terminal emulator)
 	- bash
 	- sxhkd (hotkey daemon)
+	- i3 (window manager): not actively mantained
+	- Xfce terminal (terminal emulator): not actively mantained
 
 There are also scripts (in `~/.local/bin/`) with some useful tools, usually using dmenu, to interact with the system, to work with LaTeX, and for my i3 status bar.
 
@@ -48,9 +52,9 @@ This might fail, because you are attempting to modify some files already existin
 
 After this, you should be set!
 
-## Work in progress
+## Window managers
 
-I am working to integrate bspwm as my main window manager, with lemonbar as the status bar. This does not mean that I will remove my i3 configuration, it will still be there, I will just not update it more.
+bspwm is now my main window manager, with lemonbar as the status bar. This configuration should still work for i3, though, and some of it might be useful with other WM. Even if I don't actively mantain my i3 config, it's still available and it should work just fine.
 
 ## License
 

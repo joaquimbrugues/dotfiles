@@ -1,5 +1,5 @@
 #!/bin/sh
 # Use a dmenu to pick a bibliography item and copy it to the clipboard
 
-ITEM=$(grep '@.*{' $BIB | sed -e 's/@.*{//g' -e 's/,//g' | dmenu -l 10 -p "Bibliografia")
+ITEM=$(grep '@.*{' $BIB | sed -e 's/@.*{//g' -e 's/,//g' | dmenu_col -l 10 -p "Bibliografia")
 [ -n $ITEM ] && echo $ITEM | xclip -i -selection clipboard && notify-send "S'ha copiat $ITEM al portaretalls"

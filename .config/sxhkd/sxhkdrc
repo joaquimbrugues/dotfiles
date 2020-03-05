@@ -94,3 +94,5 @@ super + l : super + {_,shift} + p
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
 super + l : super + shift + b
 	$HOME/.local/bin/latex/compile -b
+super + l : super + Return
+	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
