@@ -11,17 +11,12 @@ bspc rule -r "*"
 
 # Program initializations
 # TODO: Maybe move this to .xinitrc and unify it with i3.
-[ "$(pgrep -x sxhkd)" ] && killall sxhkd
+pgrep -x sxhkd >/dev/null && killall sxhkd
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
-[ "$(pgrep -x compton)" ] && killall compton
+pgrep -x compton >/dev/null && killall compton
 compton -f &
 
 wallpaper &
-if [ "$(pgrep -x compton)" ]; then
-	pkill -USR1 compton
-else
-	compton -f &
-fi
 
 # Execute screen-layout to set the workpaces
 screen-layout únic
@@ -52,7 +47,8 @@ bspc config presel_feedback_color "$COLOR_UNDERLINE_SELECTED"
 bspc rule -a Zathura state=tiled
 
 # Reload the lemonbar
-pgrep -x llimabar >/dev/null && pkill llimabar && pkill lemonbar
+pgrep -x llimabar >/dev/null && killall llimabar
+pgrep -x lemonbar >/dev/null && killall lemonbar
 llimabar &
 
 # "Heavy" applications autostart
