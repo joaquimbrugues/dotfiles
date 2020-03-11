@@ -11,13 +11,13 @@ bspc rule -r "*"
 
 # Program initializations
 # TODO: Maybe move this to .xinitrc and unify it with i3.
-if [ pgrep -x sxhkd ]; then
-	pkill -USR1 sxhkd
-else
-	sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
-fi
+[ "$(pgrep -x sxhkd)" ] && killall sxhkd
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
+[ "$(pgrep -x compton)" ] && killall compton
+compton -f &
+
 wallpaper &
-if [ pgrep -x compton ]; then
+if [ "$(pgrep -x compton)" ]; then
 	pkill -USR1 compton
 else
 	compton -f &
