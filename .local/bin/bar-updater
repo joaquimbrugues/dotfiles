@@ -21,6 +21,11 @@ bat_action3='notify-send "Mòdul de bateria" "\- Mostra la càrrega actual."'
 date_action1='notify-send "$(ncal -M -bh)"'
 date_action3='notify-send "Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
 wm_action3='notify-send "Escriptoris" "\- Clica sobre un escriptori anar-hi."'
+launcher_action1='dmenu_col_run -l 10'
+launcher_action2='dmenu-quit'
+launcher_action3='notify-send "Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
+
+launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u} P %{-u}%{A}%{A}%{A}"
 
 while read -r line ; do
 	case $line in
@@ -95,5 +100,5 @@ while read -r line ; do
 		*)
 			;;
 	esac
-	printf "%s\n" "%{l}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
+	printf "%s\n" "%{l}${launcher}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
 done
