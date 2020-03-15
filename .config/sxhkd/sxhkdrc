@@ -6,8 +6,10 @@
 
 super + Return
 	$TERMINAL
+# Run dmenu launcher.
+# IMPORTANT: Dmenu needs to be patched with the center patch
 super + d
-	dmenu_col_run -l 10
+	dmenu_col_run -c -l 10
 super + shift + q
 	dmenu-quit
 super + x
