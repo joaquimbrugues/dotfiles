@@ -21,7 +21,7 @@ bat_action3='notify-send "Mòdul de bateria" "\- Mostra la càrrega actual."'
 date_action1='notify-send "$(cal)"'
 date_action3='notify-send "Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
 wm_action3='notify-send "Escriptoris" "\- Clica sobre un escriptori anar-hi."'
-launcher_action1='dmenu_col_run -l 10'
+launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
 
