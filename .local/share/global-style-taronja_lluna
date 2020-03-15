@@ -18,6 +18,6 @@ COLOR_BACKGROUND_SELECTED="#6f3c2a"
 COLOR_FOREGROUND_SELECTED="#ffece6"
 
 BAR_HEIGHT=25
-BAR_FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
+BAR_FONT="-*-dejavu sans mono-medium-r-*-*-*-*-*-*-*-*-*-*"
 
 WALLPAPER="$HOME/Pictures/blood-moon-bg.jpg"
