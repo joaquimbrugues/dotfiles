@@ -1,28 +1,28 @@
 #!/bin/sh
 # Use a dmenu to switch between diferent screen layouts with xrandr
-CHOICES="únic\\ndual-dreta\\ndual-esquerra\\naltre"
+CHOICES="únic\ndual-dreta\ndual-esquerra\naltre"
 PICK=$1
-[ -z $PICK ] && PICK=$(echo $CHOICES | dmenu_col -p "Distribució de monitors" -l 10)
+[ -z $PICK ] && PICK=$(echo -e $CHOICES | dmenu_col -p "Distribució de monitors" -l 10)
 
 case $PICK in
 	únic)
-		xrandr --output LVDS-1 --mode 1366x768 --output HDMI-1 --off
-		pgrep bspwm >/dev/null && bspc monitor LVDS-1 -d 1 2 3 4 5 6 7 8 9 0
+		xrandr --output LVDS1 --mode 1366x768 --output HDMI-1 --off
+		pgrep bspwm >/dev/null && bspc monitor LVDS1 -d 1 2 3 4 5 6 7 8 9 0
 		wallpaper
 	;;
 	dual-dreta)
-		xrandr --output LVDS-1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0
-		pgrep bspwm >/dev/null && bspc monitor LVDS-1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
+		xrandr --output LVDS1 --mode 1366x768 --pos 0x312 --primary --output HDMI-1 --mode 1920x1080 --pos 1366x0
+		pgrep bspwm >/dev/null && bspc monitor LVDS1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
 		wallpaper
 	;;
 	dual-esquerra)
-		xrandr --output LVDS-1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0
-		pgrep bspwm >/dev/null && bspc monitor LVDS-1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
+		xrandr --output LVDS1 --mode 1366x768 --pos 1920x312 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0
+		pgrep bspwm >/dev/null && bspc monitor LVDS1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
 		wallpaper
 	;;
 	altre)
 		arandr
-		pgrep bspwm >/dev/null && bspc monitor LVDS-1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
+		pgrep bspwm >/dev/null && bspc monitor LVDS1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
 		wallpaper
 	;;
 	*) ;;
