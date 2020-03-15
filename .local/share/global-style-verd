@@ -18,6 +18,6 @@ COLOR_BACKGROUND_SELECTED="#54542b"
 COLOR_FOREGROUND_SELECTED="#d9ffcc"
 
 BAR_HEIGHT=25
-BAR_FONT="-*-dejavu sans mono-medium-r-*-*-*-*-*-*-*-*-*-*"
+BAR_FONT="-*-dejavu sans mono -medium-r-*-*-*-*-*-*-*-*-*-*"
 
 WALLPAPER="$HOME/Pictures/iroh-bg.jpg"
