@@ -98,4 +98,4 @@ super + l : super + Return
 	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
 
 super + p
-	passmenu -c -l 10 -p "Copia la contrasenya"
+	passmenu_col -c -l 10 -p "Copia la contrasenya"
