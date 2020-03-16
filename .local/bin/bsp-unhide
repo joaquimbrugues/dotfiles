@@ -1,0 +1,8 @@
+#!/bin/sh
+# BSPWM
+# Unhide all nodes in focused desktop
+
+NODES=$(bspc query -N -n .hidden -d focused)
+for node in $NODES; do
+	bspc node $node -g hidden=off
+done
