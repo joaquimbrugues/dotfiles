@@ -17,14 +17,12 @@ super + x
 super + ctrl + l
 	slock
 
-super + {_,shift} + c
+super + {c,m}
 	{configure,cheatsheets}
 super + shift + h
 	$TERMINAL -e htop
 super + shift + d
 	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
-super + m
-	man-this
 super + o
 	todo
 
