@@ -57,6 +57,8 @@ super + alt + o
 	chromium
 super + alt + h
 	thunar $HOME
+super + alt + s
+	surf "$(cat $HOME/tmp/surf_url)"
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
