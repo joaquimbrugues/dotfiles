@@ -58,7 +58,7 @@ super + alt + o
 super + alt + h
 	thunar $HOME
 super + alt + s
-	surf "$(cat $HOME/tmp/surf_url)"
+	surf $(cat $HOME/.surf/bookmarks | dmenu_col -l 20)
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
