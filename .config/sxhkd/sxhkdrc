@@ -96,6 +96,3 @@ super + l ; shift + b
 	$HOME/.local/bin/latex/compile -b
 super + l ; Return
 	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
-
-super + p
-	passmenu_col -c -l 10 -p "Copia la contrasenya"
