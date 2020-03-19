@@ -19,12 +19,12 @@ super + ctrl + l
 
 super + {c,m}
 	{configure,cheatsheets}
-super + shift + h
-	$TERMINAL -e htop
 super + shift + d
 	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
 super + o
 	todo
+super + g
+	$TERMINAL -e gotop
 
 super + F1
 	dmenu-usb
