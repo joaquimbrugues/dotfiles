@@ -46,7 +46,7 @@ super + alt + l
 super + alt + c
 	clementine
 super + alt + y
-	$TERMINAL -e lynx
+	$TERMINAL -e lynx $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a lynx" -l 20)
 super + alt + r
 	transmission-gtk
 super + alt + a
@@ -58,7 +58,7 @@ super + alt + o
 super + alt + h
 	thunar $HOME
 super + alt + s
-	surf $(cat $HOME/.surf/bookmarks | dmenu_col -l 20)
+	surf $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a surf" -l 20)
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
