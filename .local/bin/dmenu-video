@@ -1,0 +1,5 @@
+#!/bin/sh
+# Look for videos in the HOME folder and open a dmenu to reproduce one of them
+
+FILE=$(locate ".mkv" ".mp4" ".webm" | grep "$HOME" | dmenu_col -l 10)
+[ -e "$FILE" ] && mpv "$FILE" &

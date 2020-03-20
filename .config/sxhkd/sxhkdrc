@@ -25,6 +25,8 @@ super + o
 	todo
 super + g
 	$TERMINAL -e gotop
+super + shift + v
+	dmenu-video
 
 super + F1
 	dmenu-usb
