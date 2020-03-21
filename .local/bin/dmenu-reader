@@ -3,4 +3,4 @@
 
 [ -z "$READER" ] && exit
 FILE=$(locate ".pdf" ".djvu" ".ps" | grep "$HOME" | dmenu_col -l 10 -p "Obre amb $READER")
-[ -e "$FILE" ] && zathura "$FILE" &
+[ -e "$FILE" ] && zathura "$FILE"
