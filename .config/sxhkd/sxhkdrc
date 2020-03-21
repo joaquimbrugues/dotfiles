@@ -34,7 +34,7 @@ super + F1
 	dmenu-usb
 # Add a pipe to the lemonbar to notify the change
 super + F2
-	mailsync -a && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
+	update-mail
 super + F3
 	update-news
 
