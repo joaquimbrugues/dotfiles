@@ -34,7 +34,7 @@ git clone --bare https://github.com/joaquimbrugues/dotfiles.git $HOME/.dotfiles
 Create an alias for the current shell scope (this alias is also defined in `.bashrc`, so you won't need to repeat this step after the installation is finished):
 
 ```
-alias dotgit='/usr/bin/git --gir-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 Set the flag `showUntrackedFiles`to `no` for this repository, so that `dotgit status` shows only changes to the already tracked files:
 
