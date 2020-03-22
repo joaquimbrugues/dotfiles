@@ -83,7 +83,7 @@ export GPG_TTY
 
 # Nice colored prompt for the TTY with battery updating
 function _update_ps1_tty() {
-	BAT=$(acpi -b | cut -d "," -f 2)
+	BAT=$(acpitool -b | cut -d "," -f 2)
 	PS1='\e[0;94m[\u\e[m \e[1;92m$BAT \w\e[m\e[0;94m]\e[m\e[0;32m\$\e[m '
 }
 
