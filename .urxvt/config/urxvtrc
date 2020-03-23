@@ -16,6 +16,8 @@ urxvt*keysym.Control-Right:  \033[1;5C
 urxvt*keysym.Control-period:	perl:font-size:reset
 urxvt*keysym.Shift-Control-V:	perl:clipboard:paste
 urxvt*iso14755:	false
+urxvt*keysym.Meta-Up:	command:\033]720;1\007
+urxvt*keysym.Meta-Down:	command:\033]721;1\007
 
 urxvt*depth: 32
 urxvt*background: rgba:1311/1917/2624/cccc
