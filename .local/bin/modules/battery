@@ -3,6 +3,6 @@
 INTERVAL=30
 
 while true; do
-	echo "B$(acpi -b | grep -Po '[0-9]+%')"
+	echo "B$(acpitool -b | grep -Po '[0-9]+%')"
 	sleep $INTERVAL
 done
