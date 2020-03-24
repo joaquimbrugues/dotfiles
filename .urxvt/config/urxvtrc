@@ -1,5 +1,5 @@
 !urxvt configuration
-urxvt*font: xft:Inconsolata:size=13
+urxvt*font: xft:Inconsolata:size=16
 urxvt*termName: rxvt
 urxvt*scrollBar: false
 urxvt*scrollstyle: plain
