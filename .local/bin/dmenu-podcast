@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+# Put the contents of a Podcast folder into a dmenu.
+# Play your choice into mpv opened in a terminal
+
+PODCAST_DIR="$HOME/Podcast"
+[ -d $PODCAST_DIR ] || exit
+
+FILE=$(ls -w1 $PODCAST_DIR | dmenu_col -p "Tria un podcast" -l 10)
+[ -n "$FILE" ] && cd $PODCAST_DIR && mpv $FILE

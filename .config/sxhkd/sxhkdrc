@@ -29,6 +29,8 @@ super + shift + v
 	dmenu-video
 super + z
 	dmenu-reader
+super + p
+	dmenu-podcast
 
 super + F1
 	dmenu-usb
