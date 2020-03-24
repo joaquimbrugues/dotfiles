@@ -1,10 +1,10 @@
 #!/bin/sh
 # Check the devices connected to the computer, and mount one of them
 # This only works with drives that already have a label!
-DEVICE=$(lsblk -o name,label | tail -n +2 | grep -v sda | awk '{print $2}' | grep  -v -e '^$' | dmenu_col -p "Selecciona un dispositiu per muntar/expulsar" -l 50)
-[ -z $DEVICE ] && exit 0
-LOC=/dev/$(lsblk -o name,label | tail -n +2 | grep $DEVICE | awk '{print $1}' | tr -cd '[:alnum:]')
-DIR=/media/$(whoami)/$DEVICE
+DEVICE=$(lsblk -o path,label | tail -n +2 | grep -v sda | awk '{print $2}' | grep  -v -e '^$' | dmenu_col -p "Selecciona un dispositiu per muntar/expulsar" -l 50)
+[ -z "$DEVICE" ] && exit 0
+LOC=$(lsblk -o path,label | tail -n +2 | grep $DEVICE | awk '{print $1}')
+DIR="/run/media/$(whoami)/$DEVICE"
 mountpoint $DIR >> /dev/null
 if [ $? -eq 0 ]
 then
@@ -13,6 +13,5 @@ then
 	udisksctl unmount -b $LOC && notify-send "S'ha expulsat $DEVICE"
 else
 	#The device was no mounted, mount it
-	udisksctl mount -b $LOC && notify-send "S'ha muntat $DEVICE a $DIR"
-	[ ! -L $HOME/$DEVICE ] && ln -s $DIR $HOME/$DEVICE
+	udisksctl mount -b $LOC && notify-send "S'ha muntat $DEVICE a $DIR" && [ ! -L $HOME/$DEVICE ] && ln -s $DIR $HOME/$DEVICE
 fi

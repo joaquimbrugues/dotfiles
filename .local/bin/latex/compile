@@ -13,7 +13,7 @@ case "$1" in
 			cd $DIR && bibtex $(basename $FILE | sed -e 's/\.tex/\.aux/') && notify-send "Compilat!"
 		fi
 		;;
-	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
+	-E|--edit) PICK=$(find "$DIR" | grep -e ".*\.tex$" -e ".*\.tikz$" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
 			$TERMINAL -e nano "$FILE"

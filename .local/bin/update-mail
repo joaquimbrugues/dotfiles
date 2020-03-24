@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ping -q -c 1 1.1.1.1 >/dev/null || exit
+mailsync -a && [ -e "$LLIMA_FIFO" ] && echo "M" >$LLIMA_FIFO

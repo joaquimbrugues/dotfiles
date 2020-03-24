@@ -6,8 +6,10 @@
 
 super + Return
 	$TERMINAL
+# Run dmenu launcher.
+# IMPORTANT: Dmenu needs to be patched with the center patch
 super + d
-	dmenu_col_run -l 10
+	dmenu_col_run -c -l 10
 super + shift + q
 	dmenu-quit
 super + x
@@ -15,22 +17,26 @@ super + x
 super + ctrl + l
 	slock
 
-super + {_,shift} + c
+super + {c,m}
 	{configure,cheatsheets}
-super + shift + h
-	$TERMINAL -e htop
 super + shift + d
 	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
-super + m
-	man-this
 super + o
 	todo
+super + g
+	$TERMINAL -e gotop
+super + shift + v
+	dmenu-video
+super + z
+	dmenu-reader
+super + p
+	dmenu-podcast
 
 super + F1
 	dmenu-usb
 # Add a pipe to the lemonbar to notify the change
 super + F2
-	mailsync -a && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
+	update-mail
 super + F3
 	update-news
 
@@ -46,7 +52,7 @@ super + alt + l
 super + alt + c
 	clementine
 super + alt + y
-	$TERMINAL -e lynx
+	$TERMINAL -e lynx $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a lynx" -l 20)
 super + alt + r
 	transmission-gtk
 super + alt + a
@@ -59,6 +65,8 @@ super + alt + h
 	thunar $HOME
 super + alt + v
 	virtualbox
+super + alt + s
+	surf $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a surf" -l 20)
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
@@ -69,9 +77,9 @@ super + alt + v
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
 # Add a pipe to the lemonbar to notify the change
 {XF86AudioRaiseVolume, super + plus}
-	pactl set-sink-volume 0 +2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	amixer sset Master 2%+ && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 {XF86AudioLowerVolume, super + minus}
-	pactl set-sink-volume 0 -2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	amixer sset Master 2%- && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 XF86AudioMute
 	pactl set-sink-mute 0 toggle && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 
@@ -84,15 +92,15 @@ super + ctrl + {0,1,2,3}
 	screen-layout { ,únic,dual-dreta,dual-esquerra}
 
 # LaTeX commands
-super + l : super + {a,b,v}
+super + l ; {a,b,v}
 	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
-super + l : super + {_,shift} + e
+super + l ; {_,shift} + e
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
-super + l : super + {_,shift} + c
+super + l ; {_,shift} + c
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
-super + l : super + {_,shift} + p
+super + l ; {_,shift} + p
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
-super + l : super + shift + b
+super + l ; shift + b
 	$HOME/.local/bin/latex/compile -b
-super + l : super + Return
+super + l ; Return
 	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL

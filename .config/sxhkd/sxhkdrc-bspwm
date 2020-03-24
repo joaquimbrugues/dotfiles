@@ -70,4 +70,11 @@ super + alt + {Left,Down,Up,Right}
 
 # Open a calculator that follows you around
 super + a
-	bspc rule -a URxvt -o state=floating rectangle=600x400+0+600 sticky=on && $TERMINAL -e bc -q $HOME/.config/bc/init
+	bspc rule -a URxvt -o state=floating rectangle=400x250+0+500 sticky=on && $TERMINAL -e bc -l -q $HOME/.config/bc/init
+
+# Hide current window
+super + h
+	bspc node -g hidden=on
+# Unhide all the nodes in the current desktop
+super + comma
+	bsp-unhide

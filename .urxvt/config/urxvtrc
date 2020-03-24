@@ -1,14 +1,23 @@
 !urxvt configuration
-urxvt*font: xft:Noto Mono for Powerline:size=13
+urxvt*font: xft:Inconsolata:size=13
 urxvt*termName: rxvt
 urxvt*scrollBar: false
 urxvt*scrollstyle: plain
 
 !Requires to load the font-size perl extension.
 !Can be found in https://github.com/majutsushi/urxvt-font-size
-urxvt*perl-ext-common: default,matcher,selection-to-clipboard,font-size
+urxvt*perl-ext-common: default,clipboard,matcher,selection-to-clipboard,font-size
 urxvt*urlLauncher: /usr/bin/lynx
 urxvt*matcher.button: 1
+
+!Use Control+[Left,Right] to jump over words
+urxvt*keysym.Control-Left:   \033[1;5D
+urxvt*keysym.Control-Right:  \033[1;5C
+urxvt*keysym.Control-period:	perl:font-size:reset
+urxvt*keysym.Shift-Control-V:	perl:clipboard:paste
+urxvt*iso14755:	false
+urxvt*keysym.Meta-Up:	command:\033]720;1\007
+urxvt*keysym.Meta-Down:	command:\033]721;1\007
 
 urxvt*depth: 32
 urxvt*background: rgba:1311/1917/2624/cccc
