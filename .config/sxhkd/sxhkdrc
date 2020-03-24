@@ -73,9 +73,9 @@ super + alt + s
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
 # Add a pipe to the lemonbar to notify the change
 {XF86AudioRaiseVolume, super + plus}
-	pactl set-sink-volume 0 +2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	amixer sset Master 2%+ && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 {XF86AudioLowerVolume, super + minus}
-	pactl set-sink-volume 0 -2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	amixer sset Master 2%- && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 XF86AudioMute
 	pactl set-sink-mute 0 toggle && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 
