@@ -56,8 +56,8 @@ pgrep -x lemonbar >/dev/null && killall lemonbar
 llimabar &
 
 # "Heavy" applications autostart
-#pgrep transmission >/dev/null || transmission-gtk -m &
-#pgrep -x dropbox >/dev/null || dropbox start &
-#pgrep -x owncloud >/dev/null || owncloud &
+pgrep transmission >/dev/null || transmission-gtk -m &
+pgrep -x dropbox >/dev/null || dropbox start &
+pgrep -x owncloud >/dev/null || owncloud &
 
 [ -e "$LLIMA_FIFO" ] && bspc subscribe report >"$LLIMA_FIFO" &
