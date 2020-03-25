@@ -3,6 +3,13 @@
 # Unhide all nodes in focused desktop
 
 NODES=$(bspc query -N -n .hidden -d focused)
+NEWFOCUS=
+# Select a hidden node
+[ -n "$NODES" ] && NEWFOCUS="$(echo $NODES | tail -n 1)"
+
 for node in $NODES; do
 	bspc node $node -g hidden=off
 done
+
+#Change focus to the hidden node
+[ -n "$NEWFOCUS" ] && bspc node -f $NEWFOCUS
