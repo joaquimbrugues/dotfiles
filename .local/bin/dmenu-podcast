@@ -5,8 +5,10 @@
 PODCAST_DIR="$HOME/Podcast"
 [ -d "$PODCAST_DIR" ] || exit
 
-FILE=$(ls -w1 "$PODCAST_DIR" | dmenu_col -p "Tria un podcast" -l 10)
-if [ -n "$FILE" ]; then
+FILE=$(echo -e "Podboat\n$(ls -w1 $PODCAST_DIR)" | dmenu_col -p "Tria un podcast" -l 10)
+if [ "$FILE" = "Podboat" ]; then
+	$TERMINAL -e podboat
+elif [ -n "$FILE" ]; then
 	DEL=$(echo -e "No\nSí" | dmenu_col -p "Vols esborrar el fitxer en acabar?")
 	mpv --player-operation-mode=pseudo-gui "$PODCAST_DIR/$FILE" && [ "$DEL" = "Sí" ] && rm "$PODCAST_DIR/$FILE"
 fi
