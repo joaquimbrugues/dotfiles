@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Script to quickly update the git repositories in PKG_DIR
 PKG_DIR=$HOME/paquets
 

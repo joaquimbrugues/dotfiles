@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Put the contents of a Podcast folder into a dmenu.
 # Play your choice into mpv opened in a terminal
 
