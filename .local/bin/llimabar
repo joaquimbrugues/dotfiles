@@ -51,6 +51,7 @@ else
 fi
 
 # Put the bar at the lowest layer
+sleep 2
 wid=$(xdo id -a "$LLIMA_NAME")
 xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
 
