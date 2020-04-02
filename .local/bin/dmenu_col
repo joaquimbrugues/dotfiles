@@ -2,5 +2,7 @@
 # Wrapper for dmenu with the system colors
 
 . $HOME/.local/share/global-style
+# Use as height the height of the bar + the margin, which is 5px
+HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
 
-dmenu -nb "$COLOR_BACKGROUND" -nf "$COLOR_FOREGROUND" -sb "$COLOR_UNDERLINE" -sf "$COLOR_FOREGROUND_SELECTED" -fn "$BAR_FONT" -i "$@"
+dmenu -nb "$COLOR_BACKGROUND" -nf "$COLOR_FOREGROUND" -sb "$COLOR_UNDERLINE" -sf "$COLOR_FOREGROUND_SELECTED" -fn "$BAR_FONT" -h "$HEIGHT" -i "$@"
