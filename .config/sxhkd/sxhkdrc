@@ -102,3 +102,9 @@ super + l ; shift + b
 	$HOME/.local/bin/latex/compile -b
 super + l ; Return
 	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
+
+# Switch keyboard layout to Spanish/Russian
+super + ctrl + s
+	setxkbmap es && notify-send "Distribució del teclat: es"
+super + ctrl + r
+	setxkbmap ru && notify-send "Distribució del teclat: ru"
