@@ -40,3 +40,5 @@ if [ "$POWER" = "yes" ]; then
 		;;
 	esac
 fi
+
+echo "L" >$LLIMA_FIFO

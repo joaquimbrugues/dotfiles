@@ -22,6 +22,8 @@ bat_action3='notify-send "Mòdul de bateria" "\- Mostra la càrrega actual."'
 date_action1='notify-send "$(cal)"'
 date_action3='notify-send "Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
 wm_action3='notify-send "Escriptoris" "\- Clica sobre un escriptori anar-hi."'
+bluetooth_action1='blueman-manager && echo "L" >$LLIMA_FIFO'
+bluetooth_action3='notify-send "Mòdul de Bluetooth" "\- Apareix només si el connector de Bluetooth està encès.\n\- Clica per obrir el blueman-manager."'
 launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
@@ -43,6 +45,10 @@ while read -r line ; do
 			mail=
 			num_mails="$(ls $HOME/.local/share/mail/*/INBOX/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)"
 			[ $num_mails -gt 0 ] && mail=" %{A:${mail_action1}:}%{A3:${mail_action3}:}%{+u}Correus: $num_mails%{-u}%{A}%{A} "
+			;;
+		L*)
+			bluetooth=
+			[ "$(bluetoothctl show | grep -i powered | awk '{print $2}')" = "yes" ] && bluetooth=" %{A:${bluetooth_action1}:}%{A3:${bluetooth_action3}:}%{+u}Bluetooth on%{-u}%{A}%{A} "
 			;;
 		I*)
 			#wstat module output
@@ -101,5 +107,5 @@ while read -r line ; do
 		*)
 			;;
 	esac
-	printf "%s\n" "%{l}${launcher}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
+	printf "%s\n" "%{l}${launcher}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bluetooth}${bat}${date}"
 done
