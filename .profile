@@ -10,3 +10,4 @@ export PATH="$PATH:$HOME/.local/bin"
 
 export LLIMA_FIFO="/tmp/llima-fifo"
 export LLIMA_NAME="llimabar"
+export LOCALDB="$HOME/.local/share/home.db"
