@@ -1,0 +1,42 @@
+#!/bin/sh
+# Power on/off the bluetooth controler
+# Connect/disconnect a trusted device
+# Depends on bluetoothctl
+
+POWER=$(bluetoothctl show | grep -i powered | awk '{print $2}')
+# If bluetooth connector is off, turn it on
+if [ "$POWER" = "no" ]; then
+	bluetoothctl power on && POWER="yes"
+fi
+
+if [ "$POWER" = "yes" ]; then
+	# Options for a dmenu:
+	# - Turn off the connector
+	# - Open a graphical applet to manage bluetooth devices
+	# - A list of trusted devices we can connect to
+	LIST="Apaga\nObre blueman\n$(bluetoothctl devices | cut -d' ' -f 3-)"
+	PICK=$(echo -e "$LIST" | dmenu_col -l 10 -p "Bluetooth: Indica l'acció o el dispositiu a connectar/desconnectar")
+	case "$PICK" in
+		# Turn off the bluetooth connector
+		"Apaga") bluetoothctl power off ;;
+		# Open blueman
+		*blueman) blueman-manager & ;;
+		# No pick: do nothing
+		"") ;;
+		*)
+			# Get the UUID of the selected device
+			ID=$(bluetoothctl devices | grep "$PICK" | awk '{print $2}')
+			# Check if the device was listed
+			if [ -n "$ID" ]; then
+				# Get the status of the device
+				CONNECTED="$(bluetoothctl info $ID | grep -i connected | awk '{print $2}')"
+				# If the device was connected, disconnect it and viceversa
+				case "$CONNECTED" in
+					"yes") bluetoothctl disconnect "$ID" >/dev/null && notify-send "Dispositiu $PICK desconnectat";;
+					"no") bluetoothctl connect "$ID" >/dev/null && notify-send "Dispositiu $PICK connectat";;
+					*) ;;
+				esac
+			fi
+		;;
+	esac
+fi
