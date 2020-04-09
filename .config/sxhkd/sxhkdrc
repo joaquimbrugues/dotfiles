@@ -110,3 +110,7 @@ super + ctrl + s
 	setxkbmap es && notify-send "Distribució del teclat: es"
 super + ctrl + r
 	setxkbmap ru && notify-send "Distribució del teclat: ru"
+
+# Open the Bluetooth controler
+super + b
+	dmenu-bluetooth
