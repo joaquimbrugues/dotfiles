@@ -1,11 +1,11 @@
 #!/bin/sh
 # If the temporal file signaling the document to be compiled exists,
 # return its contents. Otherwise, open a dmenu to create it
-# This depends on locate. If a file does not appear here, consider running updatedb!
 TMPFILE=$($HOME/.local/bin/latex/tmpfileinfo)
 if [ ! -s $TMPFILE ]
 then
+	updatedb -U "$HOME" -l no -o "$LOCALDB"
 	touch $TMPFILE
-	locate -Ae "$HOME" ".tex" | dmenu_col -p "Tria un tex per treballar-hi" -l 10 > $TMPFILE
+	locate -d "$LOCALDB" -Ae "$HOME" ".tex" | dmenu_col -p "Tria un tex per treballar-hi" -l 10 > $TMPFILE
 fi
 cat $TMPFILE

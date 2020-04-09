@@ -4,8 +4,8 @@
 . $HOME/.local/share/global-style
 DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
 
-FILE=$(locate "$HOME/Video" "$HOME/Downloads" | grep -E ".*\.avi$|.*\.mkv$|.*\.mp4$|.*\.webm$" | dmenu_col -l 10 -p "Obre amb MPV")
+FILE=$(locate -d "$LOCALDB"  ".avi" ".mkv" ".mp4" ".webm" | grep -v "$HOME/\." | dmenu_col -l 10 -p "Obre amb MPV")
 if [ -e "$FILE" ]; then
 	DEL=$(echo -e "No\nSí" | dmenu_col -h "$DMENU_HEIGHT" -p "Vols esborrar el fitxer en acabar?")
-	mpv --sub=1 "$FILE" && [ "$DEL" = "Sí" ] && rm "$FILE"
+	mpv --sub=1 "$FILE" && [ "$DEL" = "Sí" ] && rm "$FILE" && updatedb -U "$HOME" -l no -o "$LOCALDB"
 fi
