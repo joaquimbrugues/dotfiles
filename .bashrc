@@ -78,6 +78,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Add autocompletion to sudo
+complete -cf sudo
+
 GPG_TTY=$(tty)
 export GPG_TTY
 
