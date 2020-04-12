@@ -50,6 +50,9 @@ bspc rule -a Surf state=tiled
 # Load xresources
 [ -f $HOME/.Xresources ] && xrdb -merge $HOME/.Xresources
 
+# Put the right icon for the mouse cursor
+xsetroot -cursor_name left_ptr
+
 # Reload the lemonbar
 pgrep -x llimabar >/dev/null && killall llimabar
 pgrep -x lemonbar >/dev/null && killall lemonbar
