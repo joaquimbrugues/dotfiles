@@ -73,7 +73,7 @@ super + a
 	bspc rule -a URxvt -o state=floating rectangle=400x250+10+820 sticky=on && $TERMINAL -e bc -l -q $HOME/.config/bc/init
 # Open an mpv window with the feed of the webcam, following you around
 super + w
-	bspc rule -a mpv -o state=floating rectangle=480x360+876+398 sticky=on && mpv av://v4l2:/dev/video0 &
+	bspc rule -a mpv -o state=floating rectangle=480x360+1430+710 sticky=on && mpv av://v4l2:/dev/video0 &
 
 # Hide current window
 super + h
