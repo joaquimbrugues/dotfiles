@@ -50,7 +50,7 @@ super + alt + n
 super + alt + l
 	telegram-desktop
 super + alt + c
-	$TERMINAL -e mocp
+	clementine
 super + alt + y
 	$TERMINAL -e lynx $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a lynx" -l 20)
 super + alt + r
@@ -108,3 +108,20 @@ super + ctrl + s
 	setxkbmap es && notify-send "Distribució del teclat: es"
 super + ctrl + r
 	setxkbmap ru && notify-send "Distribució del teclat: ru"
+
+# MOC controlers
+# Open the interface
+super + ctrl + c
+	$TERMINAL -e mocp
+# Kill the server
+super + ctrl + q
+	mocp -x && notify-send "MOC" "Servidor aturat"
+# Toggle pause/unpause
+super + ctrl + space
+	mocp -G && notify-send "MOC" "Pausa/represa"
+# Switch to the previous/next song
+super + ctrl + {p,n}
+	mocp -{r,f}
+# Start playing
+super + ctrl + i
+	pgrep mocp >/dev/null || mocp -S; mocp -p
