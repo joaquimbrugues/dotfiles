@@ -50,7 +50,6 @@ fi
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
-alias aptdate='sudo apt update && apt list --upgradable'
 alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # less and man colour variables
