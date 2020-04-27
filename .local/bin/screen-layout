@@ -1,30 +1,42 @@
 
 #!/bin/sh
 # Use a dmenu to switch between diferent screen layouts with xrandr
-CHOICES="únic\ndual-dreta\ndual-esquerra\naltre"
-PICK=$1
-[ -z $PICK ] && PICK=$(echo -e $CHOICES | dmenu_col -p "Distribució de monitors" -l 10)
+primary="$(xrandr | grep -w connected | grep -w primary | awk '{print $1}')"
+secondary="$(xrandr | grep -w connected | grep -wv primary | head -n 1 | awk '{print $1}')"
+primary_geom="$(xrandr | grep $primary -A1 | tail -n 1 | awk '{print $1}')"
+primary_width="$(echo $primary_geom | awk -F'x' '{print $1}')"
+[ -n "$secondary" ] && secondary_geom="$(xrandr | grep $secondary -A1 | tail -n 1 | awk '{print $1}')"
+[ -n "$secondary" ] && secondary_width="$(echo $secondary_geom | awk -F'x' '{print $1}')"
 
-case $PICK in
+[ -z "$secondary" ] && PICK="únic"
+[ -z "$PICK" ] && PICK="$1"
+CHOICES="únic\ndual-dreta\ndual-esquerra\naltre"
+[ -z "$PICK" ] && PICK="$(echo -e $CHOICES | dmenu_col -p 'Distribució de monitors' -l 10)"
+
+case "$PICK" in
 	únic)
-		xrandr --output eDP-1 --mode 1920x1080 --output HDMI-1 --off
-		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+		xrandr --output "$primary" --mode "$primary_geom" --output "$secondary" --off
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 2 3 4 5 6 7 8 9 0
 		wallpaper
 	;;
 	dual-dreta)
-		xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --primary --output HDMI-1 --mode 1920x1080 --pos 1920x0
-		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
+		xrandr --output "$primary" --mode "$primary_geom" --pos 0x0 --primary --output "$secondary" --mode "$secondary_geom" --pos "$primary_width"x0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 0
 		wallpaper
 	;;
 	dual-esquerra)
-		xrandr --output eDP-1 --mode 1920x1080 --pos 1920x0 --primary --output HDMI-1 --mode 1920x1080 --pos 0x0
-		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
+		xrandr --output "$primary" --mode "$primary_geom" --pos "$secondary_width"x0 --primary --output "$secondary" --mode "$secondary_geom" --pos 0x0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 0
 		wallpaper
 	;;
 	altre)
 		arandr
-		pgrep bspwm >/dev/null && bspc monitor eDP-1 -d 1 3 5 7 9 && bspc monitor HDMI-1 -d 2 4 6 8 0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 0
 		wallpaper
 	;;
 	*) ;;
 esac
+
+pgrep -x llimabar >/dev/null && killall llimabar && set_llimabar="yes"
+pgrep -x lemonbar >/dev/null && killall lemonbar
+[ -n "set_llimabar" ] && llimabar &
