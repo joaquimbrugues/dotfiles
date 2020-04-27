@@ -2,11 +2,13 @@
 # Turn on the lemonbar
 
 # Kill background procresses on exit
-trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+#trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # Get the monitors names
 primary="$(xrandr | grep -w connected | grep -w primary | awk '{print $1}')"
 secondary="$(xrandr | grep -w connected | grep -wv primary | head -n 1 | awk '{print $1}')"
+secondary_geom="$(xrandr | grep $secondary | grep -Po '\d+x\d+')"
+[ -z "$secondary_geom" ] && secondary=""
 
 # Refresh the pipe
 [ -e "$LLIMA_FIFO" ] && rm "$LLIMA_FIFO"
