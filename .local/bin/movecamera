@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Find the window with MPV opened and move it to one of the corners of the screen
+# This works with a particular window width and height
+# The argument can be NO, NE, SO, SE (nord-sud, oest-est)
+
+MONWIDTH=1920
+MONHEIGHT=1080
+WINWIDTH=480
+WINHEIGHT=270
+
+case "$1" in
+	N*) POS_Y=0 ;;
+	S*) POS_Y=$(echo $MONHEIGHT $WINHEIGHT | awk '{print $1 - $2 - 10}') ;;
+	*) ;;
+esac
+
+case "$1" in
+	*O) POS_X=0 ;;
+	*E) POS_X=$(echo $MONWIDTH $WINWIDTH | awk '{print $1 - $2 - 10}') ;;
+	*) ;;
+esac
+
+id=$(xdotool search --pid "$(pidof mpv)")
+
+xdo move -x $POS_X -y $POS_Y $id
