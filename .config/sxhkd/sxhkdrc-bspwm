@@ -73,7 +73,7 @@ super + a
 	bspc rule -a URxvt -o state=floating rectangle=400x250+10+820 sticky=on && $TERMINAL -e bc -l -q $HOME/.config/bc/init
 # Open an mpv window with the feed of the webcam, following you around
 super + w
-	bspc rule -a mpv -o state=floating rectangle=480x360+1428+710 sticky=on layer=above && mpv --no-correct-pts --fps=10 /dev/video0 &
+	bspc rule -a mpv -o state=floating rectangle=480x270+1428+800 sticky=on layer=above && mpv --no-correct-pts --fps=10 /dev/video0 &
 super + ctrl + {dead_grave,dead_acute,comma,period}
 	movecamera {NO,NE,SO,SE}
 
