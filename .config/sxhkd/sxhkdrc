@@ -63,8 +63,6 @@ super + alt + o
 	chromium
 super + alt + h
 	thunar $HOME
-super + alt + v
-	virtualbox
 super + alt + s
 	surf $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a surf" -l 20)
 # End of usual program launchers
