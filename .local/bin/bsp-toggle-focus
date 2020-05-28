@@ -3,7 +3,7 @@
 # Script to toggle the focus between floating and tiling windows in a workspace
 
 # Do something only if there is a floating window in the current workspace
-[ -z "$(bspc query -N -n .floating -d focused)" ] && exit
+[ -z "$(bspc query -N -n .floating -d focused)" ] && exit 0
 
 NEW_NODE=""
 if [ -z "$(bspc query -N -n focused.floating -d focused)" ]; then
@@ -14,6 +14,6 @@ else
 	NEW_NODE=$(bspc query -N -n newest.tiled | head -n 1)
 fi
 
-[ -z "$NEW_NODE" ] && exit
+[ -z "$NEW_NODE" ] && exit 0
 # Change the focus
 bspc node -f $NEW_NODE
