@@ -1,7 +1,7 @@
 #!/bin/sh
 # Multi-use script. Invoke getcurrentfile and do some action with it
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
-[ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit
+[ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit 1
 DIR=$(dirname "$FILE")
 TERMINAL="urxvt"
 EDITOR="nano"

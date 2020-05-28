@@ -6,7 +6,7 @@
 DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
 
 PODCAST_DIR="$HOME/Podcast"
-[ -d "$PODCAST_DIR" ] || exit
+[ -d "$PODCAST_DIR" ] || exit 1
 
 FILE=$(echo -e "Podboat\n$(ls -w1 $PODCAST_DIR)" | dmenu_col -p "Tria un podcast" -l 10)
 if [ "$FILE" = "Podboat" ]; then
