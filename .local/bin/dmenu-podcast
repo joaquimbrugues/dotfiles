@@ -11,7 +11,7 @@ PODCAST_DIR="$HOME/Podcast"
 FILE=$(echo -e "Podboat\n$(ls -w1 $PODCAST_DIR)" | dmenu_col -p "Tria un podcast" -l 10)
 if [ "$FILE" = "Podboat" ]; then
 	$TERMINAL -e podboat
-elif [ -r "$PODCAST_DIR/$FILE" ]; then
+elif [ -n "$FILE" ]; then
 	mpv --player-operation-mode=pseudo-gui "$PODCAST_DIR/$FILE"
 	echo -e "No\nSí" | dmenu_col -c -p "Vols esborrar el fitxer?" -l 2 | grep "Sí" && rm "$PODCAST_DIR/$FILE" && updatedb -U "$HOME" -l no -o "$LOCALDB"
 fi
