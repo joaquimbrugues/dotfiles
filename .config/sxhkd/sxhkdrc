@@ -31,6 +31,8 @@ super + z
 	dmenu-reader
 super + p
 	dmenu-podcast
+super + ctrl + y
+	xclip-ytdownload
 
 super + F1
 	dmenu-usb
