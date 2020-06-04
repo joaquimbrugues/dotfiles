@@ -33,6 +33,8 @@ super + p
 	dmenu-podcast
 super + s
 	screenkey-toggle
+super + ctrl + y
+	xclip-ytdownload
 
 super + F1
 	dmenu-usb
