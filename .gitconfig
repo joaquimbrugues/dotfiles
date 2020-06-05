@@ -8,3 +8,5 @@
 	c = commit
 	a = add
 	l = log --graph --oneline --branches --decorate
+[pull]
+	ff = only
