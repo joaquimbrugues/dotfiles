@@ -6,4 +6,4 @@
 pgrep screenkey >/dev/null && killall screenkey >/dev/null 2>&1 && exit 0
 
 # Otherwise, run it
-screenkey --scr 1 &
+screenkey &
