@@ -31,6 +31,8 @@ super + z
 	dmenu-reader
 super + p
 	dmenu-podcast
+super + s
+	screenkey-toggle
 super + ctrl + y
 	xclip-ytdownload
 
