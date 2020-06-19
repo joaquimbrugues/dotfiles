@@ -53,7 +53,7 @@ fi
 alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sudo='sudo '
 alias esync='emerge --sync'
-alias eupgrade='emerge -auDU --keep-going --with-bdeps=y @world'
+alias eupgrade='emerge -auDNU --keep-going --with-bdeps=y @world'
 alias aptdate='apt update && apt list --upgradable'
 
 # less and man colour variables
