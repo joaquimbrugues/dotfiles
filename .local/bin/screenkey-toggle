@@ -1,0 +1,9 @@
+#!/bin/sh
+# Little script to toggle the execution of screenkey
+# Screenkey: https://gitlab.com/screenkey/screenkey.git
+
+# If screenkey is running kill it and exit
+pgrep screenkey >/dev/null && killall screenkey >/dev/null 2>&1 && exit 0
+
+# Otherwise, run it
+screenkey &

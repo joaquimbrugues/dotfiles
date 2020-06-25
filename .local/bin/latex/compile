@@ -1,32 +1,43 @@
 #!/bin/sh
 # Multi-use script. Invoke getcurrentfile and do some action with it
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
-[ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit
-DIR=$(dirname $FILE)
+[ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit 1
+DIR=$(dirname "$FILE")
+TERMINAL="urxvt"
+EDITOR="nano"
+VIEWER="zathura"
 
 case "$1" in
-	-p|--pdf) cd $DIR && pdflatex "$(basename $FILE)" && notify-send "Compilat!" ;;
+	-p|--pdf) cd "$DIR" && pdflatex $(basename "$FILE") && notify-send "Compilat!" ;;
 	-b|--bibliography) if [ -r $BIB ]
 		then
-			[ ! -e $(echo "$DIR/references.bib") ] && ln -s $BIB $DIR/references.bib
-			cd $DIR && bibtex $(basename $FILE | sed -e 's/\.tex/\.aux/') && notify-send "Compilat!"
+			[ ! -e "$(echo $DIR/references.bib)" ] && ln -s $BIB "$DIR/references.bib"
+			cd "$DIR" && bibtex $(basename "$FILE" | sed -e 's/\.tex/\.aux/') && notify-send "Compilat!"
 		fi
 		;;
-	-E|--edit) PICK=$(find "$DIR" | grep ".*\.tex$" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
+	-E|--edit)
+		LIST=$(find "$DIR" -name "*.tex" -o -name "*.tikz")
+		[ $(echo "$LIST" | wc -l) -gt 1 ] && PICK=$(echo "$LIST" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
-			$TERMINAL -e nano "$FILE"
+			$TERMINAL -e $EDITOR "$FILE"
 		else
-			$TERMINAL -e nano "$PICK"
+			$TERMINAL -e $EDITOR "$PICK"
 		fi
 		;;
-	-V|--view) PICK=$(find "$DIR" | grep ".*\.pdf$" | dmenu_col -p "Tria un pdf a visualitzar" -l 10)
-		if [ -z $PICK ]
+	-V|--view)
+		LIST=$(find "$DIR" -name "*.pdf")
+		if [ $(echo "$LIST" | wc -l) -gt 1 ]; then
+			PICK=$(echo "$LIST" | dmenu_col -p "Tria un pdf a visualitzar" -l 10)
+		else
+			PICK="$LIST"
+		fi
+		if [ -z "$PICK" ]
 		then
 			notify-send "No s'ha seleccionat cap pdf"
 		else
-			zathura $PICK
+			$VIEWER "$PICK"
 		fi
 		;;
-	*) cd $DIR && latex $(basename $FILE) && notify-send "Compilat!" ;;
+	*) cd "$DIR" && latex $(basename "$FILE") && notify-send "Compilat!" ;;
 esac

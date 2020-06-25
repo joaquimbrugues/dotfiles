@@ -9,6 +9,7 @@ nano (colors)	https://github.com/scopatz/nanorc.git
 0ad
 bastet
 base-devel
+bc
 bspwm
 clementine
 cmatrix
@@ -16,6 +17,7 @@ compton
 curseradio
 davfs2
 dmenu
+dunst
 dwarf-fortress
 fdisk
 feh
@@ -35,6 +37,7 @@ libreoffice
 lightdm
 lynx
 lxappearance
+keepass
 nano
 neofetch
 neomutt

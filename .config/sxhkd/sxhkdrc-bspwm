@@ -5,7 +5,7 @@ super + shift + r
 	sh -c $HOME/.config/bspwm/bspwmrc
 
 # Change global style and restart bspwm
-super + s
+super + shift + s
 	dmenu-style
 
 # Restart the lemonbar
@@ -70,4 +70,11 @@ super + alt + {Left,Down,Up,Right}
 
 # Open a calculator that follows you around
 super + a
-	bspc rule -a URxvt -o state=floating rectangle=400x300+0+700 sticky=on && $TERMINAL -e bc -q $HOME/.config/bc/init
+	bspc rule -a URxvt -o state=floating rectangle=400x250+10+508 sticky=on && $TERMINAL -e bc -l -q $HOME/.config/bc/init
+
+# Hide current window
+super + h
+	bspc node -g hidden=on
+# Unhide all the nodes in the current desktop
+super + comma
+	bsp-unhide

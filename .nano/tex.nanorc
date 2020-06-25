@@ -6,10 +6,11 @@ comment "%"
 
 linter chktex -v0 -q -I
 
+color magenta "[{}]"
+color brightblack "\[[^\$]*\]"
 color yellow "\$(\\\$|[^$])*[^\\]\$"
 color yellow "\$\$(\\\$|[^$])*[^\\]\$\$"
 color yellow "\\\[(\\\$|[^$])*[^\\]\\\]"
 icolor green "\\.|\\[A-Z]*"
-color magenta "[{}]"
-color blue "%.*"
-color blue start="\\begin\{comment\}" end="\\end\{comment\}"
+color cyan "%.*"
+color cyan start="\\begin\{comment\}" end="\\end\{comment\}"

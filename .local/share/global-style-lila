@@ -18,6 +18,6 @@ COLOR_BACKGROUND_SELECTED="#5c555e"
 COLOR_FOREGROUND_SELECTED="#fae6ff"
 
 BAR_HEIGHT=25
-BAR_FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
+BAR_FONT="-*-dejavu sans mono -medium-r-*-*-*-*-*-*-*-*-*-*"
 
 WALLPAPER="$HOME/wallpapers/elements-bg.jpg"

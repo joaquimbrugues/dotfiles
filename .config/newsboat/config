@@ -11,13 +11,15 @@ color listfocus_unread green default bold
 color info red black bold
 color article cyan default
 
+# The script devour is installed from https://github.com/salman-abedin/devour
 browser "lynx %u"
 macro , open-in-browser
 macro y set browser "lynx %u"; open-in-browser
-macro f set browser "firefox %u"; open-in-browser ; set broswer "lynx %u"
-macro v set browser "vlc -f %u"; open-in-browser ; set browser "lynx %u"
-macro c set browser "echo %u | sed -e 's/^$//' | xclip -i -selection clipboard"; open-in-browser ; set browser "lynx %u"
-macro d set browser "youtube-dl --write-auto-sub --embed-subs %u --output '~/Downloads/%%(title)s.%%(ext)s'"; open-in-browser ; set browser "lynx %u"
+macro f set browser "devour firefox %u"; open-in-browser ; set broswer "lynx %u"
+macro v set browser "devour mpv %u"; open-in-browser ; set browser "lynx %u"
+macro c set browser "echo -n %u | xclip -i -selection clipboard"; open-in-browser ; set browser "lynx %u"
+macro d set browser "youtube-dl --write-auto-sub --embed-subs %u --output '~/Downloads/%%(title)s.%%(ext)s' && updatedb -U $HOME -l no -o $LOCALDB"; open-in-browser ; set browser "lynx %u"
+macro s set browser "devour surf %u"; open-in-browser ; set browser "lynx %u"
 
 #Podboat configuration
 download-path "~/Podcast"

@@ -50,8 +50,11 @@ fi
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
-alias aptdate='sudo apt update && apt list --upgradable'
 alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias sudo='sudo '
+alias esync='emerge --sync'
+alias eupgrade='emerge -auDU --keep-going --with-bdeps=y @world'
+alias aptdate='apt update && apt list --upgradable'
 
 # less and man colour variables
 # Start blinking
@@ -79,5 +82,10 @@ if ! shopt -oq posix; then
 fi
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u\[\033[00m\] \[\033[01;93m\]\w\[\033[00m\]\[\033[01;32m\]]\[\033[00m\]\[\033[01;31m\]\$\[\033[00m\] '
+
+# Add autocompletion to sudo
+complete -cf sudo
+
+pfetch
 
 source $HOME/.profile

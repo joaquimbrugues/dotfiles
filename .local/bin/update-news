@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 # Small program to update newsboat feeds, regardless of whether newsboat is running
-ping -q -c 1 1.1.1.1 > /dev/null || exit
+ping -q -c 1 1.1.1.1 > /dev/null || exit 0
 SUCCESS_MSG="Canals de newsboat actualitzats"
-pgrep -x newsboat >/dev/null && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
 /usr/bin/newsboat -x reload && notify-send "$SUCCESS_MSG"

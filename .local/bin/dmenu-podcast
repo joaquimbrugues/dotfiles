@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+# Put the contents of a Podcast folder into a dmenu.
+# Play your choice into mpv opened in a terminal
+
+. $HOME/.local/share/global-style
+DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
+
+PODCAST_DIR="$HOME/Podcast"
+[ -d "$PODCAST_DIR" ] || exit 1
+
+FILE=$(echo -e "Podboat\n$(ls -w1 $PODCAST_DIR)" | dmenu_col -p "Tria un podcast" -l 10)
+if [ "$FILE" = "Podboat" ]; then
+	$TERMINAL -e podboat
+elif [ -n "$FILE" ]; then
+	mpv --player-operation-mode=pseudo-gui "$PODCAST_DIR/$FILE"
+	echo -e "No\nSí" | dmenu_col -c -p "Vols esborrar el fitxer?" -l 2 | grep "Sí" && rm "$PODCAST_DIR/$FILE" && updatedb -U "$HOME" -l no -o "$LOCALDB"
+fi

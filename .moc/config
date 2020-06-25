@@ -1,0 +1,44 @@
+# Show file titles (title, author, album) instead of file names?
+ReadTags = yes
+
+# In which directory do you store your music files?  If you specify it
+# you will be able to jump straight to this directory with the '-m'
+# parameter or the 'm' command.  This can also point to a playlist.
+MusicDir = "${HOME}/Music"
+Fastdir1 = "${HOME}/Podcast"
+
+# Default FormatString:
+#   %n - Track number
+#   %a - Artist
+#   %A - Album
+#   %t - Title
+#   %(X:TRUE:FALSE) - Ternary expression: if X exists, do TRUE,
+#                     otherwise FALSE.  The escape character must
+#                     be doubled (i.e., '\\').  (See zshmisc
+#                     documentation for more information.)
+FormatString = "%(n:%n :)%(t:- %t:)"
+
+# Show time played as a percentage in the time progress bar.
+ShowTimePercent = yes
+
+# Theme file to use.  This can be absolute path or relative to
+# /usr/share/moc/themes/ (depends on installation prefix) or
+# ~/.moc/themes/ .
+Theme = joaquim_theme
+
+
+# String to append to the queued message count if any
+# error messages are still waiting to be displayed.
+ErrorMessagesQueued = "+"
+
+# Run the OnSongChange command when a new song starts playing.
+# Specify the full path (i.e. no leading '~') of an executable to run.
+# Arguments will be passed, and you can use the following escapes:
+#     %a artist
+#     %r album
+#     %f filename
+#     %t title
+#     %n track
+#     %d file duration in XX:YY form
+#     %D file duration, number of seconds
+OnSongChange = "/usr/bin/notify-send MOC %t"

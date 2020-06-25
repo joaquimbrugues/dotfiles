@@ -6,8 +6,10 @@
 
 super + Return
 	$TERMINAL
+# Run dmenu launcher.
+# IMPORTANT: Dmenu needs to be patched with the center patch
 super + d
-	dmenu_col_run -l 10
+	dmenu_col_run -c -l 10
 super + shift + q
 	dmenu-quit
 super + x
@@ -15,16 +17,24 @@ super + x
 super + ctrl + l
 	slock
 
-super + {_,shift} + c
+super + {c,m}
 	{configure,cheatsheets}
-super + shift + h
-	$TERMINAL -e htop
 super + shift + d
-	[ -d $HOME/Descargas ] && cd $HOME/Descargas && $TERMINAL
-super + shift + m
-	man-this
+	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
 super + o
 	todo
+super + g
+	$TERMINAL -e gotop
+super + shift + v
+	dmenu-video
+super + z
+	dmenu-reader
+super + p
+	dmenu-podcast
+super + s
+	screenkey-toggle
+super + ctrl + y
+	xclip-ytdownload
 
 super + F1
 	dmenu-usb
@@ -54,9 +64,9 @@ super + alt + h
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
 # Add a pipe to the lemonbar to notify the change
 {XF86AudioRaiseVolume, super + plus}
-	pactl set-sink-volume 0 +2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	amixer sset Master 2%+ && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 {XF86AudioLowerVolume, super + minus}
-	pactl set-sink-volume 0 -2% && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
+	amixer sset Master 2%- && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 XF86AudioMute
 	pactl set-sink-mute 0 toggle && [ -e $LLIMA_FIFO ] && echo "V" >$LLIMA_FIFO
 
@@ -69,15 +79,38 @@ super + ctrl + {0,1,2,3}
 	screen-layout { ,únic,dual-dreta,dual-esquerra}
 
 # LaTeX commands
-super + l : super + {a,b,v}
+super + l ; {a,b,v}
 	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
-super + l : super + {_,shift} + e
+super + l ; {_,shift} + e
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
-super + l : super + {_,shift} + c
+super + l ; {_,shift} + c
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
-super + l : super + {_,shift} + p
+super + l ; {_,shift} + p
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
-super + l : super + shift + b
+super + l ; shift + b
 	$HOME/.local/bin/latex/compile -b
-super + l : super + Return
+super + l ; Return
 	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
+
+# Switch keyboard layout to Spanish/Russian
+super + ctrl + s
+	setxkbmap es && notify-send "Distribució del teclat: es"
+super + ctrl + r
+	setxkbmap ru && notify-send "Distribució del teclat: ru"
+
+# MOC controlers
+# Open the interface
+super + ctrl + c
+	$TERMINAL -e mocp
+# Kill the server
+super + ctrl + q
+	mocp -x && notify-send "MOC" "Servidor aturat"
+# Toggle pause/unpause
+super + ctrl + space
+	mocp -G && notify-send "MOC" "Pausa/represa"
+# Switch to the previous/next song
+super + ctrl + {p,n}
+	mocp -{r,f}
+# Start playing
+super + ctrl + i
+	pgrep mocp >/dev/null || mocp -S; mocp -p

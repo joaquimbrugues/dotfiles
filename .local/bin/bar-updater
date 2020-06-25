@@ -14,14 +14,15 @@ mail_action3='notify-send "Mòdul de correu" "\- Mostra missatges sense llegir.\
 wstat_action1='$TERMINAL -e nmtui'
 wstat_action3='notify-send "Mòdul internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió."'
 vol_action1='pactl set-sink-mute 0 toggle && echo "V" > $LLIMA_FIFO'
+vol_action2='pavucontrol'
 vol_action3='notify-send "Mòdul de volum" "\- Mostra el volum i si està silenciat.\n\- Clica per silenciar.\n\- Fes servir la roda del ratolí per pujar o baixar el volum."'
-vol_action4='pactl set-sink-volume 0 +2% && echo "V" > $LLIMA_FIFO'
-vol_action5='pactl set-sink-volume 0 -2% && echo "V" > $LLIMA_FIFO'
+vol_action4='amixer sset Master 2%+ && echo "V" > $LLIMA_FIFO'
+vol_action5='amixer sset Master 2%- && echo "V" > $LLIMA_FIFO'
 bat_action3='notify-send "Mòdul de bateria" "\- Mostra la càrrega actual."'
-date_action1='notify-send "$(ncal -M -bh)"'
+date_action1='notify-send "$(cal)"'
 date_action3='notify-send "Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
 wm_action3='notify-send "Escriptoris" "\- Clica sobre un escriptori anar-hi."'
-launcher_action1='dmenu_col_run -l 10'
+launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
 
@@ -55,7 +56,7 @@ while read -r line ; do
 				*\[off\]*) message="SIL ($vol%)" ;;
 				*\[on\]*) message="VOL $vol%" ;;
 			esac
-			volume=" %{A:${vol_action1}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A} "
+			volume=" %{A:${vol_action1}:}%{A2:${vol_action2}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A}%{A} "
 			;;
 		B*)
 			#battery module output

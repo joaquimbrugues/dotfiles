@@ -18,6 +18,6 @@ COLOR_BACKGROUND_SELECTED="#474f61"
 COLOR_FOREGROUND_SELECTED="#98d2fc"
 
 BAR_HEIGHT=25
-BAR_FONT="-*-unifont-*-r-*-*-*-*-*-*-*-*-*-*"
+BAR_FONT="-*-dejavu sans mono -medium-r-*-*-*-*-*-*-*-*-*-*"
 
 WALLPAPER="$HOME/wallpapers/earth_and_moon.jpg"
