@@ -2,7 +2,7 @@
 	name = Joaquim
 	email = devjoaquim@gmail.com
 [core]
-	editor = nano
+	editor = nvim
 [alias]
 	s = status -sb
 	c = commit
