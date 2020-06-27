@@ -1,8 +1,15 @@
 #!/bin/sh
 # Grab selection from xclip and input this to youtube-dl
-# Depends on xclip and youtube-dl
-pgrep youtube-dl && notify-send "YT-DL: Descarregant un fitxer" && exit 0
-URL=$(xclip -o)
+# Depends on xclip, youtube-dl and task-spooler
+# UPDATE: Optionally, you can pass the URL as an argument instead of passing it through xclip.
+# Then name of the script might be misleading now, but I'm too lazy to correct it
+if [ -n "$1" ]; then
+	URL="$1"
+else
+	URL=$(xclip -o)
+fi
 echo "$URL" | grep "http" >/dev/null || exit 0
-notify-send "YT-DL: Descarregant..." "$URL"
-youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s" && updatedb -U $HOME -l no -o $LOCALDB && notify-send "YT-DL: S'ha descarregat el fitxer!"
+notify-send "YT-DL: Descarregant..." "$(basename $URL)"
+ts youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s"
+ts updatedb -U $HOME -l no -o $LOCALDB
+ts notify-send "YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)"
