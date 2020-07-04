@@ -10,6 +10,8 @@ color listnormal_unread yellow default
 color listfocus_unread green default bold
 color info red black bold
 color article cyan default
+highlight all "---.*---" blue default bold
+highlight feedlist ".*(0/0))" black
 
 # The script devour is installed from https://github.com/salman-abedin/devour
 browser "lynx %u"
