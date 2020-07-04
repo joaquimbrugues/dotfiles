@@ -21,7 +21,7 @@ compton -f &
 wallpaper &
 
 # Execute screen-layout to set the workpaces
-screen-layout únic
+screen-layout dual-esquerra
 
 # Window borders and gaps
 bspc config border_width 2
