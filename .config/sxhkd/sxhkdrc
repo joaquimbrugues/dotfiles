@@ -53,6 +53,10 @@ super + alt + n
 	$TERMINAL -e newsboat
 super + alt + g
 	telegram-desktop
+super + alt + w
+	whatsapp
+super + alt + l
+	lbry
 super + alt + y
 	$TERMINAL -e lynx $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a lynx" -l 20)
 super + alt + r
