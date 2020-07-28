@@ -83,6 +83,8 @@ fi
 
 # Add autocompletion to sudo
 complete -cf sudo
+# Add autocompletion for git
+source ~/.git-completion.bash
 
 GPG_TTY=$(tty)
 export GPG_TTY
