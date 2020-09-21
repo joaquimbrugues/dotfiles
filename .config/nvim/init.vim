@@ -1,5 +1,6 @@
 let mapleader =","
 set number relativenumber
+set autochdir
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
