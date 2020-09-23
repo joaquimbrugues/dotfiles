@@ -55,6 +55,7 @@ alias sudo='sudo '
 alias esync='emerge --sync'
 alias eupgrade='emerge -auDU --keep-going --with-bdeps=y @world'
 alias aptdate='apt update && apt list --upgradable'
+alias updatelocaldb='updatedb -U $HOME -l no -o $LOCALDB'
 
 # less and man colour variables
 # Start blinking
@@ -85,6 +86,8 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\u\[\033[00m\] \[\033[01;
 
 # Add autocompletion to sudo
 complete -cf sudo
+# Add autocompletion for git
+source ~/.git-completion.bash
 
 pfetch
 

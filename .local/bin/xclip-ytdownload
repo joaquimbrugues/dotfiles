@@ -10,6 +10,6 @@ else
 fi
 echo "$URL" | grep "http" >/dev/null || exit 0
 notify-send "YT-DL: Descarregant..." "$(basename $URL)"
-ts youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s"
-ts updatedb -U $HOME -l no -o $LOCALDB
-ts notify-send "YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)"
+ts youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s" >/dev/null
+ts updatedb -U $HOME -l no -o $LOCALDB >/dev/null
+ts notify-send "YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)" >/dev/null
