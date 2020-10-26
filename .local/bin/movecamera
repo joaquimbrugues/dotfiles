@@ -8,16 +8,18 @@ MONWIDTH=1920
 MONHEIGHT=1080
 WINWIDTH=480
 WINHEIGHT=270
+POS_X0=0
+POS_Y0=0
 
 case "$1" in
-	N*) POS_Y=0 ;;
-	S*) POS_Y=$(echo $MONHEIGHT $WINHEIGHT | awk '{print $1 - $2 - 10}') ;;
+	N*) POS_Y=$POS_Y0 ;;
+	S*) POS_Y=$(echo $MONHEIGHT $WINHEIGHT $POS_Y0 | awk '{print $1 - $2 - 10 + $3}') ;;
 	*) ;;
 esac
 
 case "$1" in
-	*O) POS_X=0 ;;
-	*E) POS_X=$(echo $MONWIDTH $WINWIDTH | awk '{print $1 - $2 - 10}') ;;
+	*O) POS_X=$POS_X0 ;;
+	*E) POS_X=$(echo $MONWIDTH $WINWIDTH $POS_X0 | awk '{print $1 - $2 - 10 +$3}') ;;
 	*) ;;
 esac
 
