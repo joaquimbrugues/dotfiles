@@ -19,3 +19,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'scrooloose/nerdcommenter'
     Plug 'vimwiki/vimwiki'
 call plug#end()
+
+" Set spell checking
+map <F1> :setlocal spell spelllang=ca<CR>
+map <F2> :setlocal spell spelllang=en<CR>
+map <F3> :setlocal spell spelllang=es<CR>
+map <F4> :setlocal spell spelllang=nl<CR>
+map <F5> :setlocal spell spelllang=ru<CR>
