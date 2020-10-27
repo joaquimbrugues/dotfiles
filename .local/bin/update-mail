@@ -1,5 +1,0 @@
-#!/bin/sh
-. $HOME/.profile
-
-ping -q -c 1 1.1.1.1 >/dev/null || exit 0
-mailsync -a; [ -e "$LLIMA_FIFO" ] && echo "M" >$LLIMA_FIFO

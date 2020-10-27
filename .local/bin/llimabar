@@ -32,7 +32,7 @@ $DIR/memory > "$LLIMA_FIFO" &
 $DIR/wstat > "$LLIMA_FIFO" &
 
 exec 3<> "$LLIMA_FIFO"
-echo "V\nM" > "$LLIMA_FIFO"
+echo "V" > "$LLIMA_FIFO"
 
 # Import bar configuration
 . $HOME/.local/share/global-style

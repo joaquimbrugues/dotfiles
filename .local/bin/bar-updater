@@ -9,8 +9,6 @@ cpu_action1='notify-send "Processos CPU-intensius" "$(list-cpu-processes)"'
 cpu_action3='notify-send "Mòdul de CPU" "\- Mostra ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador"'
 mem_action1='notify-send "Processos RAM-intensius" "$(list-ram-processes)"'
 mem_action3='notify-send "Mòdul de memòria" "\- Mostra memòria usada/total.\n\- Clica per veure els processos que consumeixen més memòria."'
-mail_action1='$TERMINAL -e neomutt && echo "M" >$LLIMA_FIFO'
-mail_action3='notify-send "Mòdul de correu" "\- Mostra missatges sense llegir.\n\- Clica per obrir neomutt."'
 wstat_action1='$TERMINAL -e nmtui'
 wstat_action3='notify-send "Mòdul internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió."'
 vol_action1='pactl set-sink-mute 0 toggle && echo "V" > $LLIMA_FIFO'
@@ -37,12 +35,6 @@ while read -r line ; do
 		R*)
 			#memory module output
 			memory=" %{A:${mem_action1}:}%{A3:${mem_action3}:}%{+u}RAM: ${line#?}%{-u}%{A}%{A} "
-			;;
-		M*)
-			#mail output
-			mail=
-			num_mails="$(ls $HOME/.local/share/mail/*/INBOX/new | sed '/\.local\/.*$/d' | sed '/^\s*$/d' | wc -l)"
-			[ $num_mails -gt 0 ] && mail=" %{A:${mail_action1}:}%{A3:${mail_action3}:}%{+u}Correus: $num_mails%{-u}%{A}%{A} "
 			;;
 		I*)
 			#wstat module output
