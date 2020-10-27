@@ -40,8 +40,6 @@ super + F1
 	dmenu-usb
 # Add a pipe to the lemonbar to notify the change
 super + F2
-	update-mail
-super + F3
 	update-news
 
 # Usual program launchers
@@ -59,8 +57,6 @@ super + alt + r
 	transmission-gtk
 super + alt + a
 	$TERMINAL -e curseradio
-super + alt + m
-	$TERMINAL -e neomutt && [ -e $LLIMA_FIFO ] && echo "M" >$LLIMA_FIFO
 super + alt + h
 	thunar $HOME
 super + alt + s
