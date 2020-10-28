@@ -48,7 +48,7 @@ super + alt + {_,shift} + f
 super + alt + t
 	thunderbird
 super + alt + n
-	$TERMINAL -e newsboat
+	urxvt -e newsboat
 super + alt + g
 	telegram-desktop
 super + alt + y
