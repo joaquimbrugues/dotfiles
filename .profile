@@ -1,7 +1,7 @@
 #!/bin/sh
 # Profile file. Runs on login
 
-export TERMINAL="urxvt"
+export TERMINAL="st"
 export EDITOR="nvim"
 export BROWSER="firefox"
 export READER="zathura"

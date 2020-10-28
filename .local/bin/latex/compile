@@ -3,7 +3,7 @@
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
 [ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit 1
 DIR=$(dirname "$FILE")
-TERMINAL="urxvt"
+TERMINAL="st"
 EDITOR="nvim"
 VIEWER="zathura"
 
