@@ -1,0 +1,19 @@
+#!/bin/sh
+# Login to a known remote session via SSH
+
+# Get the remotes tmp file
+file="$HOME/tmp/remotes"
+touch "$file"
+# Do nothing if there is no known session
+[ -s "$file" ] || exit 0
+
+# Get the remote name from the tmp file
+remote_name=$(cut -d ' ' -f1 < "$file" | dmenu_col -p "Tria una sessió" -l 10)
+remote=$(grep "$remote_name" "$file" | awk '{print $2}')
+
+# Check if the remote is available
+ping -qc 1 $(echo "$remote" | cut -d '@' -f2) || { notify-send "$remote" "No s'ha pogut establir una connexió"; exit 0; }
+
+# Connect to the remote
+$TERMINAL -e ssh "$remote"
+
