@@ -15,5 +15,5 @@ remote=$(grep "$remote_name" "$file" | awk '{print $2}')
 ping -qc 1 $(echo "$remote" | cut -d '@' -f2) || { notify-send "$remote" "No s'ha pogut establir una connexió"; exit 0; }
 
 # Connect to the remote
-$TERMINAL -e ssh "$remote" | notify-send "$remote" "La sessió remota no està disponible"
+$TERMINAL -e ssh "$remote" || notify-send "$remote" "La sessió remota no està disponible"
 
