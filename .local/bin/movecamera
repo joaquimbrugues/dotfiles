@@ -3,26 +3,32 @@
 # Find the window with MPV opened and move it to one of the corners of the screen
 # This works with a particular window width and height
 # The argument can be NO, NE, SO, SE (nord-sud, oest-est)
-
-MONWIDTH=1920
-MONHEIGHT=1080
-WINWIDTH=480
-WINHEIGHT=270
-POS_X0=0
-POS_Y0=0
+# Append a "2" to the argument to move it to the secondary monitor
 
 case "$1" in
-	N*) POS_Y=$POS_Y0 ;;
-	S*) POS_Y=$(echo $MONHEIGHT $WINHEIGHT $POS_Y0 | awk '{print $1 - $2 - 10 + $3}') ;;
+	*2) monitor_info="$(xrandr | grep -w connected | grep -wv primary | awk '{print $3}')" ;;
+	*) monitor_info="$(xrandr | grep -w connected | grep -w primary | awk '{print $4}')" ;;
+esac
+
+monitor_width=$(echo "$monitor_info" | awk -F'[x]' '{print $1}')
+monitor_height=$(echo "$monitor_info" | awk -F'[x+]' '{print $2}')
+monitor_xoffset=$(echo "$monitor_info" | awk -F'[x+]' '{print $3}')
+monitor_yoffset=$(echo "$monitor_info" | awk -F'[x+]' '{print $4}')
+window_width=480
+window_height=270
+
+case "$1" in
+	N*) positiony=$monitor_yoffset ;;
+	S*) positiony=$(echo $monitor_height $window_height $monitor_yoffset | awk '{print $1 - $2 - 10 + $3}') ;;
 	*) ;;
 esac
 
 case "$1" in
-	*O) POS_X=$POS_X0 ;;
-	*E) POS_X=$(echo $MONWIDTH $WINWIDTH $POS_X0 | awk '{print $1 - $2 - 10 +$3}') ;;
+	*O*) positionx=$monitor_xoffset ;;
+	*E*) positionx=$(echo $monitor_width $window_width $monitor_xoffset | awk '{print $1 - $2 - 10 +$3}') ;;
 	*) ;;
 esac
 
 id=$(xdotool search --pid "$(pidof mpv)")
 
-xdo move -x $POS_X -y $POS_Y $id
+xdo move -x $positionx -y $positiony $id
