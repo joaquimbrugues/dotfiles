@@ -2,22 +2,25 @@
 
 ![Screenshot of my desktop](https://github.com/joaquimbrugues/dotfiles/raw/master/screenshots/scrot-19-03-2020.png)
 
-These are the dotfiles for my various GNU/Linux machines both at home and at work. I use this repository for my comodity in order to quickly set up a new sistem in the event of a reinstall/distro hop. Feel free to read and use them to your own convenience!
+These are the dotfiles for my various GNU/Linux installations both at home and at work. I use this repository for convenience in order to quickly set up a new system in the event of a reinstall/distro hop, and to sync easily the configurations. Feel free to read and use them for your own installations!
 
 ## What do I use
 
-The configurations are set for the programs that I use often:
+The configurations are set for the programs that I use more often:
 
 	- bspwm (window manager)
 	- lemonbar (status bar)
-	- nano (text editor)
-	- urxvt (terminal emulator)
+	- neovim (text editor)
+	- st (terminal emulator)
 	- bash
 	- sxhkd (hotkey daemon)
-	- i3 (window manager): not actively mantained
-	- Xfce terminal (terminal emulator): not actively mantained
+	- moc (music daemon)
+	- i3 (window manager): not actively maintained
+	- Xfce terminal (terminal emulator): not actively maintained
+	- nano (text editor): not actively maintained
+	- urxvt (terminal emulator): not actively maintained
 
-There are also scripts (in `~/.local/bin/`) with some useful tools, usually using dmenu, to interact with the system, to work with LaTeX, and for my i3 status bar.
+There are also scripts (in `~/.local/bin/`) with some useful tools, usually using ![dmenu](https://tools.suckless.org/dmenu/), to interact with the system, to work with LaTeX, and for my status bar, among other applications.
 
 This list of programs may change with time.
 
@@ -36,25 +39,25 @@ Create an alias for the current shell scope (this alias is also defined in `.bas
 ```
 alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
-Set the flag `showUntrackedFiles`to `no` for this repository, so that `dotgit status` shows only changes to the already tracked files:
+Set the flag `showUntrackedFiles` to `no` for this repository, so that `dotgit status` shows only changes to the already tracked files:
 
 ```
 dotgit config --local status.showUntrackedFiles no
 ```
 
-Checkout the actual content from the repository to your `$HOME` directory:
+Check out the actual content from the repository to your `$HOME` directory:
 
 ```
 dotgit checkout
 ```
 
-This might fail, because you are attempting to modify some files already existing in your directory. In this case, just remove or backup the offending files, and run again the last command.
+This might fail, because you are attempting to modify some files already existing in your directory. In this case, just remove or back up the offending files, and run again the last command.
 
-After this, you should be set!
+After this, you should be set! You can modify the configurations to your liking.
 
 ## Window managers
 
-bspwm is now my main window manager, with lemonbar as the status bar. This configuration should still work for i3, though, and some of it might be useful with other WM. Even if I don't actively mantain my i3 config, it's still available and it should work just fine.
+Bspwm is now my main window manager, with lemonbar as the status bar. The configuration in this repository should still work for i3, though, and some of it might be useful with other WM. Even if I don't actively maintain my i3 config, it's still available and it should work just fine.
 
 ## License
 
