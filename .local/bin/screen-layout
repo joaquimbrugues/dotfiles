@@ -15,22 +15,22 @@ CHOICES="únic\ndual-dreta\ndual-esquerra\naltre"
 case "$PICK" in
 	únic)
 		xrandr --output "$primary" --mode "$primary_geom" --output "$secondary" --off
-		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 2 3 4 5 6 7 8 9 0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 2 3 4 5 6 7 8 9 10
 		wallpaper
 	;;
 	dual-dreta)
 		xrandr --output "$primary" --mode "$primary_geom" --pos 0x0 --primary --output "$secondary" --mode "$secondary_geom" --pos "$primary_width"x0
-		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 10
 		wallpaper
 	;;
 	dual-esquerra)
 		xrandr --output "$primary" --mode "$primary_geom" --pos "$secondary_width"x0 --primary --output "$secondary" --mode "$secondary_geom" --pos 0x0
-		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 10
 		wallpaper
 	;;
 	altre)
 		arandr
-		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 0
+		pgrep bspwm >/dev/null && bspc monitor "$primary" -d 1 3 5 7 9 && bspc monitor "$secondary" -d 2 4 6 8 10
 		wallpaper
 	;;
 	*) ;;
