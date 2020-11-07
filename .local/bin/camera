@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# This script invoques an instance of MPV with the
+# output of a webcam (a video device).
+# This should also work with an Android camera using Droidcam
+# Dependencies:
+# - MPV
+# - V4L2
+# - BSPWM (for the positioning of the window
+# - Droidcam (in the suitable case)
+
+WINDOW_WIDTH=480
+WINDOW_HEIGHT=270
+monitor_geom="$(xrandr | grep -w connected | grep -w primary | awk '{print $4}')"
+monitor_width=$(echo "$monitor_geom" | awk -F'[x]' '{print $1}')
+monitor_height=$(echo "$monitor_geom" | awk -F'[x+]' '{print $2}')
+monitor_xoffset=$(echo "$monitor_geom" | awk -F'[x+]' '{print $3}')
+monitor_yoffset=$(echo "$monitor_geom" | awk -F'[x+]' '{print $4}')
+POSX=$(echo $monitor_width $WINDOW_WIDTH $monitor_xoffset | awk '{print $1 - $2 - 10 + $3}')
+POSY=$(echo $monitor_height $WINDOW_HEIGHT $monitor_yoffset | awk '{print $1 - $2 - 10 + $3}')
+
+# Determine whether we must use Droidcam
+USE_DROIDCAM=""
+. $HOME/.local/share/droidcam-info
+ping -qc 1 "$DROIDCAM_IP" > /dev/null && echo -e "webcam\ndroidcam" | dmenu_col -c -l 10 | grep -q "droidcam" > /dev/null && USE_DROIDCAM="yes"
+
+# If we use Droidcam, initialize it
+[ -n "$USE_DROIDCAM" ] &&  droidcam-cli -v "$DROIDCAM_IP" "$DROIDCAM_PORT" > /dev/null &
+
+# Set a bspwm rule for the floating MPV window
+bspc rule -a mpv -o state=floating rectangle="${WINDOW_WIDTH}x${WINDOW_HEIGHT}+${POSX}+${POSY}" sticky=on layer=above
+
+# Launch the mpv window
+case "$USE_DROIDCAM" in
+				"yes") sleep "1s" && mpv av://v4l2:/dev/video2 --profile=low-latency --untimed ; pkill "droidcam*" ;;
+				*) mpv av://v4l2:/dev/video0 --profile=low-latency --untimed ;;
+esac
