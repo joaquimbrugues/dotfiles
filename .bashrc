@@ -56,6 +56,8 @@ alias esync='emerge --sync'
 alias eupgrade='emerge -auDU --keep-going --with-bdeps=y @world'
 alias aptdate='apt update && apt list --upgradable'
 alias updatelocaldb='updatedb -U $HOME -l no -o $LOCALDB'
+alias e='$EDITOR'
+alias v='$READER'
 
 # less and man colour variables
 # Start blinking
