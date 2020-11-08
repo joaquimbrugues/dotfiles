@@ -74,8 +74,8 @@ super + a
 # Open an mpv window with the feed of the webcam, following you around
 super + w
 	notify-send "Encenent la càmera..." && camera
-super + ctrl + {dead_grave,dead_acute}
-	bspc node -v {-,_}886 0
+super + ctrl + {dead_grave,dead_acute,comma,period}
+	movecamera {NO,NE,SO,SE}
 
 # Hide current window
 super + h
