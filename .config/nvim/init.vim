@@ -1,6 +1,9 @@
 let mapleader =","
 set number relativenumber
+" Set the working directory to the directory of the file
 set autochdir
+" Let the system clipboard interact with vim
+set clipboard+=unnamedplus
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
