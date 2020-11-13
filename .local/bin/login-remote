@@ -9,6 +9,7 @@ touch "$file"
 
 # Get the remote name from the tmp file
 remote_name=$(cut -d ' ' -f1 < "$file" | dmenu_col -p "Tria una sessió" -l 10)
+[ -z "$remote_name" ] && exit 0
 remote=$(grep "$remote_name" "$file" | awk '{print $2}')
 
 # Check if the remote is available
