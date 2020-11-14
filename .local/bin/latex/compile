@@ -16,7 +16,7 @@ case "$1" in
 		fi
 		;;
 	-E|--edit)
-		LIST=$(find "$DIR" -name "*.tex" -o -name "*.tikz")
+		LIST=$(find "$DIR" -name "*.tex" -o -name "*.tikz" -o -name "*.sty")
 		[ $(echo "$LIST" | wc -l) -gt 1 ] && PICK=$(echo "$LIST" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
@@ -38,6 +38,18 @@ case "$1" in
 		else
 			$VIEWER "$PICK"
 		fi
+		;;
+	-T|--theorem)
+		LIST=$(find "$DIR" -name "*.tex" -o -name "*.sty")
+		PICK=$(grep '\newtheorem{' $LIST | sed -e 's/.*\\newtheorem{//g' -e 's/}.*//g' | dmenu_col -p "Entorns de teorema" -l 10)
+		[ -z "$PICK" ] && exit 0
+		echo -ne "\\\\begin{$PICK}\n\\\\end{$PICK}" | xclip -i -selection clipboard && notify-send "S'ha copiat al portaretalls" "\\\\begin{$PICK}\\\\end{$PICK}"
+		;;
+	-R|--reference)
+		LIST=$(find "$DIR" -name "*.tex")
+		PICK=$(grep '\label{' $LIST | sed -e 's/.*\\label{//g' -e 's/}.*//g' | dmenu_col -p "Referències" -l 10)
+		[ -z "$PICK" ] && exit 0
+		echo -n "\\ref{$PICK}" | xclip -i -selection clipboard && notify-send "S'ha copiat \\ref{$PICK} al portaretalls"
 		;;
 	*) cd "$DIR" && latex $(basename "$FILE") && notify-send "Compilat!" ;;
 esac
