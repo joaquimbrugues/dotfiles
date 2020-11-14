@@ -16,7 +16,7 @@ case "$1" in
 		fi
 		;;
 	-E|--edit)
-		LIST=$(find "$DIR" -name "*.tex" -o -name "*.tikz")
+		LIST=$(find "$DIR" -name "*.tex" -o -name "*.tikz" -o -name "*.sty")
 		[ $(echo "$LIST" | wc -l) -gt 1 ] && PICK=$(echo "$LIST" | dmenu_col -p "Tria un fitxer per editar (per defecte=$(basename $FILE))" -l 10)
 		if [ -z $PICK ]
 		then
