@@ -23,7 +23,7 @@ super + shift + d
 	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
 super + o
 	todo
-super + g
+super + t
 	$TERMINAL -e gotop
 super + shift + v
 	dmenu-video
