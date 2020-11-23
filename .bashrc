@@ -52,7 +52,7 @@ fi
 #alias l='ls -CF'
 alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sudo='sudo '
-alias esync='emerge --sync'
+alias esync='sh -c "emerge --sync ; layman -S"'
 alias eupgrade='emerge -auDNU --keep-going --with-bdeps=y @world'
 alias aptdate='apt update && apt list --upgradable'
 alias updatelocaldb='updatedb -U $HOME -l no -o $LOCALDB'
