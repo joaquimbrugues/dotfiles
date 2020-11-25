@@ -25,13 +25,14 @@ USE_DROIDCAM=""
 ping -W 1 -qc 1 "$DROIDCAM_IP" > /dev/null && echo -e "webcam\ndroidcam" | dmenu_col -c -l 10 | grep -q "droidcam" > /dev/null && USE_DROIDCAM="yes"
 
 # If we use Droidcam, initialize it
-[ -n "$USE_DROIDCAM" ] &&  droidcam-cli -v "$DROIDCAM_IP" "$DROIDCAM_PORT" > /dev/null &
+PIDDROID=$(pgrep "droidcam-cli")
+[ -n "$USE_DROIDCAM" -a -z "$PIDDROID" ] &&  droidcam-cli -v "$DROIDCAM_IP" "$DROIDCAM_PORT" > /dev/null &
 
 # Set a bspwm rule for the floating MPV window
 bspc rule -a mpv -o state=floating rectangle="${WINDOW_WIDTH}x${WINDOW_HEIGHT}+${POSX}+${POSY}" sticky=on layer=above
 
 # Launch the mpv window
 case "$USE_DROIDCAM" in
-				"yes") sleep "1s" && mpv av://v4l2:/dev/video2 --profile=low-latency --untimed ; pkill "droidcam*" ;;
+				"yes") sleep "1s" && mpv av://v4l2:/dev/video2 --profile=low-latency --untimed ; [ -z "$PIDDROID" ] && pkill "droidcam" ;;
 				*) mpv av://v4l2:/dev/video0 --profile=low-latency --untimed ;;
 esac

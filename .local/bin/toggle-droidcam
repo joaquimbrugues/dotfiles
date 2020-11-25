@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# This script toggles droidcam-cli
+PIDDROID=$(pgrep "^droidcam")
+if [ -z "$PIDDROID" ]
+then
+				# Activate droidcam
+				. $HOME/.local/share/droidcam-info
+				notify-send "Preparant..." "🤖 Droidcam"
+				ping -W 1 -qc 1 "$DROIDCAM_IP" > /dev/null || notify-send "No es troba la càmera" "🤖 Droidcam"
+				droidcam-cli -v "$DROIDCAM_IP" "$DROIDCAM_PORT" > /dev/null &
+				notify-send "Connectada" "🤖 Droidcam"
+else
+				# Kill droidcam
+				kill "$PIDDROID" && notify-send "Desconnectada" "🤖 Droidcam"
+fi

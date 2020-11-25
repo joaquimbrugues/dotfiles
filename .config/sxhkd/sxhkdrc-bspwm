@@ -76,6 +76,8 @@ super + w
 	notify-send "Encenent la càmera..." && camera
 super + ctrl + {dead_grave,dead_acute,comma,period}
 	movecamera {NO,NE,SO,SE}
+super + shift + w
+	toggle-droidcam
 
 # Hide current window
 super + h
