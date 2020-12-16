@@ -13,8 +13,8 @@ remote_name=$(cut -d ' ' -f1 < "$file" | dmenu_col -p "Tria una sessió" -l 10)
 remote=$(grep "$remote_name" "$file" | awk '{print $2}')
 
 # Check if the remote is available
-ping -qc 1 $(echo "$remote" | cut -d '@' -f2) || { notify-send "$remote" "No s'ha pogut establir una connexió"; exit 0; }
+ping -qc 1 $(echo "$remote" | cut -d '@' -f2) || { notify-send "$remote" "❌ No s'ha pogut establir una connexió"; exit 0; }
 
 # Connect to the remote
-$TERMINAL -e ssh "$remote" || notify-send "$remote" "La sessió remota no està disponible"
+$TERMINAL -e ssh "$remote" || notify-send "$remote" "🔒 La sessió remota no està disponible"
 

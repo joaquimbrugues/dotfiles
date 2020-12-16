@@ -1,13 +1,24 @@
 #!/bin/sh
 
 # This script toggles droidcam-cli
+
+# Create droidcam configuration
+setup_droidcam() {
+	echo -e "No\nSí" | dmenu_col -c -p "Vols configurar la càmera?" -l 2 | grep "Sí" || exit 0
+	touch "$HOME/.local/share/droidcam-info"
+	DROIDCAM_IP=$(dmenu_col -c -p "IP local del mòbil: 192.168.1.")
+	DROIDCAM_PORT=$(dmenu_col -c -p "Port:")
+	echo -e "#Generat automàticament per l'script toggle-droidcam\nDROIDCAM_IP=192.168.1.$DROIDCAM_IP\nDROIDCAM_PORT=$DROIDCAM_PORT" > "$HOME/.local/share/droidcam-info"
+}
+
 PIDDROID=$(pgrep "^droidcam")
 if [ -z "$PIDDROID" ]
 then
 				# Activate droidcam
+				[ -e "$HOME/.local/share/droidcam-info" ] || setup_droidcam
 				. $HOME/.local/share/droidcam-info
 				notify-send "Preparant..." "🤖 Droidcam"
-				ping -W 1 -qc 1 "$DROIDCAM_IP" > /dev/null || notify-send "No es troba la càmera" "🤖 Droidcam"
+				ping -W 1 -qc 1 "$DROIDCAM_IP" > /dev/null || setup_droidcam
 				droidcam-cli -v "$DROIDCAM_IP" "$DROIDCAM_PORT" > /dev/null &
 				notify-send "Connectada" "🤖 Droidcam"
 else

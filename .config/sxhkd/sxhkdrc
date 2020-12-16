@@ -107,9 +107,9 @@ super + l ; {t,r}
 
 # Switch keyboard layout to Spanish/Russian
 super + ctrl + s
-	setxkbmap es && notify-send "Distribució del teclat: es"
+	setxkbmap es && notify-send "🇪🇸 Distribució del teclat: es"
 super + ctrl + r
-	setxkbmap ru && notify-send "Distribució del teclat: ru"
+	setxkbmap ru && notify-send "🇷🇺 Distribució del teclat: ru"
 
 # Open the Bluetooth controler
 super + b
@@ -121,10 +121,10 @@ super + ctrl + c
 	$TERMINAL -e mocp
 # Kill the server
 super + ctrl + q
-	mocp -x && notify-send "MOC" "Servidor aturat"
+	mocp -x && notify-send "💤 MOC" "Servidor aturat"
 # Toggle pause/unpause
 super + ctrl + space
-	mocp -G && notify-send "MOC" "Pausa/represa"
+	mocp -G && notify-send "⏯  MOC" "Pausa/represa"
 # Switch to the previous/next song
 super + ctrl + {p,n}
 	mocp -{r,f}
