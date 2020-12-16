@@ -104,6 +104,6 @@ elif [[ $TERM != linux ]]; then
 	PS1='\[\033[01;94m\][\u\[\033[00m\] \[\033[01;92m\]\w\[\033[00m\]\[\033[01;94m\]]\[\033[00m\]\[\033[01;32m\]\$\[\033[00m\] '
 fi
 
-pfetch
+timeout 1s pfetch
 
 source $HOME/.profile
