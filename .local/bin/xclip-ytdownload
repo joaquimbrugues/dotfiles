@@ -9,7 +9,12 @@ else
 	URL=$(xclip -o)
 fi
 echo "$URL" | grep "http" >/dev/null || exit 0
-notify-send "YT-DL: Descarregant..." "$(basename $URL)"
-ts youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s" >/dev/null
-ts updatedb -U $HOME -l no -o $LOCALDB >/dev/null
-ts notify-send "YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)" >/dev/null
+TMPFILE="$HOME/tmp/yt-dl-$(basename $URL)"
+notify-send "YT-DL: Descarregant..." "$(basename $URL)\nProgrès a $TMPFILE"
+touch $TMPFILE
+youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s" >$TMPFILE &
+wait $!
+updatedb -U $HOME -l no -o $LOCALDB >/dev/null &
+wait $!
+notify-send "YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)" >/dev/null
+rm $TMPFILE
