@@ -32,8 +32,8 @@ if [ "$POWER" = "yes" ]; then
 				CONNECTED="$(bluetoothctl info $ID | grep -i connected | awk '{print $2}')"
 				# If the device was connected, disconnect it and viceversa
 				case "$CONNECTED" in
-					"yes") bluetoothctl disconnect "$ID" >/dev/null && notify-send "Dispositiu $PICK desconnectat";;
-					"no") bluetoothctl connect "$ID" >/dev/null && notify-send "Dispositiu $PICK connectat";;
+					"yes") bluetoothctl disconnect "$ID" >/dev/null && notify-send "↪️ Dispositiu $PICK desconnectat";;
+					"no") bluetoothctl connect "$ID" >/dev/null && notify-send "↔️ Dispositiu $PICK connectat";;
 					*) ;;
 				esac
 			fi
