@@ -123,3 +123,6 @@ super + ctrl + {p,n}
 # Start playing
 super + ctrl + i
 	pgrep mocp >/dev/null || mocp -S; mocp -p
+# Show current song information
+super + ctrl + a
+	moc-notify-info
