@@ -41,4 +41,4 @@ ErrorMessagesQueued = "+"
 #     %n track
 #     %d file duration in XX:YY form
 #     %D file duration, number of seconds
-OnSongChange = "/usr/bin/notify-send MOC %t"
+OnSongChange = "/usr/bin/notify-send 🎸MOC %t"

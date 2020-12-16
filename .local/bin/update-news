@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 # Small program to update newsboat feeds, regardless of whether newsboat is running
 ping -q -c 1 1.1.1.1 > /dev/null || exit 0
-SUCCESS_MSG="Canals de newsboat actualitzats"
+SUCCESS_MSG="🗞 Canals de newsboat actualitzats"
 /usr/bin/newsboat -x reload && notify-send "$SUCCESS_MSG"

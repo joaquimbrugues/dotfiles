@@ -10,11 +10,11 @@ else
 fi
 echo "$URL" | grep "http" >/dev/null || exit 0
 TMPFILE="$HOME/tmp/yt-dl-$(basename $URL)"
-notify-send "YT-DL: Descarregant..." "$(basename $URL)\nProgrès a $TMPFILE"
+notify-send "⏳ YT-DL: Descarregant..." "$(basename $URL)\nProgrès a $TMPFILE"
 touch $TMPFILE
 youtube-dl --write-auto-sub --embed-subs "$URL" --output "$HOME/Downloads/%(title)s.%(ext)s" >$TMPFILE 2>&1 &
 wait $!
 updatedb -U $HOME -l no -o $LOCALDB >/dev/null &
 wait $!
-notify-send "YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)" >/dev/null
+notify-send "✅ YT-DL: S'ha descarregat el fitxer!" "$(basename $URL)" >/dev/null
 rm $TMPFILE

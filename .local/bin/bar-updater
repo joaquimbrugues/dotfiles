@@ -5,24 +5,24 @@
 . $HOME/.local/share/global-style
 
 #Define click actions
-cpu_action1='notify-send "Processos CPU-intensius" "$(list-cpu-processes)"'
-cpu_action3='notify-send "Mòdul de CPU" "\- Mostra ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador"'
-mem_action1='notify-send "Processos RAM-intensius" "$(list-ram-processes)"'
-mem_action3='notify-send "Mòdul de memòria" "\- Mostra memòria usada/total.\n\- Clica per veure els processos que consumeixen més memòria."'
+cpu_action1='notify-send "🔥 Processos CPU-intensius" "$(list-cpu-processes)"'
+cpu_action3='notify-send "💻 Mòdul de CPU" "\- Mostra ús de CPU i la temperatura del nucli.\n\- Clica per mostrar els processos que ocupen més temps del processador"'
+mem_action1='notify-send "🔥 Processos RAM-intensius" "$(list-ram-processes)"'
+mem_action3='notify-send "🧠 Mòdul de memòria" "\- Mostra memòria usada/total.\n\- Clica per veure els processos que consumeixen més memòria."'
 wstat_action1='$TERMINAL -e nmtui'
-wstat_action3='notify-send "Mòdul internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió."'
+wstat_action3='notify-send "🌐 Mòdul internet" "\- Mostra si hi ha connexió a internet.\n\- Clica per editar la connexió."'
 vol_action1='pactl set-sink-mute 0 toggle && echo "V" > $LLIMA_FIFO'
 vol_action2='pavucontrol'
-vol_action3='notify-send "Mòdul de volum" "\- Mostra el volum i si està silenciat.\n\- Clica per silenciar.\n\- Fes servir la roda del ratolí per pujar o baixar el volum."'
+vol_action3='notify-send "🔉 Mòdul de volum" "\- Mostra el volum i si està silenciat.\n\- Clica per silenciar.\n\- Fes servir la roda del ratolí per pujar o baixar el volum."'
 vol_action4='amixer sset Master 2%+ && echo "V" > $LLIMA_FIFO'
 vol_action5='amixer sset Master 2%- && echo "V" > $LLIMA_FIFO'
-bat_action3='notify-send "Mòdul de bateria" "\- Mostra la càrrega actual."'
-date_action1='notify-send "$(cal)"'
-date_action3='notify-send "Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
-wm_action3='notify-send "Escriptoris" "\- Clica sobre un escriptori anar-hi."'
+bat_action3='notify-send "🔋 Mòdul de bateria" "\- Mostra la càrrega actual."'
+date_action1='notify-send "🗓 $(cal)"'
+date_action3='notify-send "⌚️ Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
+wm_action3='notify-send "🖥 Escriptoris" "\- Clica sobre un escriptori anar-hi."'
 launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
-launcher_action3='notify-send "Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
+launcher_action3='notify-send "🐧 Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
 
 launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u} P %{-u}%{A}%{A}%{A}"
 

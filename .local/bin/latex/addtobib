@@ -5,7 +5,7 @@ ITEM=$(xclip -o)
 ID=$(echo $ITEM | cut -d, -f1 | sed -e 's/@.*{//')
 if [ -z "$ID" ]
 then
-	notify-send "L'input no té id"
+	notify-send "❗️ L'input no té id"
 else
 	if [ -w $BIB ]
 	then
@@ -17,5 +17,5 @@ else
 	fi
 	# Format the bibliography item and output it to the file
 	echo "$(echo $ITEM | sed -e 's/, /,\n\t/g' -e 's/} /}\n/')" >> $BIB
-	notify-send "S'ha afegit $ID a la bibliografia"
+	notify-send "✅ S'ha afegit $ID a la bibliografia"
 fi

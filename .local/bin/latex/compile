@@ -1,18 +1,18 @@
 #!/bin/sh
 # Multi-use script. Invoke getcurrentfile and do some action with it
 FILE=$($HOME/.local/bin/latex/getcurrentfile)
-[ -z "$FILE" ] && notify-send "ERROR: No s'ha seleccionat cap fitxer tex" && exit 1
+[ -z "$FILE" ] && notify-send "❗️ ERROR: No s'ha seleccionat cap fitxer tex" && exit 1
 DIR=$(dirname "$FILE")
 TERMINAL="st"
 EDITOR="nvim"
 VIEWER="zathura"
 
 case "$1" in
-	-p|--pdf) cd "$DIR" && pdflatex $(basename "$FILE") && notify-send "Compilat!" ;;
+	-p|--pdf) cd "$DIR" && pdflatex $(basename "$FILE") && notify-send "🛠 Compilat!" ;;
 	-b|--bibliography) if [ -r $BIB ]
 		then
 			[ ! -e "$(echo $DIR/references.bib)" ] && ln -s $BIB "$DIR/references.bib"
-			cd "$DIR" && bibtex $(basename "$FILE" | sed -e 's/\.tex/\.aux/') && notify-send "Compilat!"
+			cd "$DIR" && bibtex $(basename "$FILE" | sed -e 's/\.tex/\.aux/') && notify-send "📚 Compilat!"
 		fi
 		;;
 	-E|--edit)
@@ -34,7 +34,7 @@ case "$1" in
 		fi
 		if [ -z "$PICK" ]
 		then
-			notify-send "No s'ha seleccionat cap pdf"
+			notify-send "❗️ No s'ha seleccionat cap pdf"
 		else
 			$VIEWER "$PICK"
 		fi
@@ -43,13 +43,13 @@ case "$1" in
 		LIST=$(find "$DIR" -name "*.tex" -o -name "*.sty")
 		PICK=$(grep '\newtheorem{' $LIST | sed -e 's/.*\\newtheorem{//g' -e 's/}.*//g' | dmenu_col -p "Entorns de teorema" -l 10)
 		[ -z "$PICK" ] && exit 0
-		echo -ne "\\\\begin{$PICK}\n\\\\end{$PICK}" | xclip -i -selection clipboard && notify-send "S'ha copiat al portaretalls" "\\\\begin{$PICK}\\\\end{$PICK}"
+		echo -ne "\\\\begin{$PICK}\n\\\\end{$PICK}" | xclip -i -selection clipboard && notify-send "📎 S'ha copiat al portaretalls" "\\\\begin{$PICK}\\\\end{$PICK}"
 		;;
 	-R|--reference)
 		LIST=$(find "$DIR" -name "*.tex")
 		PICK=$(grep '\label{' $LIST | sed -e 's/.*\\label{//g' -e 's/}.*//g' | dmenu_col -p "Referències" -l 10)
 		[ -z "$PICK" ] && exit 0
-		echo -n "\\ref{$PICK}" | xclip -i -selection clipboard && notify-send "S'ha copiat \\ref{$PICK} al portaretalls"
+		echo -n "\\ref{$PICK}" | xclip -i -selection clipboard && notify-send "📎 S'ha copiat \\ref{$PICK} al portaretalls"
 		;;
-	*) cd "$DIR" && latex $(basename "$FILE") && notify-send "Compilat!" ;;
+	*) cd "$DIR" && latex $(basename "$FILE") && notify-send "🛠 Compilat!" ;;
 esac

@@ -10,8 +10,8 @@ if [ $? -eq 0 ]
 then
 	#The device is already mounted, unmount it
 	[ -L $HOME/$DEVICE ] && rm $HOME/$DEVICE
-	udisksctl unmount -b $LOC && notify-send "S'ha expulsat $DEVICE"
+	udisksctl unmount -b $LOC && notify-send "📤 S'ha expulsat $DEVICE"
 else
 	#The device was no mounted, mount it
-	udisksctl mount -b $LOC && notify-send "S'ha muntat $DEVICE a $DIR" && [ ! -L $HOME/$DEVICE ] && ln -s $DIR $HOME/$DEVICE
+	udisksctl mount -b $LOC && notify-send "📥 S'ha muntat $DEVICE a $DIR" && [ ! -L $HOME/$DEVICE ] && ln -s $DIR $HOME/$DEVICE
 fi
