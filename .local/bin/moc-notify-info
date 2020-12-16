@@ -1,0 +1,6 @@
+#!/bin/sh
+# Get information from the song being currently played by MOC
+
+pgrep moc >/dev/null || exit 0
+info=$(mocp -i)
+notify-send "🎸 Està sonant" "Cançó: $(echo "$info" | awk -F ': ' '/SongTitle/{print $2}')\nArtista: $(echo "$info" | awk -F ': ' '/Artist/{print $2}')\nÀlbum: $(echo "$info" | awk -F ': ' '/Album/{print $2}')\nDurada: $(echo "$info" | awk -F ': ' '/TotalTime/{print $2}')"
