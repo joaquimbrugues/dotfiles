@@ -13,7 +13,7 @@ super + d
 super + shift + q
 	dmenu-quit
 super + x
-	pkill -USR1 sxhkd
+	pkill -USR1 sxhkd && notify-send "🔄 Recarregat!" "SXHKD"
 super + ctrl + l
 	slock
 
@@ -65,7 +65,7 @@ super + alt + s
 
 # Take a screenshot of currently selected window/whole screen
 {_,shift} + Print
-	scrot {-u, }
+	scrot {-u, } -e 'mv $f \$HOME/Imatges/ && notify-send "📸 Scrot" "Captura de pantalla: \$HOME/Imatges/$f"'
 
 # Volume controls
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
