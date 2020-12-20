@@ -17,5 +17,5 @@ else
 	fi
 	# Format the bibliography item and output it to the file
 	echo "$(echo $ITEM | sed -e 's/, /,\n\t/g' -e 's/} /}\n/')" >> $BIB
-	notify-send "✅ S'ha afegit $ID a la bibliografia"
+	notify-send "📚 S'ha afegit $ID a la bibliografia"
 fi

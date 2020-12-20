@@ -13,7 +13,7 @@ super + d
 super + shift + q
 	dmenu-quit
 super + x
-	pkill -USR1 sxhkd
+	pkill -USR1 sxhkd && notify-send "🔄 Recarregat!" "SXHKD"
 super + ctrl + l
 	slock
 
@@ -69,7 +69,7 @@ super + alt + s
 
 # Take a screenshot of currently selected window/whole screen
 {_,shift} + Print
-	scrot {-u, }
+	scrot {-u, } -e 'mv $f \$HOME/Imatges/ && notify-send "📸 Scrot" "Captura de pantalla: \$HOME/Imatges/$f"'
 
 # Volume controls
 # From https://faq.i3wm.org/question/3747/enabling-multimedia-keys/
@@ -91,7 +91,7 @@ super + ctrl + {0,1,2,3}
 
 # LaTeX commands
 super + l ; {a,b,v}
-	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
+	$HOME/.local/bin/latex/{addtobib,get-latex-bib,compile -V}
 super + l ; {_,shift} + e
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
 super + l ; {_,shift} + c
