@@ -87,7 +87,7 @@ super + ctrl + {0,1,2,3}
 
 # LaTeX commands
 super + l ; {a,b,v}
-	$HOME/.local/bin/latex/{addtobib,copytoclipboard,compile -V}
+	$HOME/.local/bin/latex/{addtobib,get-latex-bib,compile -V}
 super + l ; {_,shift} + e
 	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
 super + l ; {_,shift} + c
