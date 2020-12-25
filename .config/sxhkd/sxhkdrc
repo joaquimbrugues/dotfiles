@@ -25,6 +25,8 @@ super + o
 	todo
 super + t
 	$TERMINAL -e gotop
+super + shift + t
+	$TERMINAL -e nvtop
 super + shift + v
 	dmenu-video
 super + z
