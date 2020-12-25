@@ -45,14 +45,14 @@ while read -r line ; do
 			vol_status="$(amixer get Master)"
 			vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Pom 1 "[0-9]+%")
 			case $vol_status in
-				*\[off\]*) message="SIL ($vol%)" ;;
-				*\[on\]*) message="VOL $vol%" ;;
+				*\[off\]*) message="SIL ($vol)" ;;
+				*\[on\]*) message="VOL $vol" ;;
 			esac
 			volume=" %{A:${vol_action1}:}%{A2:${vol_action2}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A}%{A} "
 			;;
 		B*)
 			#battery module output
-			bat=" %{A3:${bat_action3}:}%{+u}BAT ${line#?}%%{-u}%{A} "
+			bat=" %{A3:${bat_action3}:}%{+u}BAT ${line#?}%{-u}%{A} "
 			;;
 		D*)
 			#date module output
