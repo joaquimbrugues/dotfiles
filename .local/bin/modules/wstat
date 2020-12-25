@@ -4,8 +4,8 @@ INTERVAL=60
 
 while true; do
 	case $(cat /sys/class/net/w*/operstate) in
-		down) echo "IDesconnectat" ;;
-		up) echo "IConnectat" ;;
+		down) echo "I❌" ;;
+		up) echo "I📶" ;;
 		*) ;;
 	esac
 	sleep $INTERVAL
