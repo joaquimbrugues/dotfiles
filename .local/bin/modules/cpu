@@ -5,6 +5,6 @@ INTERVAL=5
 while true; do
 	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+[,\.]*\d*)(?=%* *id)" | awk '{print 100 - $1}')
 	temperature=$(sensors | grep 'acpitz-acpi-0' -A2 | awk '/temp1/ {print $2}')
-	echo "CCPU: $cpu_usage%% $temperature"
+	echo "CCPU: $cpu_usage% $temperature"
 	sleep $INTERVAL
 done
