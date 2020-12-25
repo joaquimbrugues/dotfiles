@@ -46,10 +46,10 @@ primary_offset_x=$(xrandr | grep "$primary" | awk -F'[ +]' '{print $5 + 8}')
 # Actual call
 if [ -n "$secondary" ]; then
 	# Redirect the output of the bar updater to a second instance of lemonbar
-	bar-updater < "$LLIMA_FIFO" | tee "${LLIMA_FIFO}2" | lemonbar -n "$LLIMA_NAME" -a 32 -u 2 -g ${primary_width}x${BAR_HEIGHT}+${primary_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
-	lemonbar -n "${LLIMA_NAME}2" -a 32 -u 2 -g ${secondary_width}x${BAR_HEIGHT}+${secondary_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" < "${LLIMA_FIFO}2" | sh &
+	bar-updater < "$LLIMA_FIFO" | tee "${LLIMA_FIFO}2" | lemonbar -n "$LLIMA_NAME" -a 32 -u 2 -g ${primary_width}x${BAR_HEIGHT}+${primary_offset_x}+5 -f "$BAR_FONT" -f "$BAR_ICONS_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+	lemonbar -n "${LLIMA_NAME}2" -a 32 -u 2 -g ${secondary_width}x${BAR_HEIGHT}+${secondary_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -f "$BAR_ICONS_FONT" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" < "${LLIMA_FIFO}2" | sh &
 else
-	bar-updater < "$LLIMA_FIFO" | lemonbar -n "$LLIMA_NAME" -a 32 -u 2 -g ${primary_width}x${BAR_HEIGHT}+${primary_offset_x}+5 -f "$BAR_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
+	bar-updater < "$LLIMA_FIFO" | lemonbar -n "$LLIMA_NAME" -a 32 -u 2 -g ${primary_width}x${BAR_HEIGHT}+${primary_offset_x}+5 -f "$BAR_FONT" -f "$BAR_ICONS_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" -U "$COLOR_UNDERLINE" | sh &
 fi
 
 # Put the bar at the lowest layer
