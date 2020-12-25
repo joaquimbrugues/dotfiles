@@ -18,6 +18,6 @@ COLOR_BACKGROUND_SELECTED="#474f61"
 COLOR_FOREGROUND_SELECTED="#98d2fc"
 
 BAR_HEIGHT=25
-BAR_FONT="-*-dejavu sans mono -medium-r-*-*-*-*-*-*-*-*-*-*"
+BAR_FONT="Inconsolata-14"
 
 WALLPAPER="$HOME/Pictures/toc_and_tool.jpg"
