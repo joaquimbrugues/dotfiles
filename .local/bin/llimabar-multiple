@@ -30,7 +30,7 @@ $DIR/cpu > "$LLIMA_FIFO" &
 $DIR/date > "$LLIMA_FIFO" &
 $DIR/memory > "$LLIMA_FIFO" &
 $DIR/wstat > "$LLIMA_FIFO" &
-echo "V\nM" > "$LLIMA_FIFO"
+echo -e "V\nM" > "$LLIMA_FIFO"
 
 # Import bar configuration
 . $HOME/.local/share/global-style
