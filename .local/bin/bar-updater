@@ -53,10 +53,8 @@ while read -r line ; do
 			case $vol_status in
 				*\[off\]*) message="🔇 ($vol)" ;;
 				*\[on\]*) num="${vol:0:-1}"
-					if [ "$num" -gt "70" ]; then
+					if [ "$num" -gt "50" ]; then
 						icon="🔊"
-					elif [ "$num" -lt "30" ]; then
-						icon="🔈"
 					else
 						icon="🔉"
 					fi
