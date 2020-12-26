@@ -52,7 +52,15 @@ while read -r line ; do
 			vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Pom 1 "[0-9]+%")
 			case $vol_status in
 				*\[off\]*) message="🔇 ($vol)" ;;
-				*\[on\]*) message="🔉 $vol" ;;
+				*\[on\]*) num="${vol:0:-1}"
+					if [ "$num" -gt "70" ]; then
+						icon="🔊"
+					elif [ "$num" -lt "30" ]; then
+						icon="🔈"
+					else
+						icon="🔉"
+					fi
+					message="$icon $vol" ;;
 			esac
 			volume=" %{A:${vol_action1}:}%{A2:${vol_action2}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A}%{A} "
 			;;
