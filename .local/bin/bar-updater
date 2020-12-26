@@ -24,7 +24,7 @@ launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "🐧 Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
 
-launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u} P %{-u}%{A}%{A}%{A}"
+launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u}  %{-u}%{A}%{A}%{A}"
 
 while read -r line ; do
 	case $line in
@@ -34,7 +34,7 @@ while read -r line ; do
 			;;
 		R*)
 			#memory module output
-			memory=" %{A:${mem_action1}:}%{A3:${mem_action3}:}%{+u}RAM: ${line#?}%{-u}%{A}%{A} "
+			memory=" %{A:${mem_action1}:}%{A3:${mem_action3}:}%{+u} ${line#?}%{-u}%{A}%{A} "
 			;;
 		I*)
 			#wstat module output
@@ -45,14 +45,20 @@ while read -r line ; do
 			vol_status="$(amixer get Master)"
 			vol=$(echo "$vol_status" | grep "\[[0-9]\+%\]" | grep -Pom 1 "[0-9]+%")
 			case $vol_status in
-				*\[off\]*) message="SIL ($vol)" ;;
-				*\[on\]*) message="VOL $vol" ;;
+				*\[off\]*) message=" ($vol)" ;;
+				*\[on\]*) num="${vol:0:-1}"
+					if [ "$num" -gt "50" ]; then
+						icon=""
+					else
+						icon=""
+					fi
+					message="$icon $vol" ;;
 			esac
 			volume=" %{A:${vol_action1}:}%{A2:${vol_action2}:}%{A3:${vol_action3}:}%{A4:${vol_action4}:}%{A5:${vol_action5}:}%{+u}${message}%{-u}%{A}%{A}%{A}%{A}%{A} "
 			;;
 		B*)
 			#battery module output
-			bat=" %{A3:${bat_action3}:}%{+u}BAT ${line#?}%{-u}%{A} "
+			bat=" %{A3:${bat_action3}:}%{+u}${line#?}%{-u}%{A} "
 			;;
 		D*)
 			#date module output

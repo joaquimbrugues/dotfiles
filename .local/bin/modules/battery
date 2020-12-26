@@ -3,6 +3,11 @@
 INTERVAL=30
 
 while true; do
-	echo "B$(acpi -b | grep -Po '[\.0-9]+%')"
+	ACPI=$(acpi -b)
+	case "$ACPI" in
+		*Discharging*) ICON="\uf241" ;;
+		*) ICON="\uf0e7" ;;
+	esac
+	echo -e "B$ICON $(echo $ACPI | grep -Po '[\.0-9]+%')"
 	sleep $INTERVAL
 done
