@@ -19,6 +19,5 @@ COLOR_FOREGROUND_SELECTED="#fae6ff"
 
 BAR_HEIGHT=25
 BAR_FONT="Inconsolata-12"
-BAR_ICONS_FONT="Noto Emoji-12"
 
 WALLPAPER="$HOME/Pictures/elements-bg.jpg"
