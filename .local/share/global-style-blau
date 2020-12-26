@@ -19,6 +19,5 @@ COLOR_FOREGROUND_SELECTED="#98d2fc"
 
 BAR_HEIGHT=25
 BAR_FONT="Inconsolata-12"
-BAR_ICONS_FONT="Noto Color Emoji-12"
 
 WALLPAPER="$HOME/Pictures/toc_and_tool.jpg"
