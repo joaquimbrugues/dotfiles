@@ -21,7 +21,8 @@ date_action1='notify-send "🗓 $(cal)"'
 date_action3='notify-send "⌚ Data i hora" "\- Mostra la data i hora actuals.\n\- Clica per mostrar el calendari del mes actual."'
 wm_action3='notify-send "🖥 Escriptoris" "\- Clica sobre un escriptori anar-hi."'
 bluetooth_action1='blueman-manager && echo -e "L\nV" >$LLIMA_FIFO'
-bluetooth_action3='notify-send "📡 Mòdul de Bluetooth" "\- Apareix només si el connector de Bluetooth està encès.\n\- Clica per obrir el blueman-manager."'
+bluetooth_action2='bluetoothctl power off && echo "L" > $LLIMA_FIFO'
+bluetooth_action3='notify-send "📡 Mòdul de Bluetooth" "\- Apareix només si el connector de Bluetooth està encès.\n\- Clica per obrir el blueman-manager.\n\- Fes clic amb la roda del ratolí per apagar el mòdul de Bluetooth."'
 launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "🐧 Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
@@ -40,7 +41,7 @@ while read -r line ; do
 			;;
 		L*)
 			bluetooth=
-			[ "$(bluetoothctl show | grep -i powered | awk '{print $2}')" = "yes" ] && bluetooth=" %{A:${bluetooth_action1}:}%{A3:${bluetooth_action3}:}%{+u}🔵%{-u}%{A}%{A} "
+			[ "$(bluetoothctl show | grep -i powered | awk '{print $2}')" = "yes" ] && bluetooth=" %{A:${bluetooth_action1}:}%{A2:${bluetooth_action2}:}%{A3:${bluetooth_action3}:}%{+u}🔵%{-u}%{A}%{A}%{A} "
 			;;
 		I*)
 			#wstat module output
