@@ -1,0 +1,18 @@
+#!/bin/sh
+# Dmenu prompt to mount/unmount mobile cell devices to $HOME/mobil/
+# This script will unmount a connected device
+# If none is connected, it will prompt the user to mount a connected device
+# Remember to authorise the file sharing from the phone itself first!
+
+MOUNTPOINT="$HOME/mobil"
+mkdir -p "$MOUNTPOINT"
+ls "$MOUNTPOINT" | grep "." >/dev/null && fusermount -u "$MOUNTPOINT" && notify-send "📱 MTPFS" "Mòbil desconnectat" && exit 0
+
+PICK=$(simple-mtpfs -l | dmenu_col -p "Tria un mòbil per muntar" -l 5)
+[ -z "$PICK" ] && exit 0
+
+if simple-mtpfs --device "$(echo $PICK | awk -F':' '{print $1}')" "$MOUNTPOINT"; then
+	notify-send "📲 MTPFS" "Mòbil $(echo $PICK | cut -d' ' -f2-) connectat.\nMuntat a $MOUNTPOINT"
+else
+	notify-send "⚠️ MTPFS" "El mòbil $(echo $PICK | cut -d' ' -f2-) no s'ha pogut connectar. Has desbloquejat el mòbil?"
+fi

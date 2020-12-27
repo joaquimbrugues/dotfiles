@@ -40,8 +40,9 @@ super + ctrl + y
 
 super + F1
 	dmenu-usb
-# Add a pipe to the lemonbar to notify the change
 super + F2
+	dmenu-mobil
+super + F3
 	update-news
 
 # Usual program launchers
