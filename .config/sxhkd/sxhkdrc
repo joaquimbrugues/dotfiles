@@ -37,6 +37,8 @@ super + s
 	screenkey-toggle
 super + ctrl + y
 	xclip-ytdownload
+super + e
+	enregistra "$HOME/enregistraments"
 
 super + F1
 	dmenu-usb

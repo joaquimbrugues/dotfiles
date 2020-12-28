@@ -1,0 +1,92 @@
+#!/bin/sh
+# Catch-all recording script with FFMPEG.
+# There are several modes, and on call the user is asked to select one:
+# - Mic only
+# - Mic and computer audio (in separate files), useful to record conversations and such
+# - Grab screen, either with audio or without
+
+# Kill the current recording
+mata() {
+	while IFS= read -r pid; do kill -15 $pid; done < /tmp/recordpid
+	echo "E" > $LLIMA_FIFO
+	notify-send "👌 Fi de l'enregistrament!"
+	sleep 3
+	while IFS= read -r pid; do kill -9 $pid 2>/dev/null; done < /tmp/recordpid
+	rm -f /tmp/recordpid
+	exit 0
+}
+
+# Record the mic
+audiomicro() {
+	ffmpeg -loglevel quiet -y -f alsa -i default "$DIR/micro-$(date '+%y%m%d-%H%M-%S').wav" >/dev/null &
+	echo "$!" > "/tmp/recordpid"
+	echo "E🎙" > $LLIMA_FIFO
+	notify-send "🎙 Enregistrant el micròfon"
+}
+
+# Record the mic and the internal audio in separate files
+audiodoble() {
+	uid=$(date '+%y%m%d-%H%M-%S')
+	#Micròfon
+	ffmpeg -loglevel quiet -y -f alsa -i default "$DIR/micro-${uid}.wav" >/dev/null &
+	echo "$!" > "/tmp/recordpid"
+	#Àudio intern
+	ffmpeg -loglevel quiet -y -f pulse -i 0 "$DIR/intern-${uid}.wav" >/dev/null &
+	echo "$!" >> "/tmp/recordpid"
+	echo "E🎙👂" > $LLIMA_FIFO
+	notify-send "🎙👂 Enregistrant el micròfon i l'àudio intern"
+}
+
+# Record the selected screen
+pantalla() {
+	tria=$(xrandr | grep -w connected | awk '{print $1}' | dmenu_col -c -l 10 -p "Tria un monitor (o tot per defecte)")
+	if [ -z "$tria" ]; then
+		ffmpeg -loglevel quiet -y -f x11grab -i :0.0 -c:v libx264 -r 24 "$DIR/pantalla-$(date '+%y%m%d-%H%M-%S').mkv" >/dev/null &
+		echo "$!" > "/tmp/recordpid"
+	else
+		geometria=$(xrandr | grep "$tria" | sed -r 's/primary//' | awk '{print $3}')
+		mida=$(echo "$geometria" | awk -F'+' '{print $1}')
+		mov=$(echo "$geometria" | awk -F'+' '{print $2","$3}')
+		ffmpeg -loglevel quiet -y -f x11grab -s "$mida" -i :0.0+"$mov" -c:v libx264 -r 24 "$DIR/pantalla-$(date '+%y%m%d-%H%M-%S').mkv" >/dev/null &
+		echo "$!" > "/tmp/recordpid"
+	fi
+	echo "E📹" > $LLIMA_FIFO
+}
+
+# Record the selected screen and the audio
+pantallaiso() {
+	uid=$(date '+%y%m%d-%H%M-%S')
+	tria=$(xrandr | grep -w connected | awk '{print $1}' | dmenu_col -c -l 10 -p "Tria un monitor (o tot per defecte)")
+	if [ -z "$tria" ]; then
+		ffmpeg -loglevel quiet -y -f x11grab -i :0.0 -f alsa -i default -c:v libx264 -c:a flac -r 24 "$DIR/gravacio-${uid}.mkv" >/dev/null &
+		echo "$!" > "/tmp/recordpid"
+	else
+		geometria=$(xrandr | grep "$tria" | sed -r 's/primary//' | awk '{print $3}')
+		mida=$(echo "$geometria" | awk -F'+' '{print $1}')
+		mov=$(echo "$geometria" | awk -F'+' '{print $2","$3}')
+		ffmpeg -loglevel quiet -y -f x11grab -s "$mida" -i :0.0+"$mov" -f alsa -i default -c:v libx264 -c:a flac -r 24 "$DIR/gravacio-${uid}.mkv" >/dev/null &
+		echo "$!" > "/tmp/recordpid"
+	fi
+	#Àudio intern
+	ffmpeg -loglevel quiet -y -f pulse -i 0 "$DIR/intern-${uid}.wav" >/dev/null &
+	echo "$!" >> "/tmp/recordpid"
+	echo "E📹🎙" > $LLIMA_FIFO
+}
+
+# Ask for which recording mode to enter
+pregunta() {
+	tria=$(echo -e "Micròfon\nDoble àudio\nPantalla\nPantalla i àudio" | dmenu_col -c -l 5 -p "Què vols fer?")
+	case "$tria" in
+		"Micròfon") audiomicro ;;
+		"Doble àudio") audiodoble ;;
+		"Pantalla") pantalla ;;
+		"Pantalla i àudio") pantallaiso ;;
+		*) [ -f /tmp/recordpid ] && mata ;;
+	esac
+}
+
+DIR="$HOME"
+[ -n "$1" ] && [ ! -d "$1" ] && notify-send "❗️ Error en enregistrar" "El directori $1 no existeix!" && exit 1
+[ -d "$1" ] && DIR="$1"
+echo "$1 $DIR"
+([ -f /tmp/recordpid ] && mata) || pregunta

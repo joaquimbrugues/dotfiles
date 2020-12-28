@@ -26,6 +26,8 @@ bluetooth_action3='notify-send "📡 Mòdul de Bluetooth" "\- Apareix només si 
 launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "🐧 Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
+record_action1='enregistra'
+record_action3='notify-send "🎙 Mòdul de gravadora" "\- Fes clic per aturar la gravació."'
 
 launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u} 🐧 %{-u}%{A}%{A}%{A}"
 
@@ -42,6 +44,10 @@ while read -r line ; do
 		L*)
 			bluetooth=
 			[ "$(bluetoothctl show | grep -i powered | awk '{print $2}')" = "yes" ] && bluetooth=" %{A:${bluetooth_action1}:}%{A2:${bluetooth_action2}:}%{A3:${bluetooth_action3}:}%{+u}🔵%{-u}%{A}%{A}%{A} "
+			;;
+		E*)
+			record=
+			[ "${#line}" -gt "1" ] && record=" %{A:${record_action1}:}%{A3:${record_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
 			;;
 		I*)
 			#wstat module output
@@ -106,5 +112,5 @@ while read -r line ; do
 		*)
 			;;
 	esac
-	printf "%s\n" "%{l}${launcher}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bluetooth}${bat}${date}"
+	printf "%s\n" "%{l}${launcher}${wm}%{r}${record}${cpu}${memory}${mail}${wstat}${volume}${bluetooth}${bat}${date}"
 done
