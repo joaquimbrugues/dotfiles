@@ -3,11 +3,9 @@
 INTERVAL=60
 
 while true; do
-	find "/sys/class/net/" -name "operstate" | grep -q '.' || echo -e "I\uf00d"
 	case $(cat /sys/class/net/w*/operstate) in
-		down) echo -e "I\uf00d" ;;
 		up) echo -e "I\uf1eb" ;;
-		*) ;;
+		*) echo -e "I\uf00d" ;;
 	esac
 	sleep $INTERVAL
 done
