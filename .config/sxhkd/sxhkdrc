@@ -10,11 +10,14 @@ super + {_,shift} + Return
 # IMPORTANT: Dmenu needs to be patched with the center patch
 super + d
 	dmenu_col_run -c -l 10
+super + p
+	passmenu_col -l 10 -p "Contrasenyes"
 super + shift + q
 	dmenu-quit
 super + x
 	pkill -USR1 sxhkd && notify-send "🔄 Recarregat!" "SXHKD"
 super + ctrl + l
+#	gpg-connect-agent --no-autostart reloadagent /bye && slock
 	slock
 
 super + {c,m}
@@ -31,7 +34,7 @@ super + shift + v
 	dmenu-video
 super + z
 	dmenu-reader
-super + p
+super + shift + p
 	dmenu-podcast
 super + s
 	screenkey-toggle
