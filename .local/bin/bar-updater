@@ -28,6 +28,9 @@ launcher_action2='dmenu-quit'
 launcher_action3='notify-send "🐧 Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
 record_action1='enregistra'
 record_action3='notify-send "🎙 Mòdul de gravadora" "\- Fes clic per aturar la gravació."'
+mail_action1='$TERMINAL -e neomutt ; echo "M" >$LLIMA_FIFO'
+mail_action2='mailsync && echo "M" >$LLIMA_FIFO'
+mail_action3='notify-send "📫 Mòdul del correu" "\- Mostra correus sense llegir.\n\- Fes clic per obrir el client de correu.\n\- Fes clic amb la roda del ratolí per actualitzar la safata del correu."'
 
 launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u} 🐧 %{-u}%{A}%{A}%{A}"
 
@@ -76,6 +79,16 @@ while read -r line ; do
 		D*)
 			#date module output
 			date=" %{A:${date_action1}:}%{A3:${date_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
+			;;
+		M*)
+			#e-mail inbox count
+			MAILBOX="$HOME/.local/share/mail"
+			NUM_MAIL=$(find $MAILBOX/*/INBOX/new -type f | wc -l)
+			if [ "$NUM_MAIL" -gt 0 ]; then
+				mail=" %{A:${mail_action1}:}%{A2:${mail_action2}:}%{A3:${mail_action3}:}%{+u}📬 ${NUM_MAIL}%{-u}%{A}%{A}%{A} "
+			else
+				mail=""
+			fi
 			;;
 		W*)
 			#BSPWM state

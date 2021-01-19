@@ -49,6 +49,8 @@ super + F2
 	dmenu-mobil
 super + F3
 	update-news
+super + F4
+	mailsync && echo "M" >$LLIMA_FIFO
 
 # Usual program launchers
 super + alt + {_,shift} + f
@@ -74,7 +76,7 @@ super + alt + h
 super + alt + s
 	surf $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a surf" -l 20)
 super + alt + m
-	$TERMINAL -e neomutt
+	$TERMINAL -e neomutt && echo "M" >$LLIMA_FIFO
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
