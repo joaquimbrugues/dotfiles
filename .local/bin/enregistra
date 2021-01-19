@@ -73,14 +73,31 @@ pantallaiso() {
 	echo "E📹🎙" > $LLIMA_FIFO
 }
 
+# Record the selected screen and the internal audio
+pantallaisointern() {
+	uid=$(date '+%y%m%d-%H%M-%S')
+	tria=$(xrandr | grep -w connected | awk '{print $1}' | dmenu_col -c -l 10 -p "Tria un monitor (o tot per defecte)")
+	if [ -z "$tria" ]; then
+		ffmpeg -loglevel quiet -y -f x11grab -i :0.0 -f pulse -i 0 -c:v libx264 -c:a flac -r 24 "$DIR/gravacio-${uid}.mkv" >/dev/null &
+		echo "$!" > "/tmp/recordpid"
+	else
+		geometria=$(xrandr | grep "$tria" | sed -r 's/primary//' | awk '{print $3}')
+		mida=$(echo "$geometria" | awk -F'+' '{print $1}')
+		mov=$(echo "$geometria" | awk -F'+' '{print $2","$3}')
+		ffmpeg -loglevel quiet -y -f x11grab -s "$mida" -i :0.0+"$mov" -f pulse -i 0 -c:v libx264 -c:a flac -r 24 "$DIR/gravacio-${uid}.mkv" >/dev/null &
+		echo "$!" > "/tmp/recordpid"
+	fi
+	echo "E📹👂" > $LLIMA_FIFO
+}
 # Ask for which recording mode to enter
 pregunta() {
-	tria=$(echo -e "Micròfon\nDoble àudio\nPantalla\nPantalla i àudio" | dmenu_col -c -l 5 -p "Què vols fer?")
+	tria=$(echo -e "Micròfon\nDoble àudio\nPantalla\nPantalla i àudio\nPantalla i àudio intern" | dmenu_col -c -l 5 -p "Què vols fer?")
 	case "$tria" in
 		"Micròfon") audiomicro ;;
 		"Doble àudio") audiodoble ;;
 		"Pantalla") pantalla ;;
 		"Pantalla i àudio") pantallaiso ;;
+		"Pantalla i àudio intern") pantallaisointern ;;
 		*) [ -f /tmp/recordpid ] && mata ;;
 	esac
 }
