@@ -29,3 +29,13 @@ map <F2> :setlocal spell spelllang=en<CR>
 map <F3> :setlocal spell spelllang=es<CR>
 map <F4> :setlocal spell spelllang=nl<CR>
 map <F5> :setlocal spell spelllang=ru<CR>
+
+" Abbreviations
+"
+" LaTeX
+ab par \frac{\partial}{\partial }<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+ab RR \mathbb{R}
+ab QQ \mathbb{Q}
+ab CC \mathbb{C}
+ab ZZ \mathbb{Z}
+ab NN \mathbb{N}
