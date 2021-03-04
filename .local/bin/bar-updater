@@ -31,6 +31,7 @@ record_action3='notify-send "🎙 Mòdul de gravadora" "\- Fes clic per aturar l
 mail_action1='$TERMINAL -e neomutt ; echo "M" >$LLIMA_FIFO'
 mail_action2='mailsync && echo "M" >$LLIMA_FIFO'
 mail_action3='notify-send "📫 Mòdul del correu" "\- Mostra correus sense llegir.\n\- Fes clic per obrir el client de correu.\n\- Fes clic amb la roda del ratolí per actualitzar la safata del correu."'
+crypto_action3='notify-send "💸 Mòdul de criptomonedes" "\- Mostra intercanvi actual de LBC."'
 
 launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u} 🐧 %{-u}%{A}%{A}%{A}"
 
@@ -90,6 +91,9 @@ while read -r line ; do
 				mail=""
 			fi
 			;;
+		Y*)
+			#Crypto module
+			crypto=" %{A3:${crypto_action3}:}%{+u}💸 ${line#?}%{-u}%{A} "
 		W*)
 			#BSPWM state
 			wm=
@@ -125,5 +129,5 @@ while read -r line ; do
 		*)
 			;;
 	esac
-	printf "%s\n" "%{l}${launcher}${wm}%{r}${record}${cpu}${memory}${mail}${wstat}${volume}${bluetooth}${bat}${date}"
+	printf "%s\n" "%{l}${launcher}${wm}%{r}${record}${cpu}${memory}${mail}${crypto}${wstat}${volume}${bluetooth}${bat}${date}"
 done

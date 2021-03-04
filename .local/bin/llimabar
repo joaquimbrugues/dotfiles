@@ -30,6 +30,7 @@ $DIR/cpu > "$LLIMA_FIFO" &
 $DIR/date > "$LLIMA_FIFO" &
 $DIR/memory > "$LLIMA_FIFO" &
 $DIR/wstat > "$LLIMA_FIFO" &
+$DIR/coins > "$LLIMA_FIFO" &
 
 exec 3<> "$LLIMA_FIFO"
 echo -e "V\nL\nM\n" > "$LLIMA_FIFO"
