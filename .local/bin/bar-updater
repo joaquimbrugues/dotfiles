@@ -94,6 +94,7 @@ while read -r line ; do
 		Y*)
 			#Crypto module
 			crypto=" %{A3:${crypto_action3}:}%{+u}💸 ${line#?}%{-u}%{A} "
+			;;
 		W*)
 			#BSPWM state
 			wm=
