@@ -1,6 +1,7 @@
 #!/bin/sh
 # Profile file. Runs on login
 
+export LC_NUMERIC="en_US.UTF-8"
 export TERMINAL="st"
 export EDITOR="nvim"
 export BROWSER="firefox"
