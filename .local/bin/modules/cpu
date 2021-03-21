@@ -6,6 +6,6 @@ while true; do
 	cpu_usage=$(top -bn1 | grep "Cpu(s)" | grep -Po "(\d+[,\.]*\d*)(?=%* *id)" | awk '{print 100 - $1}')
 	temperature=$(sensors | grep 'acpitz-acpi-0' -A2 | awk '/temp1/ {print $2}')
 	spaces="   "
-	echo -e "C💻 ${spaces:0:$((3 - ${#cpu_usage}))}$cpu_usage% ${temperature:1}"
+	echo -e "C💻 ${spaces:0:$((4 - ${#cpu_usage}))}$cpu_usage% ${temperature:1}"
 	sleep $INTERVAL
 done
