@@ -4,7 +4,6 @@ INTERVAL=7200
 
 while true; do
 	ping -q -c 1 1.1.1.1 > /dev/null || exit 0
-	RATE="$(curl -s https://eur.rate.sx/1lbc)"
-	printf "Y%.2f€\n" "$RATE"
+	printf "Y%.2f€\n" "$(curl -s https://eur.rate.sx/1lbc)"
 	sleep $INTERVAL
 done
