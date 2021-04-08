@@ -71,6 +71,11 @@ super + alt + {Left,Down,Up,Right}
 # Open a calculator that follows you around
 super + a
 	bspc rule -a st-256color -o state=floating rectangle=400x250+10+820 sticky=on && $TERMINAL -e bc -l -q $HOME/.config/bc/init
+
+# Open a window with a translator that follows you around
+super + ctrl + t
+	bspc rule -a st-256color -o state=floating rectangle=400x250+10+820 sticky=on && $TERMINAL -e tradueix
+
 # Open an mpv window with the feed of the webcam, following you around
 super + w
 	notify-send "📷 Encenent la càmera..." && camera
