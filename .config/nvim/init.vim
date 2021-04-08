@@ -33,7 +33,7 @@ map <F5> :setlocal spell spelllang=ru<CR>
 " Abbreviations
 "
 " LaTeX
-ab par \frac{\partial}{\partial }<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+ab par \frac{\partial}{\partial <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 ab RR \mathbb{R}
 ab QQ \mathbb{Q}
 ab CC \mathbb{C}
