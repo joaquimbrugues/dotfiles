@@ -1,7 +1,7 @@
 #!/bin/sh
 # Wrapper for the program translate-shell, with a dmenu asking for the languages to translate.
 
-OPCIONS="nl ca\nca nl\nen ca"
+OPCIONS="nl ca\nca nl\nen ca\nca en"
 LANGS="$(echo -e "$OPCIONS" | dmenu_col -c -p "Idiomes:" -l 10)"
 [ -z "$LANGS" ] && exit 0
 [ "$(echo "$LANGS" | wc -w)" -gt 1 ] && trans -b -I -s "$(echo $LANGS | cut -d' ' -f 1)" -t "$(echo $LANGS | cut -d' ' -f 2)" || trans -b -I -s "$(echo $LANGS | cut -d' ' -f 1)"
