@@ -9,7 +9,7 @@ These are the dotfiles for my various GNU/Linux installations both at home and a
 The configurations are set for the programs that I use more often:
 
 	- bspwm (window manager)
-	- [lemonbar-xft](https://github.com/freundTech/bar) (status bar)
+	- <a href="https://github.com/freundTech/bar">lemonbar-xft</a> (status bar)
 	- neovim (text editor)
 	- st (terminal emulator)
 	- bash
