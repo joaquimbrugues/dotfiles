@@ -8,16 +8,16 @@ These are the dotfiles for my various GNU/Linux installations both at home and a
 
 The configurations are set for the programs that I use more often:
 
-- bspwm (window manager)
+- [bspwm](https://github.com/baskerville/bspwm) (window manager)
 - [lemonbar-xft](https://github.com/freundTech/bar) (status bar)
-- neovim (text editor)
-- st (terminal emulator)
-- bash
-- sxhkd (hotkey daemon)
-- moc (music daemon)
-- i3 (window manager): not actively maintained
-- Xfce terminal (terminal emulator): not actively maintained
-- nano (text editor): not actively maintained
+- [neovim](https://neovim.io) (text editor)
+- [st](https://st.suckless.org) (terminal emulator)
+- [bash](https://www.gnu.org/software/bash/)
+- [sxhkd](https://github.com/baskerville/sxhkd) (hotkey daemon)
+- [moc](https://moc.daper.net/) (music daemon)
+- [i3](https://i3wm.org/) (window manager): not actively maintained
+- [Xfce terminal](https://docs.xfce.org/apps/terminal/start) (terminal emulator): not actively maintained
+- [nano](https://www.nano-editor.org/) (text editor): not actively maintained
 - urxvt (terminal emulator): not actively maintained
 
 There are also scripts (in `~/.local/bin/`) with some useful tools, usually using [dmenu](https://tools.suckless.org/dmenu/) to interact with the system, to work with LaTeX, and for my status bar, among other applications.
