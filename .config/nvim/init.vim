@@ -21,7 +21,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Easy commenting
     Plug 'scrooloose/nerdcommenter'
     Plug 'vimwiki/vimwiki'
+    " Support for Rust language
+    Plug 'rust-lang/rust.vim'
 call plug#end()
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" NerdTree shortcut
+map t :NERDTreeToggle<CR>
 
 " Set spell checking
 map <F1> :setlocal spell spelllang=ca<CR>
