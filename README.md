@@ -9,7 +9,7 @@ These are the dotfiles for my various GNU/Linux installations both at home and a
 The configurations are set for the programs that I use more often:
 
 	- bspwm (window manager)
-	- (lemonbar-xft)[https://github.com/freundTech/bar] (status bar)
+	- [https://github.com/freundTech/bar](lemonbar-xft) (status bar)
 	- neovim (text editor)
 	- st (terminal emulator)
 	- bash
@@ -20,7 +20,7 @@ The configurations are set for the programs that I use more often:
 	- nano (text editor): not actively maintained
 	- urxvt (terminal emulator): not actively maintained
 
-There are also scripts (in `~/.local/bin/`) with some useful tools, usually using ![dmenu](https://tools.suckless.org/dmenu/), to interact with the system, to work with LaTeX, and for my status bar, among other applications.
+There are also scripts (in `~/.local/bin/`) with some useful tools, usually using [https://tools.suckless.org/dmenu/](dmenu) to interact with the system, to work with LaTeX, and for my status bar, among other applications.
 
 This list of programs may change with time.
 
