@@ -1,3 +1,4 @@
+filetype plugin on
 let mapleader =","
 set number relativenumber
 " Set the working directory to the directory of the file
@@ -42,17 +43,3 @@ map <F5> :setlocal spell spelllang=ru<CR>
 " Adding blank lines without entering insert mode or registering them
 map <c-j> "_o<esc>
 map <c-k> "_O<esc>
-
-" Abbreviations
-"
-" LaTeX
-ab par \frac{\partial}{\partial <Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-ab RR \mathbb{R}
-ab QQ \mathbb{Q}
-ab CC \mathbb{C}
-ab ZZ \mathbb{Z}
-ab NN \mathbb{N}
-ab ee \varepsilon
-ab LL \mathcal{L}
-ab pl \left.\right\|<Left><Left><Left><Left><Left><Left><Left>
-ab (( \left(\right)<Left><Left><Left><Left><Left><Left><Left>
