@@ -2,6 +2,7 @@
 
 max-items	100
 
+# Colours
 color listnormal cyan default
 color listfocus green default bold
 color listnormal_unread yellow default
@@ -11,6 +12,7 @@ color article cyan default
 highlight all "---.*---" blue default bold
 highlight feedlist ".*(0/0))" black
 
+# Open article macros
 browser "lynx %u"
 macro , open-in-browser
 macro y set browser "lynx %u"; open-in-browser
@@ -22,3 +24,13 @@ macro s set browser "setsid -f surf %u"; open-in-browser ; set browser "lynx %u"
 
 #Podboat configuration
 download-path "~/Podcast"
+
+# Key bindings
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+bind-key u pageup
+bind-key d pagedown
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
