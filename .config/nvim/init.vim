@@ -7,6 +7,8 @@ set autochdir
 " Let the system clipboard interact with vim
 set clipboard+=unnamedplus
 
+set noshowmode
+
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -26,8 +28,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Support for Rust language
     Plug 'rust-lang/rust.vim'
     Plug 'vim-scripts/ctrlp.vim'
+    " Lightline
+    Plug 'itchyny/lightline.vim'
 call plug#end()
 
+" Status bar configuration
+let g:lightline = {
+   \ 'colorscheme': 'darcula',
+   \ 'active': {
+   \     'left': [ [ 'mode', 'paste' ],
+   \               [ 'readonly', 'relativepath', 'modified' ] ],
+   \     'right': [ [ 'lineinfo' ],
+   \               [ 'percent' ],
+   \               [ 'spell', 'filetype' ] ]
+   \  }
+   \ }
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
