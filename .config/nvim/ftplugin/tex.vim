@@ -1,4 +1,8 @@
 " TeX and LaTeX
+
+" Automatically check spelling
+setlocal spell spelllang=en
+
 " Abbreviations
 ab RR \mathbb{R}
 ab QQ \mathbb{Q}
@@ -31,3 +35,8 @@ imap <m-7> \left.\right\|<ESC>6hi
 imap <m-8> \left(\right)<ESC>6hi
 " Create left-right bracket structure
 imap <m-9> \left[\right]<ESC>6hi
+
+" Compile document
+map <leader>C :w! \| !pdflatex "<c-r>%"<CR>
+" Open bibliography in split
+map <leader>b :vsp $BIB<CR>
