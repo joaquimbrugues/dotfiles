@@ -1,6 +1,7 @@
 filetype plugin on
 let mapleader =","
 set number relativenumber
+set mouse=a
 " Set the working directory to the directory of the file
 set autochdir
 " Let the system clipboard interact with vim
@@ -24,6 +25,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vimwiki/vimwiki'
     " Support for Rust language
     Plug 'rust-lang/rust.vim'
+    Plug 'vim-scripts/ctrlp.vim'
 call plug#end()
 
 " Exit Vim if NERDTree is the only window left.
@@ -31,7 +33,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 " NerdTree shortcut
-map t :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 
 " Set spell checking
 map <F1> :setlocal spell spelllang=ca<CR>
@@ -46,3 +48,11 @@ map <c-k> "_O<esc>
 
 " Paste in selection
 vmap p "_dP
+
+" Prevent comments from being inserted after pressing o or O in normal mode
+autocmd FileType * setlocal formatoptions-=o
+
+" Toggle search highlight. Set / and ? to activate highlight always
+nmap <leader>h :set hls!<CR>
+nnoremap / :set hlsearch<CR>/
+nnoremap ? :set hlsearch<CR>?
