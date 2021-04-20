@@ -43,3 +43,6 @@ map <F5> :setlocal spell spelllang=ru<CR>
 " Adding blank lines without entering insert mode or registering them
 map <c-j> "_o<esc>
 map <c-k> "_O<esc>
+
+" Paste in selection
+vmap p "_dP
