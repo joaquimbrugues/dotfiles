@@ -1,3 +1,3 @@
 " Mappings
 " Cargo check
-map <leader>C :w! \| !cargo check<CR>
+map <leader>C :w! \| Ccheck<CR>
