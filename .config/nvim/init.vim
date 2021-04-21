@@ -61,11 +61,16 @@ map <F5> :setlocal spell spelllang=ru<CR>
 map <c-j> "_o<esc>
 map <c-k> "_O<esc>
 
-" Paste in selection
+" Ease navigation between horizontal layouts
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+
+" Paste in selection (visual mode)
 vmap p "_dP
 
-" Prevent comments from being inserted after pressing o or O in normal mode
-autocmd FileType * setlocal formatoptions-=o
+" Prevent comments from being inserted after pressing o or O in normal mode or
+" hitting <enter> in insert mode
+autocmd FileType * setlocal formatoptions-=o formatoptions-=r
 
 " Toggle search highlight. Set / and ? to activate highlight always
 nmap <leader>h :set hls!<CR>
