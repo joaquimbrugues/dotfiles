@@ -1,5 +1,5 @@
 filetype plugin on
-let mapleader =","
+let mapleader =" "
 set number relativenumber
 set mouse=a
 " Set the working directory to the directory of the file
