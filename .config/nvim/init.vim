@@ -7,7 +7,9 @@ set autochdir
 " Let the system clipboard interact with vim
 set clipboard+=unnamedplus
 
+set nohlsearch
 set noshowmode
+set scrolloff=2
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -27,7 +29,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vimwiki/vimwiki'
     " Support for Rust language
     Plug 'rust-lang/rust.vim'
-    Plug 'vim-scripts/ctrlp.vim'
     " Lightline
     Plug 'itchyny/lightline.vim'
 call plug#end()
@@ -61,7 +62,7 @@ map <F5> :setlocal spell spelllang=ru<CR>
 map <c-j> "_o<esc>
 map <c-k> "_O<esc>
 
-" Ease navigation between horizontal layouts
+" Ease navigation between horizontal buffers
 map <c-h> <c-w>h
 map <c-l> <c-w>l
 
@@ -71,8 +72,3 @@ vmap p "_dP
 " Prevent comments from being inserted after pressing o or O in normal mode or
 " hitting <enter> in insert mode
 autocmd FileType * setlocal formatoptions-=o formatoptions-=r
-
-" Toggle search highlight. Set / and ? to activate highlight always
-nmap <leader>h :set hls!<CR>
-nnoremap / :set hlsearch<CR>/
-nnoremap ? :set hlsearch<CR>?
