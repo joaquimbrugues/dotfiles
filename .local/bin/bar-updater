@@ -80,13 +80,13 @@ while read -r line ; do
 					[m]*)
 						monitor_focused=1
 						;;
-					[OF]*)
-						#Occupied or free focused desktop
+					[OFU]*)
+						#Occupied, free or urgent focused desktop
 						[ $monitor_focused -eq 2 ] && wm="${wm} %{F${COLOR_FOREGROUND_SELECTED}}%{B${COLOR_BACKGROUND_SELECTED}}%{U${COLOR_UNDERLINE_SELECTED}}%{+u} ${name} %{-u}%{U-}%{B-}%{F-}"
 						[ $monitor_focused -eq 1 ] && wm="${wm} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
 						;;
-					[o]*)
-						#Occupied non-focused desktop
+					[ou]*)
+						#Occupied or urgent non-focused desktop
 						wm="${wm} %{A:bspc desktop -f ${name}:}%{+u} ${name} %{-u}%{A}"
 						;;
 					*)
