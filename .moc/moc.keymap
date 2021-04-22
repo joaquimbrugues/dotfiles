@@ -9,7 +9,7 @@ menu_page_up		+= ^b
 menu_first_item	+= g
 menu_last_item	+= G
 search_menu			+= f
-toggle_menu			+= ^w
+toggle_menu			+= ^h ^l
 toggle_layout		+= L
 help						+= H
 
