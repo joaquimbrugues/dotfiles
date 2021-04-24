@@ -68,6 +68,10 @@ super + r : shift + {Left,Down,Up,Right}
 super + alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Open a floating terminal
+super + shift + Return
+	bspc rule -a st-256color -o state=floating && $TERMINAL
+
 # Open a calculator that follows you around
 super + a
 	bspc rule -a st-256color -o state=floating rectangle=400x250+10+508 sticky=on && $TERMINAL -e bc -l -q $HOME/.config/bc/init
