@@ -23,6 +23,8 @@ super + q
 # Change focus or swap nodes
 super + {_,shift} + {Left,Up,Down,Right}
 	bspc node -{f,s} {west,north,south,east}
+super + {_,shift} + {h,k,j,l}
+	bspc node -{f,s} {west,north,south,east}
 
 # Toggle the window mode
 super + {_,shift} + f
