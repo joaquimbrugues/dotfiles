@@ -2,8 +2,6 @@ filetype plugin on
 let mapleader =" "
 set number relativenumber
 set mouse=a
-" Set the working directory to the directory of the file
-set autochdir
 " Let the system clipboard interact with vim
 set clipboard+=unnamedplus
 

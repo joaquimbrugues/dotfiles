@@ -1,5 +1,7 @@
 " TeX and LaTeX
 
+" Set the working directory to the directory of the file
+set autochdir
 " Automatically check spelling
 setlocal spell spelllang=en
 
