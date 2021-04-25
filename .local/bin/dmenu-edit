@@ -1,0 +1,8 @@
+#!/bin/sh
+# Look for editable documents and open a dmenu to edit one of them using EDITOR
+
+. $HOME/.local/share/global-style
+DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
+
+FILE=$(locate -d "$LOCALDB" ".tex" ".rs" ".md" ".tikz" ".tex" | dmenu_col -l 10 -p "Obre amb $EDITOR")
+$TERMINAL -e $EDITOR "$FILE"
