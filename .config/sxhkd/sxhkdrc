@@ -34,6 +34,8 @@ super + z
 	dmenu-reader
 super + shift + p
 	dmenu-podcast
+super + e
+	dmenu-edit
 super + s
 	screenkey-toggle
 super + ctrl + y
@@ -91,20 +93,22 @@ super + ctrl + {0,1,2,3}
 	screen-layout { ,únic,dual-dreta,dual-esquerra}
 
 # LaTeX commands
-super + l ; {a,b,v}
-	$HOME/.local/bin/latex/{addtobib,get-latex-bib,compile -V}
-super + l ; {_,shift} + e
-	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
-super + l ; {_,shift} + c
-	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
-super + l ; {_,shift} + p
-	{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
-super + l ; shift + b
-	$HOME/.local/bin/latex/compile -b
-super + l ; Return
-	cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
-super + l ; {t,r}
-	$HOME/.local/bin/latex/compile -{T,R}
+#super + l ; {a,b,v}
+	#$HOME/.local/bin/latex/{addtobib,get-latex-bib,compile -V}
+#super + l ; {_,shift} + e
+	#{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -E
+#super + l ; {_,shift} + c
+	#{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile
+#super + l ; {_,shift} + p
+	#{ ,$HOME/.local/bin/latex/removefile &&} $HOME/.local/bin/latex/compile -p
+#super + l ; shift + b
+	#$HOME/.local/bin/latex/compile -b
+#super + l ; Return
+	#cd "$(dirname $($HOME/.local/bin/latex/getcurrentfile))" && $TERMINAL
+#super + l ; {t,r}
+	#$HOME/.local/bin/latex/compile -{T,R}
+super + shift + a
+	$HOME/.local/bin/latex/addtobib
 
 # Switch keyboard layout to Spanish/Russian
 super + ctrl + s
