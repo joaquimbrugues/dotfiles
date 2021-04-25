@@ -33,6 +33,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'itchyny/lightline.vim'
 call plug#end()
 
+let g:vimwiki_ext2syntax = {}
+
 " Status bar configuration
 let g:lightline = {
    \ 'colorscheme': 'darcula',
