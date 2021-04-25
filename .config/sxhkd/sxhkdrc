@@ -4,8 +4,8 @@
 #	- sxhkdrc-* contains all the shortcuts specific to a particular WM
 # The proper way to use this should be to add the line 'sxhkd -c PATH_TO_CONFIG/sxhkdrc PATH_TO_CONFIG/sxhkdrc-*
 
-super + {_,shift} + Return
-	{$TERMINAL,login-remote}
+super + Return
+	$TERMINAL
 # Run dmenu launcher.
 # IMPORTANT: Dmenu needs to be patched with the center patch
 super + d

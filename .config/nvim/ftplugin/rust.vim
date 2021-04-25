@@ -1,6 +1,11 @@
+" Rust
+
 " Mappings
 " Cargo check
-map <leader>C :w! \| Ccheck<CR>
+map <leader>gc :w! \| Ccheck<CR>
+map <leader>gr :w! \| Crun<CR>
+map <leader>gb :w! \| Cbuild<CR>
+map <leader>gt :w! \| Ctest<CR>
 " Go to definition
 map <leader>d :ALEGoToDefinition -vsplit<CR>
 " Go to prev/next error

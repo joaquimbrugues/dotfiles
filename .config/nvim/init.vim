@@ -2,8 +2,6 @@ filetype plugin on
 let mapleader =" "
 set number relativenumber
 set mouse=a
-" Set the working directory to the directory of the file
-set autochdir
 " Let the system clipboard interact with vim
 set clipboard+=unnamedplus
 
@@ -34,6 +32,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Lightline
     Plug 'itchyny/lightline.vim'
 call plug#end()
+
+let g:vimwiki_ext2syntax = {}
 
 " Status bar configuration
 let g:lightline = {
