@@ -39,6 +39,10 @@ imap <m-8> \left(\right)<ESC>6hi
 imap <m-9> \left[\right]<ESC>6hi
 
 " Compile document
-map <leader>C :w! \| !pdflatex "<c-r>%"<CR>
+map <leader>C :w! \| !pdflatex %<CR>
 " Open bibliography in split
 map <leader>b :vsp $BIB<CR>
+" Open compiled document with system READER
+map <leader>z :!$READER %:r.pdf &<CR>
+" Open terminal in current folder
+map <leader><ENTER> :!$TERMINAL &<CR>
