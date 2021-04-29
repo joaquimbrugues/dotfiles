@@ -29,6 +29,7 @@ download-path "~/Podcast"
 bind-key j down
 bind-key k up
 bind-key l open
+bind-key l open-in-browser article
 bind-key h quit
 bind-key b pageup
 bind-key f pagedown
