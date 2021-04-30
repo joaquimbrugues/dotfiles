@@ -21,8 +21,8 @@ map <c-e> "eciw\begin{}<ESC>"eP"_o\end{}<ESC>"eP"_O
 imap <c-j> <ESC>"_o\[\]<ESC>hi
 " Add inline math mode to the right
 imap <c-l> $$<ESC>i
-" Use word as numerator of a fraction, and place the cursor in the denominator
-imap <m-f> <ESC>"fciW\frac{}<ESC>"fPla
+" Use selection as numerator of a fraction, and place the cursor in the denominator
+vmap <c-f> "fc\frac{}<ESC>"fPla
 " Use word as function for a partial differentiation, and place the cursor in
 " the denominator
 imap <c-d> <ESC>"fciW\frac{\partial }{\partial <ESC>B"fPEla

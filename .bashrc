@@ -59,6 +59,7 @@ alias aptdate='apt update && apt list --upgradable'
 alias updatelocaldb='updatedb -U $HOME -l no -o $LOCALDB'
 alias e='$EDITOR'
 alias v='$READER'
+alias rs-rup='rsync --recursive --update --progress'
 
 # less and man colour variables
 # Start blinking
