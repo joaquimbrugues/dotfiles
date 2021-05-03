@@ -6,7 +6,7 @@
 monitor="$(bspc query -M -d focused --names)"
 if [ -z "$(bspc query -N -n .focused.fullscreen -d focused)" ]; then
 	# Switch the node to fullscreen
-	bspc node focused.tiled -t fullscreen
+	bspc node focused.!fullscreen -t fullscreen
 
 	# Hide the appropriate bar (for transparent background windows)
 	if [ "$(xrandr | grep -w $monitor | grep -w primary)" ]; then
@@ -16,7 +16,7 @@ if [ -z "$(bspc query -N -n .focused.fullscreen -d focused)" ]; then
 	fi
 
 	# Hide all the other nodes
-	NODES=$(bspc query -N -n .tiled -d focused)
+	NODES=$(bspc query -N -n .!fullscreen -d focused)
 	for node in $NODES; do
 		bspc node $node -g hidden=on
 	done
