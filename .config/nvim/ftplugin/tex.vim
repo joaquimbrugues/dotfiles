@@ -32,11 +32,17 @@ imap <m-1> \begin{array}{rccc} : & & \longrightarrow & \\ & & \longmapsto & \end
 imap <m-2> \left\{ \begin{array} \end{array} \right.<ESC>2Bhi
 imap <m-3> \left. \begin{array} \end{array} \right\}<ESC>2Bhi
 " Create 'restriction' structure
-imap <m-7> \left.\right\|<ESC>6hi
+imap <m-4> \left.\right\|<ESC>6hi
+" Create left-right bracket keys structure
+imap <m-7> \left\{\right\}<ESC>7hi
 " Create left-right parenthesis structure
 imap <m-8> \left(\right)<ESC>6hi
 " Create left-right bracket structure
 imap <m-9> \left[\right]<ESC>6hi
+" Place selection into bold brackets
+vmap <c-b> "bc{\bf }<ESC>"bP
+" Place selection into italics brackets
+vmap <c-i> "ic{\it }<ESC>"iP
 
 " Compile document
 map <leader>C :w! \| !pdflatex %<CR>
