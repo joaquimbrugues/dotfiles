@@ -27,7 +27,7 @@ super + shift + d
 super + o
 	todo
 super + t
-	$TERMINAL -e gotop
+	$TERMINAL -e btm
 super + shift + t
 	$TERMINAL -e nvtop
 super + shift + v
