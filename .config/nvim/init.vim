@@ -85,3 +85,5 @@ let g:ale_linters = {
    \}
 let g:deoplete#sources = {'rust': ['ale']}
 map <leader>A <Plug>(ale_toggle_buffer)
+
+au BufRead,BufNewFile *.jrnl setfiletype jrnl
