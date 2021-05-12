@@ -16,7 +16,7 @@ ab LL \mathcal{L}
 
 " Mappings
 " Use word as environment (with '\begin' and '\end')
-map <c-e> "eciw\begin{}<ESC>"eP"_o\end{}<ESC>"eP"_O
+map <leader>e "eciw\begin{}<ESC>"eP"_o\end{}<ESC>"eP"_O
 " Add expaned math mode below
 imap <c-j> <ESC>"_o\[\]<ESC>hi
 " Add inline math mode to the right
@@ -40,15 +40,15 @@ imap <m-8> \left(\right)<ESC>6hi
 " Create left-right bracket structure
 imap <m-9> \left[\right]<ESC>6hi
 " Place selection into bold brackets
-vmap <c-b> "bc{\bf }<ESC>"bP
+vmap <leader>n "bc{\bf }<ESC>"bP
 " Place selection into italics brackets
-vmap <c-i> "ic{\it }<ESC>"iP
+vmap <leader>i "ic{\it }<ESC>"iP
 
 " Compile document
-map <leader>C :w! \| !pdflatex %<CR>
+map <leader>C :w! \| !pdflatex %<CR><CR>
 " Open bibliography in split
 map <leader>b :vsp $BIB<CR>
 " Open compiled document with system READER
-map <leader>z :!$READER %:r.pdf &<CR>
+map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Open terminal in current folder
-map <leader><ENTER> :!$TERMINAL &<CR>
+map <leader><ENTER> :!$TERMINAL &<CR><CR>

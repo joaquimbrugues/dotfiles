@@ -50,6 +50,8 @@ let g:lightline = {
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
+" Quick save
+nnoremap <leader><leader> :w<CR>
 " NerdTree shortcut
 map <leader>t :NERDTreeToggle<CR>
 
@@ -67,6 +69,10 @@ map <c-k> "_O<esc>
 " Ease navigation between horizontal buffers
 map <c-h> <c-w>h
 map <c-l> <c-w>l
+
+" Add line before/after paragraph
+nnoremap <leader>O {o
+nnoremap <leader>o }O
 
 " Paste in selection (visual mode)
 vmap p "_dP
