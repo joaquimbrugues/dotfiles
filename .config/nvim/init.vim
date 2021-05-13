@@ -63,11 +63,16 @@ map <F4> :setlocal spell spelllang=nl<CR>
 map <F5> :setlocal spell spelllang=ru<CR>
 
 " Adding blank lines without entering insert mode or registering them
-map <c-j> "_o<esc>
-map <c-k> "_O<esc>
+map <m-j> "_o<esc>
+map <m-k> "_O<esc>
 
-" Ease navigation between horizontal buffers
+" Copy the line and paste it right below
+map <leader>y "lyy"lp
+
+" Ease navigation between buffers
 map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
 map <c-l> <c-w>l
 
 " Add line before/after paragraph
