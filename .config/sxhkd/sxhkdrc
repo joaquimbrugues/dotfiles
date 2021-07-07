@@ -42,7 +42,7 @@ super + s
 	screenkey-toggle
 super + ctrl + y
 	xclip-ytdownload
-super + e
+super + shift + e
 	enregistra "$HOME/enregistraments"
 
 super + F1
