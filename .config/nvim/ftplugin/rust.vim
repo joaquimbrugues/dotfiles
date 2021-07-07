@@ -9,7 +9,8 @@ map <leader>gt :w! \| Ctest<CR>
 " Open terminal in current folder
 map <leader><ENTER> :!$TERMINAL &<CR><CR>
 " Go to definition
-map <leader>d :ALEGoToDefinition -vsplit<CR>
+map <leader>d :ALEGoToDefinition<CR>
+map <leader>D :ALEGoToDefinition -vsplit<CR>
 " Go to prev/next error
 map <leader>e <Plug>(ale_next_wrap_error)
 map <leader>E <Plug>(ale_previous_wrap_error)
