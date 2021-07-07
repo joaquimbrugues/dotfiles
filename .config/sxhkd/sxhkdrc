@@ -79,6 +79,8 @@ super + alt + m
 	$TERMINAL -e neomutt && echo "M" >$LLIMA_FIFO
 super + alt + o
 	$TERMINAL -e octave -q
+super + alt + j
+	jitsi
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
