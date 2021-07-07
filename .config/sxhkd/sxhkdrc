@@ -63,8 +63,6 @@ super + alt + n
 	$TERMINAL -e newsboat
 super + alt + g
 	telegram-desktop
-super + alt + w
-	whatsapp
 super + alt + l
 	lbry
 super + alt + y
