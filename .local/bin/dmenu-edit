@@ -4,5 +4,5 @@
 . $HOME/.local/share/global-style
 DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
 
-FILE=$(locate -e -d "$LOCALDB" ".tex" ".rs" ".md" ".tikz" | dmenu_col -l 10 -p "Obre amb $EDITOR")
+FILE=$(locate -e -d "$LOCALDB" -r "\.tex\>" -r "\.rs\>" -r "\.md\>" -r "\.tikz\>" | dmenu_col -l 10 -p "Obre amb $EDITOR")
 [ -n "$FILE" ] && $TERMINAL -e $EDITOR "$FILE"

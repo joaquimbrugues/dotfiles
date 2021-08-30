@@ -4,7 +4,7 @@
 . $HOME/.local/share/global-style
 DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
 
-FILE=$(locate -e -d "$LOCALDB"  ".avi" ".mkv" ".mp4" ".webm" | grep -v ".*/\.\|.*\.part" | dmenu_col -l 10 -p "Obre amb MPV")
+FILE=$(locate -e -d "$LOCALDB" -r "\.avi\>" -r "\.mkv\>" -r "\.mp4\>" -r "\.webm\>" | dmenu_col -l 10 -p "Obre amb MPV")
 if [ -e "$FILE" ]; then
 	mpv --hwdec-codecs=all --sub=1 "$FILE"
 	echo -e "No\nSí" | dmenu_col -c -h "$DMENU_HEIGHT" -p "Vols esborrar el fitxer?" -l 2 | grep "Sí" && rm "$FILE" && updatedb -U "$HOME" -l no -o "$LOCALDB"
