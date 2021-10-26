@@ -16,7 +16,7 @@ ab LL \mathcal{L}
 
 " Mappings
 " Use word as environment (with '\begin' and '\end')
-map <leader>e "eciw\begin{}<ESC>"eP"_o\end{}<ESC>"eP"_O
+map <leader>e "eciW\begin{}<ESC>"eP"_o\end{}<ESC>"eP"_O
 " Add expaned math mode below
 imap <c-j> <ESC>"_o\[\]<ESC>hi
 " Add inline math mode to the right
