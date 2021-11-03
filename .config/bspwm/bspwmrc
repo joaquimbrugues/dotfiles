@@ -62,4 +62,7 @@ pgrep transmission >/dev/null || transmission-gtk -m &
 pgrep -x dropbox >/dev/null || dropbox start &
 pgrep -x owncloud >/dev/null || owncloud &
 
+# GPG-AGENT initialization
+gpg-agent --daemon &
+
 [ -e "$LLIMA_FIFO" ] && bspc subscribe report >"$LLIMA_FIFO" &
