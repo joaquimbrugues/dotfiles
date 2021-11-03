@@ -79,6 +79,9 @@ map <c-l> <c-w>l
 nnoremap <leader>O {o
 nnoremap <leader>o }O
 
+" Easily expand abbreviations in Insert mode
+imap <c-e> <c-]>
+
 " Paste in selection (visual mode)
 vmap p "_dP
 
