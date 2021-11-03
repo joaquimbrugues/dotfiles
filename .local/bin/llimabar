@@ -33,7 +33,7 @@ $DIR/wstat > "$LLIMA_FIFO" &
 $DIR/coins > "$LLIMA_FIFO" &
 
 exec 3<> "$LLIMA_FIFO"
-echo -e "V\nL\nM\n" > "$LLIMA_FIFO"
+echo -e "V\nL\n" > "$LLIMA_FIFO"
 
 # Import bar configuration
 . $HOME/.local/share/global-style

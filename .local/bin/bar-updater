@@ -81,16 +81,6 @@ while read -r line ; do
 			#date module output
 			date=" %{A:${date_action1}:}%{A3:${date_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
 			;;
-		M*)
-			#e-mail inbox count
-			MAILBOX="$HOME/.local/share/mail"
-			NUM_MAIL=$(find $MAILBOX/*/INBOX/new -type f | wc -l)
-			if [ "$NUM_MAIL" -gt 0 ]; then
-				mail=" %{A:${mail_action1}:}%{A2:${mail_action2}:}%{A3:${mail_action3}:}%{+u}📬 ${NUM_MAIL}%{-u}%{A}%{A}%{A} "
-			else
-				mail=""
-			fi
-			;;
 		Y*)
 			#Crypto module
 			crypto=" %{A3:${crypto_action3}:}%{+u}💸 ${line#?}%{-u}%{A} "
