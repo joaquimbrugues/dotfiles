@@ -9,6 +9,10 @@ set nohlsearch
 set noshowmode
 set scrolloff=2
 
+" Permanent undo
+set undodir=~/.local/share/nvim/undo
+set undofile
+
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
