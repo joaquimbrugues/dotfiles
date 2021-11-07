@@ -29,6 +29,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Easy commenting
     Plug 'scrooloose/nerdcommenter'
     Plug 'vimwiki/vimwiki'
+    " Support for Rust language
+    Plug 'rust-lang/rust.vim'
     " Lightline
     Plug 'itchyny/lightline.vim'
 call plug#end()
