@@ -29,10 +29,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Easy commenting
     Plug 'scrooloose/nerdcommenter'
     Plug 'vimwiki/vimwiki'
-    " Support for Rust language
-    Plug 'rust-lang/rust.vim'
-    Plug 'dense-analysis/ale'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " Lightline
     Plug 'itchyny/lightline.vim'
 call plug#end()
@@ -92,16 +88,5 @@ vmap p "_dP
 " Prevent comments from being inserted after pressing o or O in normal mode or
 " hitting <enter> in insert mode
 autocmd FileType * setlocal formatoptions-=o formatoptions-=r
-
-" Setting up ALE
-let g:ale_fixers = {
-   \  'rust': ['rustfmt'],
-   \}
-
-let g:ale_linters = {
-   \  'rust': ['rls'],
-   \}
-let g:deoplete#sources = {'rust': ['ale']}
-map <leader>A <Plug>(ale_toggle_buffer)
 
 au BufRead,BufNewFile *.jrnl setfiletype jrnl
