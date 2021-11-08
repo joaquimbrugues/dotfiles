@@ -29,6 +29,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Easy commenting
     Plug 'scrooloose/nerdcommenter'
     Plug 'vimwiki/vimwiki'
+    " Support for Rust language
+    Plug 'rust-lang/rust.vim'
     " Lightline
     Plug 'itchyny/lightline.vim'
 call plug#end()
@@ -69,11 +71,15 @@ map <m-k> "_O<esc>
 " Copy the line and paste it right below
 map <leader>y "lyy"lp
 
-" Ease navigation between buffers
+" Ease navigation between split buffers
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
+
+" Cycle through buffers
+nnoremap <c-n> :bnext<CR>
+nnoremap <c-p> :bprevious<CR>
 
 " Add line before/after paragraph
 nnoremap <leader>O {o
