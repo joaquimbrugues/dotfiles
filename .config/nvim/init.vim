@@ -68,6 +68,10 @@ map <F5> :setlocal spell spelllang=ru<CR>
 map <m-j> "_o<esc>
 map <m-k> "_O<esc>
 
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
+
 " Copy the line and paste it right below
 map <leader>y "lyy"lp
 
@@ -80,6 +84,7 @@ map <c-l> <c-w>l
 " Cycle through buffers
 nnoremap <c-n> :bnext<CR>
 nnoremap <c-p> :bprevious<CR>
+nnoremap <leader><Tab> <c-^>
 
 " Add line before/after paragraph
 nnoremap <leader>O {o
