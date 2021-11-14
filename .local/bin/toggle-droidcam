@@ -6,9 +6,9 @@
 setup_droidcam() {
 	echo -e "No\nSí" | dmenu_col -c -p "Vols configurar la càmera?" -l 2 | grep "Sí" || exit 0
 	touch "$HOME/.local/share/droidcam-info"
-	DROIDCAM_IP=$(dmenu_col -c -p "IP local del mòbil: 192.168.1.")
+	DROIDCAM_IP=$(dmenu_col -c -p "IP local del mòbil: 192.168.")
 	DROIDCAM_PORT=$(dmenu_col -c -p "Port:")
-	echo -e "#Generat automàticament per l'script toggle-droidcam\nDROIDCAM_IP=192.168.1.$DROIDCAM_IP\nDROIDCAM_PORT=$DROIDCAM_PORT" > "$HOME/.local/share/droidcam-info"
+	echo -e "#Generat automàticament per l'script toggle-droidcam\nDROIDCAM_IP=192.168.$DROIDCAM_IP\nDROIDCAM_PORT=$DROIDCAM_PORT" > "$HOME/.local/share/droidcam-info"
 }
 
 PIDDROID=$(pgrep "^droidcam")
