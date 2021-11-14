@@ -33,6 +33,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'rust-lang/rust.vim'
     " Lightline
     Plug 'itchyny/lightline.vim'
+    " Automatic rooting of projects
+    Plug 'airblade/vim-rooter'
 call plug#end()
 
 let g:vimwiki_ext2syntax = {}
