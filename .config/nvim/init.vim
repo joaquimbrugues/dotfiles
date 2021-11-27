@@ -35,6 +35,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'itchyny/lightline.vim'
     " Automatic rooting of projects
     Plug 'airblade/vim-rooter'
+    " Auto closing
+    Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 let g:vimwiki_ext2syntax = {}
