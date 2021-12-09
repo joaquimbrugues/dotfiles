@@ -1,0 +1,11 @@
+# Configuration for the file manager Joshuto
+
+xdg-open = true
+
+[display]
+column_ratio = [2, 3, 3]
+line_number_style = "relative"
+
+[display.sort]
+method = "mtime"
+reverse = true
