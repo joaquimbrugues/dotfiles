@@ -1,0 +1,102 @@
+mapcommand = [
+	{ keys = [ "?" ],		command = "help" },
+	{ keys = [ "H" ],		command = "help" },
+	{ keys = [ "q" ],		command = "quit" },
+	{ keys = [ "Q" ],		command = "force_quit" },
+
+	# fletxes
+	{ keys = [ "arrow_up" ],	command = "cursor_move_up" },
+	{ keys = [ "arrow_down" ],	command = "cursor_move_down" },
+	{ keys = [ "arrow_left" ],	command = "cd .." },
+	{ keys = [ "arrow_right" ],	command = "open" },
+	{ keys = [ "\n" ],		command = "open_with less -f" },
+	{ keys = [ "end" ],		command = "cursor_move_end" },
+	{ keys = [ "home" ],		command = "cursor_move_home" },
+	{ keys = [ "page_up" ],		command = "cursor_move_page_up" },
+	{ keys = [ "page_down" ],	command = "cursor_move_page_down" },
+
+	# tecles de VIM
+	{ keys = [ "j" ],		command = "cursor_move_down" },
+	{ keys = [ "k" ],		command = "cursor_move_up" },
+	{ keys = [ "h" ],		command = "cd .." },
+	{ keys = [ "l" ],		command = "open" },
+	{ keys = [ "g", "g" ],		command = "cursor_move_home" },
+	{ keys = [ "G" ],		command = "cursor_move_end" },
+	{ keys = [ "o" ],		command = "open_with" },
+	{ keys = [ "ctrl+f" ],	command = "cursor_move_page_down" },
+	{ keys = [ "ctrl+b" ],	command = "cursor_move_page_down" },
+
+	# pestanyes
+	{ keys = [ "t" ],		command = "new_tab" },
+	{ keys = [ "ctrl+t" ],		command = "new_tab" },
+	{ keys = [ "x" ],		command = "close_tab" },
+
+	{ keys = [ "r" ],		command = "reload_dirlist" },
+	{ keys = [ " " ],		command = "toggle_hidden" },
+	{ keys = [ "\t" ],		command = "tab_switch 1" },
+	{ keys = [ "backtab" ],		command = "tab_switch -1" },
+
+	{ keys = [ "alt+1" ],		command = "tab_switch_index 1" },
+	{ keys = [ "alt+2" ],		command = "tab_switch_index 2" },
+	{ keys = [ "alt+3" ],		command = "tab_switch_index 3" },
+	{ keys = [ "alt+4" ],		command = "tab_switch_index 4" },
+	{ keys = [ "alt+5" ],		command = "tab_switch_index 5" },
+
+	{ keys = [ "]" ],		command = "parent_cursor_move_up" },
+	{ keys = [ "[" ],		command = "parent_cursor_move_down" },
+	{ keys = [ "K" ],		command = "parent_cursor_move_up" },
+	{ keys = [ "J" ],		command = "parent_cursor_move_down" },
+
+	# tallar, esborrar, copiar, enganxar i canviar el nom
+	{ keys = [ "m" ],		command = "cut_files" },
+	{ keys = [ "y", "y" ],		command = "copy_files" },
+	{ keys = [ "p", "p" ],		command = "paste_files" },
+	{ keys = [ "p", "o" ],		command = "paste_files --overwrite=true" },
+
+	{ keys = [ "y", "n" ],		command = "copy_filename" },
+	{ keys = [ "y", "." ],		command = "copy_filename_without_extension" },
+	{ keys = [ "y", "p" ],		command = "copy_filepath" },
+	{ keys = [ "y", "d" ],		command = "copy_dirpath" },
+
+	{ keys = [ "delete" ],		command = "delete_files" },
+	{ keys = [ "d" ],		command = "delete_files" },
+
+	{ keys = [ "c", "c" ],		command = ":rename " },
+	{ keys = [ "c", "e" ],		command = "rename_append" },
+	{ keys = [ "c", "b" ],		command = "rename_prepend" },
+
+	# crear fitxer/directori
+	{ keys = [ "a", "f" ],		command = ":touch " },
+	{ keys = [ "a", "d" ],		command = ": mkdir " },
+
+	# permisos
+	{ keys = [ "=" ],		command = "set_mode" },
+
+	# consola
+	{ keys = [ ":" ],		command = ":" },
+	{ keys = [ ";" ],		command = ":shell " },
+
+	# selecció
+	{ keys = [ "v" ],		command = "select --toggle=true" },
+	{ keys = [ "V" ],		command = "select --all=true --toggle=true" },
+
+	# cerca
+	{ keys = [ "/" ],		command = ":search " },
+	{ keys = [ "\\" ],		command = ":search_glob " },
+	{ keys = [ "n" ],		command = "search_next" },
+	{ keys = [ "N" ],		command = "search_prev" },
+
+	# canviar l'ordenació
+	{ keys = [ "s", "r" ],		command = "sort reverse" },
+	{ keys = [ "s", "l" ],		command = "sort lexical" },
+	{ keys = [ "s", "m" ],		command = "sort mtime" },
+	{ keys = [ "s", "n" ],		command = "sort natural" },
+	{ keys = [ "s", "s" ],		command = "sort size" },
+	{ keys = [ "s", "e" ],		command = "sort ext" },
+
+	# dreceres
+	{ keys = [ "g", "b" ],		command = "cd ~/.local/bin" },
+	{ keys = [ "g", "d" ],		command = "cd ~/Downloads" },
+	{ keys = [ "g", "h" ],		command = "cd ~/" },
+	{ keys = [ "g", "v" ],		command = "cd ~/Video" },
+]

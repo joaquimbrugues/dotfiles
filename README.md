@@ -15,6 +15,7 @@ The configurations are set for the programs that I use more often:
 - [bash](https://www.gnu.org/software/bash/)
 - [sxhkd](https://github.com/baskerville/sxhkd) (hotkey daemon)
 - [moc](https://moc.daper.net/) (music daemon)
+- [joshuto](https://github.com/kamiyaa/joshuto) (file manager)
 - [i3](https://i3wm.org/) (window manager): not actively maintained
 - [Xfce terminal](https://docs.xfce.org/apps/terminal/start) (terminal emulator): not actively maintained
 - [nano](https://www.nano-editor.org/) (text editor): not actively maintained

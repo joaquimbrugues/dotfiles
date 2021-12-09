@@ -23,7 +23,7 @@ super + ctrl + l
 super + {c,m}
 	{configure,cheatsheets}
 super + shift + d
-	[ -d $HOME/Downloads ] && cd $HOME/Downloads && $TERMINAL
+	[ -d $HOME/Downloads ] && $TERMINAL -e joshuto --path $HOME/Downloads
 super + o
 	todo
 super + t
@@ -63,7 +63,8 @@ super + alt + r
 super + alt + a
 	$TERMINAL -e curseradio
 super + alt + h
-	thunar $HOME
+	$TERMINAL -e joshuto
+
 super + alt + s
 	surf $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a surf" -l 20)
 super + alt + o
