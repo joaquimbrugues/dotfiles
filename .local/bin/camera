@@ -34,5 +34,5 @@ bspc rule -a mpv -o state=floating rectangle="${WINDOW_WIDTH}x${WINDOW_HEIGHT}+$
 # Launch the mpv window
 case "$USE_DROIDCAM" in
 				"yes") sleep "1s" && mpv av://v4l2:/dev/video2 --profile=low-latency --untimed ; [ -z "$PIDDROID" ] && pkill "droidcam" ;;
-				*) mpv av://v4l2:/dev/video0 --profile=low-latency --untimed ;;
+				*) mpv av://v4l2:/dev/video1 --profile=low-latency --untimed ;;
 esac
