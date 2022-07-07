@@ -77,7 +77,7 @@ super + alt + s
 super + alt + o
 	$TERMINAL -e octave -q
 super + alt + j
-	jitsi
+	jitsi-meet
 # End of usual program launchers
 
 # Take a screenshot of currently selected window/whole screen
