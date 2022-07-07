@@ -1,8 +1,9 @@
-mapcommand = [
+[default_view]
+keymap = [
 	{ keys = [ "?" ],		command = "help" },
 	{ keys = [ "H" ],		command = "help" },
 	{ keys = [ "q" ],		command = "quit" },
-	{ keys = [ "Q" ],		command = "force_quit" },
+	{ keys = [ "Q" ],		command = "quit --force" },
 
 	# fletxes
 	{ keys = [ "arrow_up" ],	command = "cursor_move_up" },
@@ -99,4 +100,14 @@ mapcommand = [
 	{ keys = [ "g", "d" ],		command = "cd ~/Downloads" },
 	{ keys = [ "g", "h" ],		command = "cd ~/" },
 	{ keys = [ "g", "v" ],		command = "cd ~/Video" },
+]
+
+[task_view]
+keymap = [
+# ...
+]
+
+[help_view]
+keymap = [
+# ...
 ]
