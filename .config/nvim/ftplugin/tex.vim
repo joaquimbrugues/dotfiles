@@ -33,6 +33,10 @@ imap <m-2> \left\{ \begin{array} \end{array} \right.<ESC>2Bhi
 imap <m-3> \left. \begin{array} \end{array} \right\}<ESC>2Bhi
 " Create 'restriction' structure
 imap <m-4> \left.\right\|<ESC>6hi
+" Create absolute value left-right structure
+imap <m-5> \left\|\right\|<ESC>6hi
+" Create norm left-right structure
+imap <m-6> \left\\|\right\\|<ESC>7hi
 " Create left-right bracket keys structure
 imap <m-7> \left\{\right\}<ESC>7hi
 " Create left-right parenthesis structure
