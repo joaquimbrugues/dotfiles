@@ -8,4 +8,5 @@ line_number_style = "relative"
 
 [display.sort]
 method = "mtime"
+directories_first = false
 reverse = true
