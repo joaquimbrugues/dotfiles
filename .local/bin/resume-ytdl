@@ -1,0 +1,10 @@
+#!/bin/bash
+# Check for unfinished download reports at $HOME/tmp and resume them when possible
+
+LIST=$(ls $HOME/tmp/yt-dl-watch* | cut -d'=' -f 2-)
+
+III=0
+for ADDR in $LIST
+do
+	$HOME/.local/bin/xclip-ytdownload "https://www.youtube.com/watch?v=$ADDR" &
+done

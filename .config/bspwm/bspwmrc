@@ -64,6 +64,7 @@ llimabar &
 pgrep transmission >/dev/null || transmission-gtk -m &
 pgrep -x dropbox >/dev/null || dropbox start &
 pgrep -x owncloud >/dev/null || owncloud &
+ping -q -c 1 1.1.1.1 >/dev/null && resume-ytdl &
 
 # GPG-AGENT initialization
 gpg-agent --daemon &
