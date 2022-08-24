@@ -10,7 +10,8 @@ keymap = [
 	{ keys = [ "arrow_down" ],	command = "cursor_move_down" },
 	{ keys = [ "arrow_left" ],	command = "cd .." },
 	{ keys = [ "arrow_right" ],	command = "open" },
-	{ keys = [ "\n" ],		command = "open_with less -f" },
+	{ keys = [ "\n" ],		command = "open" },
+
 	{ keys = [ "end" ],		command = "cursor_move_end" },
 	{ keys = [ "home" ],		command = "cursor_move_home" },
 	{ keys = [ "page_up" ],		command = "cursor_move_page_up" },
@@ -25,17 +26,20 @@ keymap = [
 	{ keys = [ "G" ],		command = "cursor_move_end" },
 	{ keys = [ "o" ],		command = "open_with" },
 	{ keys = [ "ctrl+f" ],	command = "cursor_move_page_down" },
-	{ keys = [ "ctrl+b" ],	command = "cursor_move_page_down" },
+	{ keys = [ "ctrl+b" ],	command = "cursor_move_page_up" },
 
 	# pestanyes
 	{ keys = [ "t" ],		command = "new_tab" },
 	{ keys = [ "ctrl+t" ],		command = "new_tab" },
 	{ keys = [ "x" ],		command = "close_tab" },
+	{ keys = [ "ctrl+w" ],		command = "close_tab" },
 
 	{ keys = [ "r" ],		command = "reload_dirlist" },
 	{ keys = [ " " ],		command = "toggle_hidden" },
 	{ keys = [ "\t" ],		command = "tab_switch 1" },
 	{ keys = [ "backtab" ],		command = "tab_switch -1" },
+	{ keys = [ "ctrl+l" ],		command = "tab_switch 1" },
+	{ keys = [ "ctrl+h" ],		command = "tab_switch -1" },
 
 	{ keys = [ "alt+1" ],		command = "tab_switch_index 1" },
 	{ keys = [ "alt+2" ],		command = "tab_switch_index 2" },
@@ -43,10 +47,10 @@ keymap = [
 	{ keys = [ "alt+4" ],		command = "tab_switch_index 4" },
 	{ keys = [ "alt+5" ],		command = "tab_switch_index 5" },
 
-	{ keys = [ "]" ],		command = "parent_cursor_move_up" },
-	{ keys = [ "[" ],		command = "parent_cursor_move_down" },
 	{ keys = [ "K" ],		command = "parent_cursor_move_up" },
 	{ keys = [ "J" ],		command = "parent_cursor_move_down" },
+	{ keys = [ "alt+k" ],	command = "preview_cursor_move_up" },
+	{ keys = [ "alt+j" ],	command = "preview_cursor_move_down" },
 
 	# tallar, esborrar, copiar, enganxar i canviar el nom
 	{ keys = [ "m" ],		command = "cut_files" },
@@ -59,8 +63,8 @@ keymap = [
 	{ keys = [ "y", "p" ],		command = "copy_filepath" },
 	{ keys = [ "y", "d" ],		command = "copy_dirpath" },
 
-	{ keys = [ "delete" ],		command = "delete_files" },
-	{ keys = [ "d" ],		command = "delete_files" },
+	{ keys = [ "delete" ],		command = "delete_files --foreground=true" },
+	{ keys = [ "d" ],		command = "delete_files --foreground=true" },
 
 	{ keys = [ "c", "c" ],		command = ":rename " },
 	{ keys = [ "c", "e" ],		command = "rename_append" },
@@ -100,6 +104,8 @@ keymap = [
 	{ keys = [ "g", "d" ],		command = "cd ~/Downloads" },
 	{ keys = [ "g", "h" ],		command = "cd ~/" },
 	{ keys = [ "g", "v" ],		command = "cd ~/Video" },
+	{ keys = [ "g", "p" ],		command = "cd -" },
+	{ keys = [ "g", "backspace" ],		command = "cd -" },
 ]
 
 [task_view]
