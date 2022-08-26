@@ -20,6 +20,7 @@ The configurations are set for the programs that I use more often:
 - [Xfce terminal](https://docs.xfce.org/apps/terminal/start) (terminal emulator): not actively maintained
 - [nano](https://www.nano-editor.org/) (text editor): not actively maintained
 - urxvt (terminal emulator): not actively maintained
+- [transmission-remote-tui](https://github.com/murtaza-u/transmission-remote-tui) (transmission-daemon tui) 
 
 There are also scripts (in `~/.local/bin/`) with some useful tools, usually using [dmenu](https://tools.suckless.org/dmenu/) to interact with the system, to work with LaTeX, and for my status bar, among other applications.
 
