@@ -66,7 +66,7 @@ super + alt + l
 super + alt + y
 	$TERMINAL -e lynx $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a lynx" -l 20)
 super + alt + r
-	transmission-gtk
+	$TERMINAL -e trt
 super + alt + a
 	$TERMINAL -e curseradio
 super + alt + h

@@ -1,0 +1,7 @@
+#!/bin/sh
+#Mime map script to add a magnet link/torrent file to transmission, and start the daemon if necessary
+#Sends a desktop notification
+
+pgrep -x transmission-daemon > /dev/null || transmission-daemon
+
+transmission-remote --add "$@" && notify-send "Transmission-daemon" "S'ha afegit un torrent"

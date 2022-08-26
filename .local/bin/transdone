@@ -1,0 +1,4 @@
+#!/bin/sh
+#Notification for complete torrents
+
+notify-send "Transmission-daemon" "S'ha completat el torrent $@"
