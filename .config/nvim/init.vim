@@ -37,6 +37,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'airblade/vim-rooter'
     " Auto closing
     Plug 'jiangmiao/auto-pairs'
+    " Fuzzy finder and dependencies
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 let g:vimwiki_ext2syntax = {}
@@ -96,6 +100,9 @@ nnoremap <leader>o }O
 
 " Easily expand abbreviations in Insert mode
 imap <c-e> <c-]>
+
+" Shortcut to call Telescope
+nnoremap <leader>l :Telescope find_files<CR>
 
 " Paste in selection (visual mode)
 vmap p "_dP
