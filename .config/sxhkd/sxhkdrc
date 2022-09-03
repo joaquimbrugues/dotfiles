@@ -57,7 +57,7 @@ super + alt + n
 super + alt + g
 	telegram-desktop
 super + alt + y
-	$TERMINAL -e lynx $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a lynx" -l 20)
+	$TERMINAL -e lynx -scrollbar
 super + alt + r
 	$TERMINAL -e trt
 super + alt + a
