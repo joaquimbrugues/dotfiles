@@ -56,3 +56,7 @@ map <leader>b :vsp $BIB<CR>
 map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Open terminal in current folder
 map <leader><ENTER> :!$TERMINAL &<CR><CR>
+
+" Open abbreviations file 1
+map <leader>1 :so $HOME/.config/nvim/loadable/abbreviations-1.tex.vim<CR>
+map <leader>2 :so $HOME/.config/nvim/loadable/abbreviations-2.tex.vim<CR>

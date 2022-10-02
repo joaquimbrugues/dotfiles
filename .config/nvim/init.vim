@@ -40,7 +40,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Fuzzy finder and dependencies
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'BurntSushi/ripgrep'
     Plug 'nvim-telescope/telescope.nvim'
+    " Linting
+    Plug 'dense-analysis/ale'
+    " Autoclose HTML tags
+    Plug 'alvan/vim-closetag'
 call plug#end()
 
 let g:vimwiki_ext2syntax = {}
@@ -103,6 +108,9 @@ imap <c-e> <c-]>
 
 " Shortcut to call Telescope
 nnoremap <leader>l :Telescope find_files<CR>
+
+" Toggle ALE for current buffer
+nnoremap <leader>a :ALEToggleBuffer<CR>
 
 " Paste in selection (visual mode)
 vmap p "_dP
