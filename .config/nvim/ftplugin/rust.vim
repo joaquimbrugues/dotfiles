@@ -10,5 +10,9 @@ map <leader>gt :w! \| Ctest<CR>
 
 " Open terminal in current folder
 map <leader><ENTER> :!$TERMINAL &<CR><CR>
+
+" ALE
+map <leader>d :ALEGoToDefinition<CR>
+
 " Quickly write a println!
 imap <m-1> println!("");<ESC>2hi

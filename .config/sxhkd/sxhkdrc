@@ -23,7 +23,7 @@ super + ctrl + l
 super + {c,m}
 	{configure,cheatsheets}
 super + shift + d
-	[ -d $HOME/Downloads ] && $TERMINAL -e joshuto --path $HOME/Downloads
+	[ -d $HOME/Downloads ] && $TERMINAL -e joshuto $HOME/Downloads
 super + o
 	todo
 super + t
