@@ -1,0 +1,25 @@
+#!/bin/sh
+# Pomodoro module.
+# When called, send the message to the bar to start a pomodoro sequence.
+# The messages to be sent are: Actiu - 25m - Pausar - 5m - Actiu - 25m - Pausar - 5m- Actiu - 25m - Pausar - 5m - Desactivar
+
+INTERVAL_ACTIU="10s"
+INTERVAL_PAUSA="10s"
+
+NUM_SEGMENTS=3
+
+[ -e "$LLIMA_FIFO" ] || exit 0
+
+for ((i=0 ; i < $NUM_SEGMENTS ; i++)); do
+	#echo "PA" >$LLIMA_FIFO
+	echo "PA$(date '+%H.%M.%S')" >$LLIMA_FIFO
+	notify-send "🍅 A treballar!" "${INTERVAL_ACTIU}"
+	sleep "${INTERVAL_ACTIU}"
+	#echo "PP" >$LLIMA_FIFO
+	echo "PP$(date '+%H.%M.%S')" >$LLIMA_FIFO
+	notify-send "🕐 A descansar!" "${INTERVAL_PAUSA}"
+	sleep "${INTERVAL_PAUSA}"
+done
+
+#echo "PD" >$LLIMA_FIFO
+notify-send "🍅 Bona feina!" "Ha acabat el pomodoro"

@@ -23,6 +23,7 @@ wm_action3='notify-send "🖥 Escriptoris" "\- Clica sobre un escriptori anar-hi
 launcher_action1='dmenu_col_run -c -l 10'
 launcher_action2='dmenu-quit'
 launcher_action3='notify-send "🐧 Menú principal" "\- Clica per obrir el menú de les aplicacions.\n\- Fes clic amb la roda del ratolí per apagar/reiniciar/tancar la sessió."'
+pomodoro_action3='notify-send "🍅 Pomodoro" "\- Mostra el 🍅 si és moment de treballar durant 25 minuts.\n\- Mostra 🕐 si toca una pausa de 5 minuts."'
 
 launcher=" %{A:${launcher_action1}:}%{A2:${launcher_action2}:}%{A3:${launcher_action3}:}%{+u}  %{-u}%{A}%{A}%{A}"
 
@@ -64,6 +65,24 @@ while read -r line ; do
 			#date module output
 			date=" %{A:${date_action1}:}%{A3:${date_action3}:}%{+u}${line#?}%{-u}%{A}%{A} "
 			;;
+		P*)
+			#pomodoro module
+			INIT_TIME="${line:2}"
+			case ${line#?} in
+				#Activar
+				A*)
+					pomodoro_action1="notify-send \"🍅 Pomodoro - Treball\" \"Des de les $INIT_TIME\""
+					pomodoro=" %{A:${pomodoro_action1}:}%{A3:${pomodoro_action3}:}%{+u}POM (A)%{-u}%{A}%{A} "
+					;;
+				#Pausar
+				P*)
+					pomodoro_action1="notify-send \"🕐 Pomodoro - Descans\" \"Des de les $INIT_TIME\""
+					pomodoro=" %{A:${pomodoro_action1}:}%{A3:${pomodoro_action3}:}%{+u}POM (P)%{-u}%{A}%{A} "
+				;;
+				#Desactivar
+				D*) pomodoro= ;;
+			esac
+			;;
 		W*)
 			#BSPWM state
 			wm=
@@ -99,5 +118,5 @@ while read -r line ; do
 		*)
 			;;
 	esac
-	printf "%s\n" "%{l}${launcher}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${bat}${date}"
+	printf "%s\n" "%{l}${launcher}${wm}%{r}${cpu}${memory}${mail}${wstat}${volume}${pomodoro}${bat}${date}"
 done
