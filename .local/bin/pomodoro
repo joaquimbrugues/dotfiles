@@ -3,8 +3,8 @@
 # When called, send the message to the bar to start a pomodoro sequence.
 # The messages to be sent are: Actiu - 25m - Pausar - 5m - Actiu - 25m - Pausar - 5m- Actiu - 25m - Pausar - 5m - Desactivar
 
-INTERVAL_ACTIU="10s"
-INTERVAL_PAUSA="10s"
+INTERVAL_ACTIU="25m"
+INTERVAL_PAUSA="5m"
 
 NUM_SEGMENTS=3
 
