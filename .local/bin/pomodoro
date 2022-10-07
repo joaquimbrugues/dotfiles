@@ -21,5 +21,5 @@ for ((i=0 ; i < $NUM_SEGMENTS ; i++)); do
 	sleep "${INTERVAL_PAUSA}"
 done
 
-#echo "PD" >$LLIMA_FIFO
+echo "PD" >$LLIMA_FIFO
 notify-send "🍅 Bona feina!" "Ha acabat el pomodoro"
