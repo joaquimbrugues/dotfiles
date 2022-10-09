@@ -11,14 +11,15 @@ NUM_SEGMENTS=3
 [ -e "$LLIMA_FIFO" ] || exit 0
 
 for ((i=0 ; i < $NUM_SEGMENTS ; i++)); do
-	#echo "PA" >$LLIMA_FIFO
+	if [ $i -gt 0 ]; then
+		echo "PP$(date '+%H.%M.%S')" >$LLIMA_FIFO
+		notify-send "🕐 A descansar!" "${INTERVAL_PAUSA}"
+		sleep "${INTERVAL_PAUSA}"
+	fi
+
 	echo "PA$(date '+%H.%M.%S')" >$LLIMA_FIFO
 	notify-send "🍅 A treballar!" "${INTERVAL_ACTIU}"
 	sleep "${INTERVAL_ACTIU}"
-	#echo "PP" >$LLIMA_FIFO
-	echo "PP$(date '+%H.%M.%S')" >$LLIMA_FIFO
-	notify-send "🕐 A descansar!" "${INTERVAL_PAUSA}"
-	sleep "${INTERVAL_PAUSA}"
 done
 
 echo "PD" >$LLIMA_FIFO
