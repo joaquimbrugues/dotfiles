@@ -1,0 +1,21 @@
+# This file contains definitions for colors and certain style variables.
+# The idea is to have a unified place in which we define these styles to make it easier to add other formats.
+# The styles defined here are currently used for
+#	- Lemonbar colors
+#	- Lemonbar size
+#	- Lemonbar font
+#	- Bspwm window border colors
+#	- Wallpaper
+
+COLOR_BACKGROUND="#424242"
+COLOR_UNDERLINE="#d09c00"
+COLOR_UNDERLINE_SELECTED="#ffbf00"
+COLOR_FOREGROUND="#ffbf00"
+COLOR_URGENT="#a40000"
+COLOR_BACKGROUND_SELECTED="#ffbf00"
+COLOR_FOREGROUND_SELECTED="#424242"
+
+BAR_HEIGHT=25
+BAR_FONT="Inconsolata-12"
+
+WALLPAPER="$HOME/Pictures/magma.jpg"
