@@ -6,8 +6,6 @@
 #	- Lemonbar font
 #	- Bspwm window border colors
 #	- Wallpaper
-#
-# This is the 'default' blue style
 
 COLOR_BACKGROUND="#371e15"
 COLOR_UNDERLINE="#b32d00"
