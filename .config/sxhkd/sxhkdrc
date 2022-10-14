@@ -44,6 +44,8 @@ super + ctrl + y
 	xclip-ytdownload
 super + shift + e
 	enregistra "$HOME/enregistraments"
+super + i
+	dmenu-print
 
 super + F1
 	dmenu-usb
