@@ -1,0 +1,19 @@
+#!/bin/sh
+# Look for pdf documents in the HOME folder and open a dmenu to print the selection to the selected printer with the given options
+
+PRINTER=$(lpstat -a | awk '{print $1}' | dmenu_col -c -l 10 -p "Tria la impressora:")
+[ -z "$PRINTER" ] && exit 0
+FILE=$(locate -e -d "$LOCALDB" --regex "$HOME/.*\.pdf\>" | dmenu_col -c -l 10 -p "Fitxer a imprimir:")
+[ -z "$FILE" ] && exit 0
+OPTS=$(echo -e "Sí\nNo" | dmenu_col -c -l 10 -p "Imprimir a dues cares? [sN]")
+[ -z "$OPTS" ] && OPTS="No"
+COPIES=$(echo "" | dmenu_col -c -p "Nombre de còpies? [1]")
+[ -z "$COPIES" ] && COPIES=1
+
+case "$OPTS" in
+	"Sí") OPTS="sides=two-sided-long-edge" ;;
+	*) OPTS="sides=one-sided" ;;
+esac
+
+#Print
+lp -s -d $PRINTER -o $OPTS -n $COPIES $FILE
