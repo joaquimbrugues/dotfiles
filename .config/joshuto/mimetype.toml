@@ -18,7 +18,7 @@ text_default	= [
 ]
 
 reader_default	= [
-	{ command = "zathura", fork = true, silent = true },
+	{ command = "zathura", args= [ "--fork" ], silent = true },
 ]
 
 libreoffice_default	= [
