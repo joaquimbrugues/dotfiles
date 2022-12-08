@@ -11,7 +11,7 @@ super + Return
 super + d
 	dmenu_col_run -c -l 10
 super + p
-	passmenu_col -l 10 -p "Contrasenyes"
+	passmenu_col --type -l 10 -p "Contrasenyes"
 super + shift + q
 	dmenu-quit
 super + x
