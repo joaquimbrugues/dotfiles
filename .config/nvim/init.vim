@@ -111,6 +111,7 @@ nnoremap <leader>l :Telescope find_files<CR>
 
 " Toggle ALE for current buffer
 nnoremap <leader>a :ALEToggleBuffer<CR>
+let g:ale_enabled = 0
 
 " Paste in selection (visual mode)
 vmap p "_dP
