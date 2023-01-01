@@ -1,5 +1,8 @@
 " Rust
 
+" vim-rooter config
+let g:rooter_patterns = [ 'Cargo.toml' ]
+
 " Mappings
 
 " Cargo check
