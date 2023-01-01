@@ -99,6 +99,10 @@ nnoremap <c-n> :bnext<CR>
 nnoremap <c-p> :bprevious<CR>
 nnoremap <leader><Tab> <c-^>
 
+" Cycle through tabs
+nnoremap <c-Left> :tabprevious<CR>
+nnoremap <c-Right> :tabnext<CR>
+
 " Add line before/after paragraph
 nnoremap <leader>O {o
 nnoremap <leader>o }O
