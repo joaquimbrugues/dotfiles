@@ -20,3 +20,6 @@ let g:ale_enabled = 1
 
 " Quickly write a println!
 imap <m-1> println!("");<ESC>2hi
+
+" Dirty abbreviations
+ab lm let mut
