@@ -46,6 +46,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'dense-analysis/ale'
     " Autoclose HTML tags
     Plug 'alvan/vim-closetag'
+    " Easy snippets
+    Plug 'SirVer/ultisnips'
 call plug#end()
 
 let g:vimwiki_ext2syntax = {}
@@ -124,3 +126,12 @@ vmap p "_dP
 autocmd FileType * setlocal formatoptions-=o formatoptions-=r
 
 au BufRead,BufNewFile *.jrnl setfiletype jrnl
+
+" Ultisnips config
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Open window in vertical split to edit snippets for the current filetype
+nnoremap <leader>S :UltiSnipsEdit<CR>
+let g:UltiSnipsEditSplit="vertical"
