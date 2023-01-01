@@ -65,6 +65,8 @@ super + alt + g
 	telegram-desktop
 super + alt + l
 	lbry
+super + alt + w
+	$BROWSER https://web.whatsapp.com
 super + alt + y
 	$TERMINAL -e lynx -scrollbar
 super + alt + r

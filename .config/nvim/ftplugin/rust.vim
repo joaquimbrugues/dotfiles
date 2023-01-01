@@ -18,8 +18,13 @@ map <leader><ENTER> :!$TERMINAL &<CR><CR>
 map <leader>d :ALEGoToDefinition<CR>
 let g:ale_enabled = 1
 
-" Quickly write a println!
+" imaps
 imap <m-1> println!("");<ESC>2hi
+imap <m-2> panic!("");<ESC>2hi
+imap <m-+> += 1;<Left>
+imap <m--> -= 1;<Left>
+imap <m-*> *= ;<Left>
+imap <m-/> /= ;<Left>
 
 " Dirty abbreviations
 ab lm let mut
