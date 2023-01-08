@@ -63,8 +63,6 @@ super + alt + n
 	$TERMINAL -e newsboat
 super + alt + g
 	telegram-desktop
-super + alt + l
-	lbry
 super + alt + w
 	$BROWSER https://web.whatsapp.com
 super + alt + y
