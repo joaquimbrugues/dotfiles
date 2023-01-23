@@ -2,5 +2,5 @@
 # Look for pdf, djvu and ps documents in the HOME folder and open a dmenu to open the selection with zathura
 
 [ -z "$READER" ] && exit 1
-FILE=$(locate -e -d "$LOCALDB" -r "$HOME/.*\.pdf\>" -r "$HOME/.*\.djvu\>" -r "$HOME/.*\.ps\>" -r "$HOME/.*\.epub\>" | grep -v ".*\/\." | dmenu_col -l 10 -p "Obre amb $READER")
+FILE=$(locate -e -d "$LOCALDB" --regex "$HOME/.*\.pdf\>|$HOME/.*\.djvu\>|$HOME/.*\.ps\>|$HOME/.*\.epub\>" | grep -v ".*\/\." | dmenu_col -l 10 -p "Obre amb $READER")
 [ -e "$FILE" ] && zathura "$FILE"
