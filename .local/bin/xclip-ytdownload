@@ -18,7 +18,7 @@ fi
 
 notify-send "⏳ YT-DL: Descarregant..." "$(basename $URL)\nProgrés a $TMPFILE"
 touch $TMPFILE
-youtube-dl --write-auto-sub --embed-subs "$URL" --output "$DIR/%(title)s.%(ext)s" >$TMPFILE 2>&1 &
+youtube-dl --no-playlist --write-auto-sub --embed-subs --sponsorblock-remove  "sponsor,selfpromo, interaction" --embed-chapters "$URL" --output "$DIR/%(title)s.%(ext)s" >$TMPFILE 2>&1 &
 wait $!
 updatedb -U $HOME -l no -o $LOCALDB >/dev/null &
 wait $!
