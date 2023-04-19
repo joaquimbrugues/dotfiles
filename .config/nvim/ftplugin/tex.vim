@@ -51,7 +51,7 @@ vmap <leader>i "ic{\it }<ESC>"iP
 " Compile document
 map <leader>C :w! \| !pdflatex %<CR><CR>
 " Open bibliography in split
-map <leader>b :vsp $BIB<CR>
+map <leader>b :w! \| !bibtex %:r<CR><CR>
 " Open compiled document with system READER
 map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Open terminal in current folder
