@@ -63,8 +63,10 @@ keymap = [
 	{ keys = [ "y", "p" ],		command = "copy_filepath" },
 	{ keys = [ "y", "d" ],		command = "copy_dirpath" },
 
-	{ keys = [ "delete" ],		command = "delete_files --foreground=true" },
-	{ keys = [ "d" ],		command = "delete_files --foreground=true" },
+	#{ keys = [ "delete" ],		command = "delete_files --foreground=true" },
+	#{ keys = [ "d" ],		command = "delete_files --foreground=true" },
+	{ keys = [ "delete" ],		command = "delete_files" },
+	{ keys = [ "d" ],		command = "delete_files" },
 
 	{ keys = [ "c", "c" ],		command = ":rename " },
 	{ keys = [ "c", "e" ],		command = "rename_append" },
