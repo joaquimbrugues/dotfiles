@@ -6,6 +6,7 @@ ReadTags = yes
 # parameter or the 'm' command.  This can also point to a playlist.
 MusicDir = "${HOME}/Music"
 Fastdir1 = "${HOME}/Podcast"
+Fastdir2 = "${HOME}/Downloads"
 
 # Default FormatString:
 #   %n - Track number
