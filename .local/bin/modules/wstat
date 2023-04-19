@@ -3,9 +3,14 @@
 INTERVAL=60
 
 while true; do
-	case $(cat /sys/class/net/w*/operstate) in
+	case $(cat /sys/class/net/w*/operstate 2>/dev/null) in
 		up) echo "I📶" ;;
-		*) echo "I❌" ;;
+		*)
+			case $(cat /sys/class/net/e*/operstate 2>/dev/null) in
+				up) echo "I📶" ;;
+				*) echo "I❌" ;;
+			esac
+			;;
 	esac
 	sleep $INTERVAL
 done
