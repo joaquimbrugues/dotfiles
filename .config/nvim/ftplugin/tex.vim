@@ -52,12 +52,12 @@ vmap <leader>i "ic{\it }<ESC>"iP
 
 " Compile document
 map <leader>C :w! \| !pdflatex %<CR><CR>
-" Open bibliography in split
-map <leader>b :vsp $BIB<CR>
 " Open compiled document with system READER
 map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Open terminal in current folder
 map <leader><ENTER> :!$TERMINAL &<CR><CR>
+" Execute bibtex on the current document
+map <leader>b :w! \| !bibtex %:r<CR><CR>
 
 " Open abbreviations file 1
 map <leader>1 :so $HOME/.config/nvim/loadable/abbreviations-1.tex.vim<CR>
