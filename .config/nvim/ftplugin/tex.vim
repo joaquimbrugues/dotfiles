@@ -59,6 +59,5 @@ map <leader><ENTER> :!$TERMINAL &<CR><CR>
 " Execute bibtex on the current document
 map <leader>b :w! \| !bibtex %:r<CR><CR>
 
-" Open abbreviations file 1
-map <leader>1 :so $HOME/.config/nvim/loadable/abbreviations-1.tex.vim<CR>
-map <leader>2 :so $HOME/.config/nvim/loadable/abbreviations-2.tex.vim<CR>
+" Open custom configuration
+map <leader>1 :so $HOME/.config/nvim/loadable/thesiscfg.tex.vim<CR>
