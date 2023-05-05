@@ -21,6 +21,8 @@ map <leader>e "eciW\begin{}<ESC>"eP"_o\end{}<ESC>"eP"_O
 imap <c-j> <ESC>"_o\[\]<ESC>hi
 " Add inline math mode to the right
 imap <c-l> $$<ESC>i
+" Add emph to the right
+imap <c-c> \emph{}<ESC>i
 " Use selection as numerator of a fraction, and place the cursor in the denominator
 vmap <c-f> "fc\frac{}<ESC>"fPla
 " Use word as function for a partial differentiation, and place the cursor in
@@ -50,13 +52,12 @@ vmap <leader>i "ic{\it }<ESC>"iP
 
 " Compile document
 map <leader>C :w! \| !pdflatex %<CR><CR>
-" Open bibliography in split
-map <leader>b :w! \| !bibtex %:r<CR><CR>
 " Open compiled document with system READER
 map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Open terminal in current folder
 map <leader><ENTER> :!$TERMINAL &<CR><CR>
+" Execute bibtex on the current document
+map <leader>b :w! \| !bibtex %:r<CR><CR>
 
-" Open abbreviations file 1
-map <leader>1 :so $HOME/.config/nvim/loadable/abbreviations-1.tex.vim<CR>
-map <leader>2 :so $HOME/.config/nvim/loadable/abbreviations-2.tex.vim<CR>
+" Open custom configuration
+map <leader>1 :so $HOME/.config/nvim/loadable/thesiscfg.tex.vim<CR>
