@@ -14,4 +14,6 @@ export LLIMA_FIFO="/tmp/llima-fifo"
 export LLIMA_NAME="llimabar"
 export LOCALDB="$HOME/.local/share/home.db"
 
+export CARGO_INSTALL_ROOT="$HOME/.local"
+
 setxkbmap -option "caps:swapescape"
