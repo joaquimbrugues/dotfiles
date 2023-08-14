@@ -61,6 +61,7 @@ alias e='$EDITOR'
 alias v='$READER'
 alias rs-aup='rsync --archive --update --progress'
 alias llocate='locate -d $LOCALDB'
+alias mpvnv='mpv --no-video'
 
 # less and man colour variables
 # Start blinking
