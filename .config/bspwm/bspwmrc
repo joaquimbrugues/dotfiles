@@ -64,6 +64,7 @@ llimabar &
 pgrep -x dropbox >/dev/null || dropbox start &
 pgrep -x owncloud >/dev/null || owncloud &
 ping -q -c 1 1.1.1.1 >/dev/null && resume-ytdl &
+ping -q -c 1.1.1.1.1 >/dev/null && newsboat -x reload &
 
 # GPG-AGENT initialization
 gpg-agent --daemon &
