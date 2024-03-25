@@ -16,7 +16,7 @@ xsetroot -cursor_name left_ptr
 pgrep -x sxhkd >/dev/null && killall sxhkd
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc-bspwm &
 pgrep -x compton >/dev/null && killall compton
-picom -f &
+picom &
 
 wallpaper &
 
