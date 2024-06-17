@@ -7,6 +7,7 @@ ReadTags = yes
 MusicDir = "${HOME}/Music"
 Fastdir1 = "${HOME}/Podcast"
 Fastdir2 = "${HOME}/Downloads"
+Fastdir3 = "${HOME}/Playlists"
 
 # Default FormatString:
 #   %n - Track number
