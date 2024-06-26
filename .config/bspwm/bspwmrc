@@ -55,11 +55,6 @@ bspc rule -a wordreference-nativefier-c0a7c6 state=floating rectangle=640x360+10
 # Load xresources
 [ -f $HOME/.Xresources ] && xrdb -merge $HOME/.Xresources
 
-# Reload the lemonbar
-pgrep -x llimabar >/dev/null && killall llimabar
-pgrep -x lemonbar >/dev/null && killall lemonbar
-llimabar &
-
 # "Heavy" applications autostart
 pgrep -x dropbox >/dev/null || dropbox start &
 pgrep -x owncloud >/dev/null || owncloud &
@@ -69,4 +64,4 @@ ping -q -c 1.1.1.1.1 >/dev/null && newsboat -x reload &
 # GPG-AGENT initialization
 gpg-agent --daemon &
 
-[ -e "$LLIMA_FIFO" ] && bspc subscribe report >"$LLIMA_FIFO" &
+#[ -e "$LLIMA_FIFO" ] && bspc subscribe report >"$LLIMA_FIFO" &
