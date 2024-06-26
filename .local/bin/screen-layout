@@ -36,6 +36,8 @@ case "$PICK" in
 	*) ;;
 esac
 
-pgrep -x llimabar >/dev/null && killall llimabar && set_llimabar="yes"
-pgrep -x lemonbar >/dev/null && killall lemonbar
-[ -n "set_llimabar" ] && llimabar &
+# Engega Polybar
+
+for m in $(xrandr --query | grep -w "connected" | awk '{print $1}'); do
+	MONITOR=$m polybar --reload main &
+done
