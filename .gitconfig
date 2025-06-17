@@ -10,3 +10,9 @@
 	l = log --graph --pretty=format:\"%C(auto)%h %C(green)%as %C(auto)%d %C(auto)%s\" --date=relative --branches --decorate
 [pull]
 	ff = only
+[credential]
+	helper = store
+[init]
+	defaultBranch = principal
+[fetch]
+	prune = true
