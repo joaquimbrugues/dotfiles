@@ -59,5 +59,5 @@ map <leader><ENTER> :!$TERMINAL &<CR><CR>
 " Execute bibtex on the current document
 map <leader>b :w! \| !bibtex %:r<CR><CR>
 
-" Open custom configuration
-map <leader>1 :so $HOME/.config/nvim/loadable/thesiscfg.tex.vim<CR>
+" Open custom project configuration
+map <leader>1 :so config.vim<CR>
