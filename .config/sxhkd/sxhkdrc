@@ -65,6 +65,8 @@ super + alt + g
 	telegram-desktop
 super + alt + w
 	$BROWSER https://web.whatsapp.com
+super + alt + d
+	$BROWSER https://dlc.iec.cat
 super + alt + y
 	$TERMINAL -e lynx -scrollbar
 super + alt + r
@@ -75,7 +77,7 @@ super + alt + h
 	$TERMINAL -e joshuto
 
 super + alt + s
-	surf $(cat $HOME/.local/share/bookmarks | dmenu_col -p "Obre a surf" -l 20)
+	signal-desktop
 super + alt + o
 	$TERMINAL -e octave -q
 super + alt + j
