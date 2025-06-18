@@ -140,3 +140,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 " Open window in vertical split to edit snippets for the current filetype
 nnoremap <leader>S :UltiSnipsEdit<CR>
 let g:UltiSnipsEditSplit="vertical"
+
+" Set filetype to TeX (needed as sometimes it's not automatically recognized)
+nnoremap <leader>x :setfiletype tex<CR>
