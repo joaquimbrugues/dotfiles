@@ -9,6 +9,9 @@ set nohlsearch
 set noshowmode
 set scrolloff=2
 
+" Colorscheme
+colorscheme vim
+
 " Permanent undo
 set undodir=~/.local/share/nvim/undo
 set undofile
