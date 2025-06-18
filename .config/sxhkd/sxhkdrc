@@ -39,7 +39,7 @@ super + shift + p
 super + e
 	dmenu-edit
 super + s
-	screenkey-toggle
+	dmenu-websearch
 super + ctrl + y
 	xclip-ytdownload
 super + shift + e

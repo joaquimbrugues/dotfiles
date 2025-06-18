@@ -1,0 +1,9 @@
+#!/bin/bash
+# Search the contents of dmenu input with profile browser's default search engine (only tested with Firefox)
+
+. $HOME/.local/share/global-style
+DMENU_HEIGHT=$(echo "$BAR_HEIGHT" | awk '{print $1 + 5}')
+
+CERCA=$(echo "" | dmenu_col -c -p "Cerca")
+
+[ -n "$CERCA" ] && $BROWSER --search "$CERCA" &
