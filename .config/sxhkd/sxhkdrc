@@ -70,7 +70,7 @@ super + alt + d
 super + alt + y
 	$TERMINAL -e lynx -scrollbar
 super + alt + r
-	$TERMINAL -e trt
+	$TERMINAL -e tremc
 super + alt + a
 	$TERMINAL -e curseradio
 super + alt + h
