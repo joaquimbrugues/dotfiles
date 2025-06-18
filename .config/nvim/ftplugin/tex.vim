@@ -51,7 +51,7 @@ vmap <leader>n "bc\textbf{}<ESC>"bP
 vmap <leader>i "ic\textit{}<ESC>"iP
 
 " Compile document
-map <leader>C :w! \| !pdflatex %<CR><CR>
+map <leader>C :w! \| !pdflatex %:p<CR><CR>
 " Open compiled document with system READER
 map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Open terminal in current folder
