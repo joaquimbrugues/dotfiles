@@ -34,6 +34,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vimwiki/vimwiki'
     " Support for Rust language
     Plug 'rust-lang/rust.vim'
+    Plug 'preservim/tagbar'
     " Lightline
     Plug 'itchyny/lightline.vim'
     " Automatic rooting of projects
