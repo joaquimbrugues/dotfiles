@@ -46,9 +46,9 @@ imap <m-8> \left(\right)<ESC>6hi
 " Create left-right bracket structure
 imap <m-9> \left[\right]<ESC>6hi
 " Place selection into bold brackets
-vmap <leader>n "bc{\bf }<ESC>"bP
+vmap <leader>n "bc\textbf{}<ESC>"bP
 " Place selection into italics brackets
-vmap <leader>i "ic{\it }<ESC>"iP
+vmap <leader>i "ic\textit{}<ESC>"iP
 
 " Compile document
 map <leader>C :w! \| !pdflatex %<CR><CR>
