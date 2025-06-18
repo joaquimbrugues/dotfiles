@@ -86,14 +86,6 @@ super + a
 super + ctrl + t
 	bspc rule -a st-256color -o state=floating rectangle=400x250+10+820 sticky=on && $TERMINAL -e tradueix
 
-# Open an mpv window with the feed of the webcam, following you around
-super + w
-	notify-send "📷 Encenent la càmera..." && camera
-super + ctrl + {dead_grave,dead_acute,comma,period}
-	movecamera {NO,NE,SO,SE}
-super + shift + w
-	toggle-droidcam
-
 # Hide current window
 super + ctrl + h
 	bspc node -g hidden=on
