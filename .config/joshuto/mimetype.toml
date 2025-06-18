@@ -19,6 +19,7 @@ text_default	= [
 
 reader_default	= [
 	{ command = "zathura", args= [ "--fork" ], silent = true },
+	{ command = "firefox", fork = true, silent = true },
 ]
 
 libreoffice_default	= [
@@ -26,6 +27,11 @@ libreoffice_default	= [
 ]
 
 [extension]
+
+html.app_list = [
+	{ command = "nvim" },
+	{ command = "firefox", fork = true, silent = true },
+]
 
 ## image formats
 avif.inherit    = "image_default"
