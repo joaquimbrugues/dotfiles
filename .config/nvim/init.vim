@@ -52,6 +52,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'alvan/vim-closetag'
     " Easy snippets
     Plug 'SirVer/ultisnips'
+    " Terminal in NeoVim
+    Plug 'akinsho/toggleterm.nvim', {'tag': '*'}
 call plug#end()
 
 let g:vimwiki_ext2syntax = {}
@@ -143,3 +145,23 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Set filetype to TeX (needed as sometimes it's not automatically recognized)
 nnoremap <leader>x :setfiletype tex<CR>
+
+" Set up toggleterminal
+lua << EOF
+require"toggleterm".setup{
+   direction = 'vertical',
+   size = 55,
+   open_mapping = [[<leader><ENTER>]],
+}
+
+-- Terminal keymaps
+function _G.set_terminal_keymaps()
+   local opts = {buffer = 0}
+   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+   vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+   vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+   vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+end
+EOF
+
+autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()
