@@ -100,7 +100,7 @@ XF86AudioMute
 
 # Brightness controls
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
-	xbacklight {-inc,-dec} 10
+	light {-A,-U} 10
 
 # Monitor layouts
 super + ctrl + {0,1,2,3}
