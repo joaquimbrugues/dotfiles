@@ -52,7 +52,7 @@ vmap <leader>i "ic\textit{}<ESC>"iP
 
 " Compile document
 "map <leader>C :w! \| !pdflatex %:p<CR><CR>
-map <leader>C :TermExec cmd="pdflatex %" go_back=0<CR>
+map <leader>C :w! \| :TermExec cmd="pdflatex %" go_back=0<CR>
 " Open compiled document with system READER
 map <leader>z :!$READER %:r.pdf &<CR><CR>
 " Execute bibtex on the current document
